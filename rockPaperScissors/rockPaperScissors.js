@@ -25,8 +25,11 @@
 
 
 var rockPaperScissors = function (numRounds) {
+  numRounds = numRounds || 0;
+
   var possibleChoices = ['rock', 'paper', 'scissors'];
   var roundIndexChoices = Array(numRounds).fill(0);
+
   var arrayRounds = [];
 
   var numChoices = 3;
