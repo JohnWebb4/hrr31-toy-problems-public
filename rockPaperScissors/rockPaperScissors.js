@@ -17,8 +17,8 @@
 *
 */
 
-// Input: number of rounds
-// Output: Every possible combination
+// Input:    Number of rounds
+// Output:   Every possible combination
 
 // Options: 'rock', 'paper', 'scissors'
 // Array of length 3^n of arrays of n length
@@ -39,12 +39,28 @@ var rockPaperScissors = function (numRounds) {
 
     arrayRounds.push(roundChoices);
 
-    roundIndexChoices = incrementAbacusArray(roundIndexChoices, numChoices);
+    roundIndexChoices = incrementAbacusArray(roundIndexChoices, 1, numChoices);
   }
 
   return arrayRounds;
 };
 
-var incrementAbacusArray = function(array, maxValue) {
+// Abacus: Has max number of beads on each row
+//         Each subsequent row is multiple of previous row
+//           For abacus with 10 beads, each bead on the 2nd row reprents 10
+// Input:  Array, increment value, max value for each element
+// Output: Updated abacus array
 
+// Loop through array
+// Increment very last index by 1
+// Do what follow for every other index
+// Set increment for next row to lowest integer value that index divides max value
+// Set new abacus value to remainder of division
+
+var incrementAbacusArray = function(array, incrementBy, maxValue) {
+  return array.map(function(value) {
+    value += incrementBy;
+    incrementBy = Math.floor(value / maxValue);
+    return value % maxValue;
+  });
 };
