@@ -58,9 +58,9 @@ var rockPaperScissors = function (numRounds) {
 // Set new abacus value to remainder of division
 
 var incrementAbacusArray = function(array, incrementBy, maxValue) {
-  return array.map(function(value) {
+  return (array.reverse().map(function(value) {
     value += incrementBy;
     incrementBy = Math.floor(value / maxValue);
     return value % maxValue;
-  });
+  })).reverse();
 };
