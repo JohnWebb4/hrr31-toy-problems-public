@@ -12,8 +12,8 @@ testEvenOccuranceEquals([1, 2, 1, 3], 1, 'Should return even occurance (1)');
 // Should handle multiple even occurances
 testEvenOccuranceEquals([1, 2, 1, 2, 3, 3], 'Should return first even occurance');
 
-var testEvenOccuranceEquals(arr, value, errorMessage) {
-  if (evenOccurance(arr) !== value) {
-    throw new Error(errorMessage);
+function testEvenOccuranceEquals(arr, value, errorMessage) {
+  if (evenOccurrence(arr) !== value) {
+    console.log(errorMessage);
   }
 }
