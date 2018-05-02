@@ -23,6 +23,37 @@
 // Reduce array to object
 // Key number value and store another object with lowest index and if occured an even number of times
 
+
 var evenOccurrence = function(arr) {
-  // Your code here.
+  var valueFirstEvenOccurence = null;
+  var indexFirstEvenOccurence = arr.length;
+
+  var countOccurances = arr.reduce(function(occurances, number, index) {
+    if (occurances[number]) {
+      occurances[number][isEvenOccurance] = !occurances[number][isEvenOccurance];
+
+      var isEvenOccurance = occurances[number][isEvenOccurance];
+      var firstIndex = occurances[number][firstIndex];
+
+      if (isEvenOccurance && firstIndex < indexFirstEvenOccurence) {
+        valueFirstOccurance = number;
+        indexFirstEvenOccurence = firstIndex;
+      }
+
+      if (number === valueFirstOccurance && !isEvenOccurance) {
+       valueFirstOccurance = null;
+       indexFirstEvenOccurence = arr.length;
+      }
+
+    } else {
+      occurances[number] = {
+        firstIndex: index,
+        isEvenOccurance: false
+      };
+    }
+
+    return occurances;
+  }, {});
+
+  return valueFirstEvenOccurence;
 };
