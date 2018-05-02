@@ -36,12 +36,12 @@ var evenOccurrence = function(arr) {
       var firstIndex = occurances[number][firstIndex];
 
       if (isEvenOccurance && firstIndex < indexFirstEvenOccurence) {
-        valueFirstOccurance = number;
+        valueFirstEvenOccurence = number;
         indexFirstEvenOccurence = firstIndex;
       }
 
-      if (number === valueFirstOccurance && !isEvenOccurance) {
-       valueFirstOccurance = null;
+      if (number === valueFirstEvenOccurence && !isEvenOccurance) {
+       valueFirstEvenOccurence = null;
        indexFirstEvenOccurence = arr.length;
       }
 
