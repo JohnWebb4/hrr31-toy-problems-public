@@ -30,10 +30,10 @@ var evenOccurrence = function(arr) {
 
   var countOccurances = arr.reduce(function(occurances, number, index) {
     if (occurances[number]) {
-      occurances[number][isEvenOccurance] = !occurances[number][isEvenOccurance];
+      occurances[number]['isEvenOccurance'] = !occurances[number]['isEvenOccurance'];
 
-      var isEvenOccurance = occurances[number][isEvenOccurance];
-      var firstIndex = occurances[number][firstIndex];
+      var isEvenOccurance = occurances[number]['isEvenOccurance'];
+      var firstIndex = occurances[number]['firstIndex'];
 
       if (isEvenOccurance && firstIndex < indexFirstEvenOccurence) {
         valueFirstEvenOccurence = number;
