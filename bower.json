@@ -1,0 +1,23 @@
+{
+  "name": "Toy Problems",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hackreactor/hrr31-toy-problems",
+  "description": "Hack Reactor Toy Problems",
+  "main": "README.md",
+  "authors": [
+    "Hack Reactor",
+    "John Webb"
+  ],
+  "license": "COPYRIGHT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "chai": "~1.9.1",
+    "mocha": "~1.18.2"
+  }
+}
