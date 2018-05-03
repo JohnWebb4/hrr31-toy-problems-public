@@ -46,4 +46,17 @@ describe('treeCountLeaves', function() {
 
     expect(tree.countLeaves()).to.equal(3);
   });
+
+  it('should not count non-tree children', function() {
+    tree.addChild(1);
+
+    tree.children.push(1);
+    tree.children.push(true);
+    tree.children.push(undefined);
+    tree.children.push(null);
+    tree.children.push({this: "is not a valid child"});
+    tree.children.push(['this', 'also', 'doesn\'t', 'count']);
+
+    expect(tree.countLeaves()).to.equal(1);
+  });
 });
