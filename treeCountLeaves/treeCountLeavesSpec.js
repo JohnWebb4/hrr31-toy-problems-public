@@ -1,6 +1,8 @@
 describe('treeCountLeaves', function() {
+  var tree;
+
   beforeEach(function() {
-    var tree = new Tree(0);
+    tree = new Tree(0);
   });
 
   it('should work for one leaf', function() {
