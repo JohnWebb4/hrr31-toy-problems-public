@@ -14,4 +14,12 @@ describe('treeCountLeaves', function() {
 
     expect(tree.countLeaves()).to.equal(3);
   });
+
+  it('should work for indirect leaves', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    tree.children[0].addChild(3);
+
+    expect(tree.countLeaves()).to.equal(2);
+  });
 });
