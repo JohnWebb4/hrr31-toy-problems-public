@@ -2,7 +2,7 @@ describe('treeCountLeaves', function() {
   var tree;
 
   beforeEach(function() {
-    tree = new Tree(0);
+    tree = new Tree();
   });
 
   it('should work for one leaf', function() {
