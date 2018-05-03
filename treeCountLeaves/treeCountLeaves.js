@@ -38,7 +38,15 @@ var Tree = function(value) {
 };
 
 Tree.prototype.countLeaves = function () {
-  // TODO: implement me!
+  // Base case
+  if (this.children.length === 0) {
+    return 1;
+  }
+
+  // Recursive case
+  return this.children.reduce(function(numLeaves, childTree) {
+    return numLeaves + childTree.countLeaves();
+  }, 0);
 };
 
 /**
