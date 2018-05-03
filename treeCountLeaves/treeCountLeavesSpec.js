@@ -35,4 +35,15 @@ describe('treeCountLeaves', function() {
 
     expect(tree.countLeaves()).to.equal(3);
   });
+
+  it('should handle varying data types', function() {
+    tree.addChild(1);
+    tree.addChild(undefined);
+    tree.addChild(null);
+    tree.children[1].addChild([1, 2, 3]);
+    tree.children[2].addChild({a: true});
+    tree.children[2].children[0].addChild(true);
+
+    expect(tree.countLeaves()).to.equal(3);
+  });
 });
