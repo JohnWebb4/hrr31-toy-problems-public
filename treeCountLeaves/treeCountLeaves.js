@@ -45,7 +45,13 @@ Tree.prototype.countLeaves = function () {
 
   // Recursive case
   return this.children.reduce(function(numLeaves, childTree) {
-    return numLeaves + childTree.countLeaves();
+    if (childTree === Object(childTree)) {
+      if (childTree.hasOwnProperty('value') && childTree.hasOwnProperty('children')) {
+          numLeaves += childTree.countLeaves();
+      }
+    }
+
+    return numLeaves;
   }, 0);
 };
 
