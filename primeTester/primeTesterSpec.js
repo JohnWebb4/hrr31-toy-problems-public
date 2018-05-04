@@ -5,4 +5,11 @@ describe('primeTester', function() {
     expect(primeTester(6)).to.be.false;
     expect(primeTester(8)).to.be.false;
   });
+
+  it('should handle prime numbers', function() {
+    expect(primeTester(2)).to.be.true;
+    expect(primeTester(3)).to.be.true;
+    expect(primeTester(5)).to.be.true;
+    expect(primeTester(7)).to.be.true;
+  });
 });
