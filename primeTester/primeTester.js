@@ -9,7 +9,20 @@ var primeTester = function(n) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
-  // TODO: return true if n is prime, false otherwise
+
+  // 1 not being prime is up for debate
+  if (n === 1) {
+    return false;
+  }
+
+  var halfN = n / 2;
+  for (var nPossibleFactor = 2; nPossibleFactor <= halfN; nPossibleFactor++) {
+    if(n % nPossibleFactor === 0) {
+      return false;
+    }
+  }; 
+
+  return true;
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
