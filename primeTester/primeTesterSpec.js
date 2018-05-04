@@ -19,4 +19,10 @@ describe('primeTester', function() {
     expect(primeTester(0)).to.be.false;
     expect(primeTester(-155)).to.be.false;
   });
+
+  it('should handle very large prime numbers', function() {
+    expect(primeTester(7919)).to.be.true;
+    expect(primeTester(17389)).to.be.true;
+    expect(primeTester(104729)).to.be.true;
+  });
 });
