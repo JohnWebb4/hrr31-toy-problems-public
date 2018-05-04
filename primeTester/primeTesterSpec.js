@@ -12,4 +12,11 @@ describe('primeTester', function() {
     expect(primeTester(5)).to.be.true;
     expect(primeTester(7)).to.be.true;
   });
+
+  it('should handle negative numbers and zero', function() {
+    expect(primeTester(-1)).to.be.false;
+    expect(primeTester(-2)).to.be.false;
+    expect(primeTester(0)).to.be.false;
+    expect(primeTester(-155)).to.be.false;
+  });
 });
