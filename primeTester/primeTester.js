@@ -16,7 +16,8 @@ var primeTester = function(n) {
 
   var primeNumbers = [];
 
-  for (var maybePrime = 2; maybePrime <= n; maybePrime++) {
+  var sqrtN = Math.sqrt(n);
+  for (var maybePrime = 2; maybePrime <= sqrtN; maybePrime++) {
     if (isPrimeArray[maybePrime]) {
       primeNumbers.push(maybePrime);
       for (var primeSquareMultiple = maybePrime ** 2;
@@ -25,7 +26,7 @@ var primeTester = function(n) {
         if (primeSquareMultiple === n) {
           return false;
         }
-      } 
+      }
     }
   }
 
@@ -51,11 +52,11 @@ var primeSieveFrom2 = function(end) {
       for (var primeSquareMultiple = maybePrime ** 2;
            primeSquareMultiple <= end; primeSquareMultiple += maybePrime) {
         isPrimeArray[primeSquareMultiple] = false;
-      } 
+      }
     }
   }
 
-  return primeNumbers;  
+  return primeNumbers;
 }
 
 var primeSieve = function (start, end) {
