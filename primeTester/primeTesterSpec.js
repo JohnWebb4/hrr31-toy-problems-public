@@ -29,10 +29,14 @@ describe('primeTester', function() {
 
 describe('primeSieve', function() {
   it('should return an array', function() {
-    expect(primeSieve(1, 500)).to.be.an('array');
+    expect(primeSieve(1, 100)).to.be.an('array');
   });
 
-  it('should return an array of size 500', function() {
-    expect(primeSieve(1, 500).length).to.equall(500);
+  it('should return an array of size 25', function() {
+    expect(primeSieve(1, 100).length).to.equal(25);
+  });
+
+  it('should return first 5 prime numbers', function() {
+    expect(primeSieve(1, 5)).to.equal([2, 3, 5, 7, 11]);
   });
 });
