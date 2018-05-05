@@ -5,22 +5,29 @@
  */
 
 var primeTester = function(n) {
-  if (typeof n !== 'number' || n < 1 || n % 1 !== 0) {
+  if (typeof n !== 'number' || n <= 1 || n % 1 !== 0) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
 
-  // 1 not being prime is up for debate
-  if (n === 1) {
-    return false;
-  }
+  var isPrimeArray = Array(n + 2).fill(true);
+  isPrimeArray[0] = false;
+  isPrimeArray[1] = false;
 
-  var sqrtN = Math.sqrt(n); 
-  for (var nPossibleFactor = 2; nPossibleFactor <= sqrtN; nPossibleFactor++) {
-    if(n % nPossibleFactor === 0) {
-      return false;
+  var primeNumbers = [];
+
+  for (var maybePrime = 2; maybePrime <= n; maybePrime++) {
+    if (isPrimeArray[maybePrime]) {
+      primeNumbers.push(maybePrime);
+      for (var primeSquareMultiple = maybePrime ** 2;
+           primeSquareMultiple <= n; primeSquareMultiple += maybePrime) {
+        isPrimeArray[primeSquareMultiple] = false;
+        if (primeSquareMultiple === n) {
+          return false;
+        }
+      } 
     }
-  }; 
+  }
 
   return true;
 };
