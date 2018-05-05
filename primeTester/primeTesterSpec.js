@@ -23,7 +23,7 @@ describe('primeTester', function() {
   it('should handle very large prime numbers', function() {
     expect(primeTester(7919)).to.be.true;
     expect(primeTester(17389)).to.be.true;
-    expect(primeTester(104729)).to.be.true;
+    expect(primeTester(2038074743)).to.be.true;
   });
 });
 
@@ -37,6 +37,6 @@ describe('primeSieve', function() {
   });
 
   it('should return first 5 prime numbers', function() {
-    expect(primeSieve(1, 5)).to.equal([2, 3, 5, 7, 11]);
+    expect(primeSieve(1, 11)).to.eql([2, 3, 5, 7, 11]);
   });
 });
