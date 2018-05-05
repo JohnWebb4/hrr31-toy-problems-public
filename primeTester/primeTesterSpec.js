@@ -26,3 +26,9 @@ describe('primeTester', function() {
     expect(primeTester(104729)).to.be.true;
   });
 });
+
+describe('primeSieve', function() {
+  it('should return an array', function() {
+    expect(primeSieve(1, 500)).to.be.an('array');
+  });
+});
