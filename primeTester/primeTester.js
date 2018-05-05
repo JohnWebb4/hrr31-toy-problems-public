@@ -38,11 +38,11 @@ var primeSieveFrom2 = function(end) {
 
   var primeNumbers = [];
 
-  for (var maybePrime = 2; maybePrime < end; maybePrime++) {
+  for (var maybePrime = 2; maybePrime <= end; maybePrime++) {
     if (isPrimeArray[maybePrime]) {
       primeNumbers.push(maybePrime);
       for (var primeSquareMultiple = maybePrime ** 2;
-           primeSquareMultiple < end; primeSquareMultiple += maybePrime) {
+           primeSquareMultiple <= end; primeSquareMultiple += maybePrime) {
         isPrimeArray[primeSquareMultiple] = false;
       } 
     }
