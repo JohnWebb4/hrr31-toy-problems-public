@@ -31,4 +31,8 @@ describe('primeSieve', function() {
   it('should return an array', function() {
     expect(primeSieve(1, 500)).to.be.an('array');
   });
+
+  it('should return an array of size 500', function() {
+    expect(primeSieve(1, 500).length).to.equall(500);
+  });
 });
