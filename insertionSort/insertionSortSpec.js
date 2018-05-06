@@ -12,7 +12,7 @@ describe('insertionSort', function() {
       {value: 3, i: 1},
       {value: 4, i: 3},
       {value: 5, i: 2}
-    ] ;
+    ];
   });
 
   it('should not mutate the input array', function() {
@@ -26,8 +26,6 @@ describe('insertionSort', function() {
   });
 
   it('should sort array', function() {
-    console.log('Output: ', insertionSort(array));
-    console.log('Should have gotten:', sortedArray);
     expect(insertionSort(array)).to.eql(sortedArray);
   });
 });
