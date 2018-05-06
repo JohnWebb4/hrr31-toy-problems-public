@@ -23,6 +23,21 @@ describe('primeTester', function() {
   it('should handle very large prime numbers', function() {
     expect(primeTester(7919)).to.be.true;
     expect(primeTester(17389)).to.be.true;
-    expect(primeTester(104729)).to.be.true;
+    expect(primeTester(32452843)).to.be.true;
+    expect(primeTester(29996224275833)).to.be.true;
+  });
+});
+
+describe('primeSieve', function() {
+  it('should return an array', function() {
+    expect(primeSieve(1, 100)).to.be.an('array');
+  });
+
+  it('should return an array of size 25', function() {
+    expect(primeSieve(1, 100).length).to.equal(25);
+  });
+
+  it('should return first 5 prime numbers', function() {
+    expect(primeSieve(1, 11)).to.eql([2, 3, 5, 7, 11]);
   });
 });

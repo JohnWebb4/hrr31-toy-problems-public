@@ -5,22 +5,35 @@
  */
 
 var primeTester = function(n) {
-  if (typeof n !== 'number' || n < 1 || n % 1 !== 0) {
+  if (typeof n !== 'number' || n <= 1 || n % 1 !== 0) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
 
-  // 1 not being prime is up for debate
-  if (n === 1) {
-    return false;
-  }
 
-  var halfN = n / 2;
-  for (var nPossibleFactor = 2; nPossibleFactor <= halfN; nPossibleFactor++) {
-    if(n % nPossibleFactor === 0) {
-      return false;
+
+  var sqrtN = Math.ceil(Math.sqrt(n));
+
+  var isPrimeArray = Array(sqrtN + 2).fill(true);
+  isPrimeArray[0] = false;
+  isPrimeArray[1] = false;
+
+  var primeNumbers = [];
+  for (var maybePrime = 2; maybePrime <= sqrtN; maybePrime++) {
+    if (isPrimeArray[maybePrime]) {
+      primeNumbers.push(maybePrime);
+
+      for (var primeSquareMultiple = maybePrime ** 2;
+           primeSquareMultiple <= sqrtN;
+           primeSquareMultiple += maybePrime) {
+        isPrimeArray[primeSquareMultiple] = false;
+      }
+
+      if (n % maybePrime === 0 && n !== maybePrime) {
+        return false;
+      }
     }
-  }; 
+  }
 
   return true;
 };
@@ -31,7 +44,28 @@ var primeTester = function(n) {
  * saucy, check out the Sieve of Atkin.)
  */
 
+var primeSieveFrom2 = function(end) {
+  var isPrimeArray = Array(end + 2).fill(true);
+  isPrimeArray[0] = false;
+  isPrimeArray[1] = false;
+
+  var primeNumbers = [];
+
+  for (var maybePrime = 2; maybePrime <= end; maybePrime++) {
+    if (isPrimeArray[maybePrime]) {
+      primeNumbers.push(maybePrime);
+      for (var primeSquareMultiple = maybePrime ** 2;
+           primeSquareMultiple <= end; primeSquareMultiple += maybePrime) {
+        isPrimeArray[primeSquareMultiple] = false;
+      }
+    }
+  }
+
+  return primeNumbers;
+}
+
 var primeSieve = function (start, end) {
+  return primeSieveFrom2(end).filter(function(prime) {
+    return prime >= start;
+  });
 };
-
-
