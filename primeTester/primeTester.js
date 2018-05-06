@@ -10,22 +10,27 @@ var primeTester = function(n) {
     return false;
   }
 
-  var isPrimeArray = Array(n + 2).fill(true);
+
+
+  var sqrtN = Math.sqrt(n);
+
+  var isPrimeArray = Array(sqrtN + 2).fill(true);
   isPrimeArray[0] = false;
   isPrimeArray[1] = false;
 
   var primeNumbers = [];
-
-  var sqrtN = Math.sqrt(n);
   for (var maybePrime = 2; maybePrime <= sqrtN; maybePrime++) {
     if (isPrimeArray[maybePrime]) {
       primeNumbers.push(maybePrime);
+
       for (var primeSquareMultiple = maybePrime ** 2;
-           primeSquareMultiple <= n; primeSquareMultiple += maybePrime) {
+           primeSquareMultiple <= sqrtN;
+           primeSquareMultiple += maybePrime) {
         isPrimeArray[primeSquareMultiple] = false;
-        if (primeSquareMultiple === n) {
-          return false;
-        }
+      }
+
+      if (n % maybePrime) {
+        return false;
       }
     }
   }
