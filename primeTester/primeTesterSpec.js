@@ -23,7 +23,7 @@ describe('primeTester', function() {
   it('should handle very large prime numbers', function() {
     expect(primeTester(7919)).to.be.true;
     expect(primeTester(17389)).to.be.true;
-    expect(primeTester(2038074743)).to.be.true;
+    expect(primeTester(32452843)).to.be.true;
   });
 });
 
