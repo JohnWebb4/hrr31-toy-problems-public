@@ -28,4 +28,10 @@ describe('insertionSort', function() {
   it('should sort array', function() {
     expect(insertionSort(array)).to.eql(sortedArray);
   });
+
+  it('should return the original array', function() {
+    var array = testingTransform([3, 2, 1]);
+    var result = insertionSort(array);
+    expect(array).to.equal(result);
+  });
 });
