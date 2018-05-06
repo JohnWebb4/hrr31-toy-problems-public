@@ -24,6 +24,7 @@ describe('primeTester', function() {
     expect(primeTester(7919)).to.be.true;
     expect(primeTester(17389)).to.be.true;
     expect(primeTester(32452843)).to.be.true;
+    expect(primeTester(29996224275833)).to.be.true;
   });
 });
 
