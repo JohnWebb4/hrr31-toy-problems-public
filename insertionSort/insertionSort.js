@@ -37,7 +37,7 @@
 // It will transform an array of numbers into an array of valid objects.
 var testingTransform = function(array) {
   var transform = [];
-  
+
   for (var i = 0; i < array.length; i++) {
     transform.push({value: array[i], i: i});
   }
@@ -45,8 +45,52 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
-  return array;
+var insertionSort = function(array, comparator = (a, b) => {
+    if (a.value < b.value) {
+      return -1;
+    } else if (a === b) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }) {
+  // create sorted empty array
+  var sortedArray = [];
+
+  // Cycle through array
+  array.forEach(function(arrayElement, index) {
+    // If first element place in sorted array and return
+    if (index === 0) {
+     sortedArray.push(arrayElement);
+     return;
+    }
+
+    // Cycle through sorted Array
+    for (var sortedArrayIndex = 0; sortedArrayIndex < sortedArray.length; sortedArrayIndex++) {
+      // Compare array element with sorted array element
+      var compareElements = comparator(arrayElement, sortedArray[sortedArrayIndex]);
+
+      if (compareElements < 0) {
+        // If < 0 array element is placed before sorted element
+        sortedArray.splice(sortedArrayIndex, 0, arrayElement);
+        return;
+
+      } else if (compareElements === 0) {
+        // If === 0 array element is placed just after sorted element
+        sortedArray.splice(sortedArrayIndex + 1, 0, arrayElement);
+        return;
+
+      } else {
+        // if last element in sorted arrary
+        if (sortedArrayIndex === sortedArray.length - 1) {
+          // add to end of array
+          sortedArray.push(arrayElement);
+          return;
+        }
+      }
+    }
+  });
+
+  // Return sorted array
+  return sortedArray;
 };
