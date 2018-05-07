@@ -10,24 +10,29 @@ var primeTester = function(n) {
     return false;
   }
 
+  var maxArraySize = Number.parseFloat('4e+9');
+  var sqrtNRoundedToNearest4Billion = Math.ceil(Math.sqrt(n) / maxArraySize) * maxArraySize;
 
+  var primes = [];
 
-  var sqrtN = Math.ceil(Math.sqrt(n));
+  for (var primeRangeStart = 0; primeRangeStart < sqrtNRoundedToNearest4Billion; primeRangeStart += maxArraySize) {
+    if (!primeTestRange(primeRangeStart, primeRangeStart + maxArraySize, n, primes)) {
+      return false;
+    }
+  }
+};
 
+var primeTestRange = function(start, end, n, previousPrimesAndPrimesInRange) {
   var isPrimeArray = Array(sqrtN + 2).fill(true);
   isPrimeArray[0] = false;
   isPrimeArray[1] = false;
 
   var primeNumbers = [];
-  for (var maybePrime = 2; maybePrime <= sqrtN; maybePrime++) {
+  for (var maybePrime = 0; maybePrime <= sqrtN; maybePrime++) {
     if (isPrimeArray[maybePrime]) {
       primeNumbers.push(maybePrime);
 
-      for (var primeSquareMultiple = maybePrime ** 2;
-           primeSquareMultiple <= sqrtN;
-           primeSquareMultiple += maybePrime) {
-        isPrimeArray[primeSquareMultiple] = false;
-      }
+      setIndeciesThatAreMultiplesOfTheSquareOfNToFalse(isPrimeArray, maybePrime);
 
       if (n % maybePrime === 0 && n !== maybePrime) {
         return false;
@@ -36,7 +41,15 @@ var primeTester = function(n) {
   }
 
   return true;
-};
+}
+
+var setIndeciesThatAreMultiplesOfTheSquareOfNToFalse(array, n) {
+  for (var primeSquareMultiple = maybePrime ** 2;
+       primeSquareMultiple <= sqrtN;
+       primeSquareMultiple += maybePrime) {
+    isPrimeArray[primeSquareMultiple] = false;
+  }
+}
 
 /* Extra credit: Write a function that generates a list of all prime numbers
  * in a user-specified range (inclusive). If you're not quite sure where to start,
