@@ -68,5 +68,6 @@ var insertionSort = function(array, comparator = (a, b) => {
       }
     });
   } while (changedArray);
+
   return array;
 };
