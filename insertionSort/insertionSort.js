@@ -48,49 +48,26 @@ var testingTransform = function(array) {
 var insertionSort = function(array, comparator = (a, b) => {
     if (a.value < b.value) {
       return -1;
-    } else if (a === b) {
-      return 0;
-    } else {
+    } else if (a.value > b.value) {
       return 1;
+    } else {
+      return 0;
     }
   }) {
-  // create sorted empty array
-  var sortedArray = [];
+  // Bubble sort
+  var changedArray;
+  do {
+    changedArray = false;
 
-  // Cycle through array
-  array.forEach(function(arrayElement, index) {
-    // If first element place in sorted array and return
-    if (index === 0) {
-     sortedArray.push(arrayElement);
-     return;
-    }
-
-    // Cycle through sorted Array
-    for (var sortedArrayIndex = 0; sortedArrayIndex < sortedArray.length; sortedArrayIndex++) {
-      // Compare array element with sorted array element
-      var compareElements = comparator(arrayElement, sortedArray[sortedArrayIndex]);
-
-      if (compareElements < 0) {
-        // If < 0 array element is placed before sorted element
-        sortedArray.splice(sortedArrayIndex, 0, arrayElement);
-        return;
-
-      } else if (compareElements === 0) {
-        // If === 0 array element is placed just after sorted element
-        sortedArray.splice(sortedArrayIndex + 1, 0, arrayElement);
-        return;
-
-      } else {
-        // if last element in sorted arrary
-        if (sortedArrayIndex === sortedArray.length - 1) {
-          // add to end of array
-          sortedArray.push(arrayElement);
-          return;
-        }
+    array.forEach((element, index) => {
+      if (index + 1 < array.length && comparator(element, array[index + 1]) > 0) {
+        var temp = element;
+        array[index] = array[index + 1];
+        array[index + 1] = element;
+        changedArray = true;
       }
-    }
-  });
-
-  // Return sorted array
-  return sortedArray;
+    });
+  } while (changedArray);
+  debugger;
+  return array;
 };
