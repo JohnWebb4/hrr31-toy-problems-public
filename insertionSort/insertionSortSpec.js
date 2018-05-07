@@ -15,14 +15,6 @@ describe('insertionSort', function() {
     ];
   });
 
-  it('should not mutate the input array', function() {
-    var copyArray = array.slice();
-
-    insertionSort(array);
-
-    expect(array).to.eql(copyArray);
-  });
-
   it('should return an array', function() {
     expect(insertionSort(array)).to.be.an('array');
   });
