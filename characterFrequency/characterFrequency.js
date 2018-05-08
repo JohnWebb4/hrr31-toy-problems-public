@@ -35,6 +35,27 @@
  *
  */
 
+/*
+ *  I: String
+ *  O: Array of tuples
+ *  C: None
+ *  E: Case sensitive? No characters?
+ *
+ *  Notes:
+ *  Descending order by frequency and then ascending order by character
+ *
+ *  Outline:
+ *  Iterate through string
+ **   Key character to value in string
+ ***     Default one and increment
+ *  Declare array
+ *  Iterate over object
+ **   Iterate over result array
+ ***    If object frequency is less than array element frequency splice before
+ ***    If equal frequency compare characters
+ ***    If greater than element continue
+ *  Return result array
+*/
 
 var characterFrequency = function(string) {
   return result;
