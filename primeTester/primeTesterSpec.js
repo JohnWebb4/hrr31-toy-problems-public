@@ -24,7 +24,24 @@ describe('primeTester', function() {
     expect(primeTester(7919)).to.be.true;
     expect(primeTester(17389)).to.be.true;
     expect(primeTester(32452843)).to.be.true;
+    expect(primeTester(2760727302517)).to.be.true;
+    expect(primeTester(5665449960167)).to.be.true;
+    expect(primeTester(8624419641811)).to.be.true;
+    expect(primeTester(11618595583891)).to.be.true;
+    expect(primeTester(14638944639703)).to.be.true;
+    expect(primeTester(17680139794171)).to.be.true;
+    expect(primeTester(20738669482799)).to.be.true;
+    expect(primeTester(23812036414963)).to.be.true;
+    expect(primeTester(26898370231697)).to.be.true;
     expect(primeTester(29996224275833)).to.be.true;
+  });
+
+  it('should handle largest prime number in 1855', function() {
+    expect(primeTester(67280421310721));
+  });
+
+  xit('should handle M127', function() {
+    // expect(primeTester(170141183460469231731687303715884105727));
   });
 });
 
