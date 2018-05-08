@@ -58,5 +58,57 @@
 */
 
 var characterFrequency = function(string) {
-  return result;
+  var frequencyObject = getFrequencyObject(string);
+  var frequencyArray = getArrayOfTuplesOfKeyAndValue(frequencyObject);
+  var result = sortArray(frequencyArray, (a, b) => {
+    if (a[1] > b[1]) {
+      return -1;
+    } else if (a[1] === b[1]) {
+      if (a[0] < b[0]) {
+        return -1
+      } else {
+        return 1;
+      }
+    } else {
+      return 1;
+    }
+  });
+  console.log(result);
+  return result
 };
+
+var getFrequencyObject = function(string) {
+  return string.split('').reduce((frequencyTotal, character) => {
+    frequencyTotal[character] = frequencyTotal[character] + 1 || 1;
+    return frequencyTotal;
+  }, {});
+}
+
+var getArrayOfTuplesOfKeyAndValue = function(object) {
+  var array = [];
+
+  for (var key in object) {
+    array.push([key, object[key]]);
+  }
+
+  return array;
+}
+
+var sortArray = function(array, comparator) {
+  // Bubble sort
+  var changedArray;
+  do {
+    changedArray = false;
+
+    array.forEach((element, index) => {
+      if (index + 1 < array.length && comparator(element, array[index + 1]) > 0) {
+        var temp = element;
+        array[index] = array[index + 1];
+        array[index + 1] = element;
+        changedArray = true;
+      }
+    });
+  } while (changedArray);
+
+  return array;
+}
