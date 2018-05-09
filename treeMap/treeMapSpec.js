@@ -36,4 +36,8 @@ describe('treeMap', () => {
 
     expect(tree).to.eql(copyTree);
   });
+
+  it('should map the tree', () => {
+    expect(tree.map(multiplyByTwo)).to.eql(resultTree);
+  });
 });
