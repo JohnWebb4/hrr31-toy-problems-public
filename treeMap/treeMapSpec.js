@@ -28,4 +28,12 @@ describe('treeMap', () => {
   it('should return tree', () => {
     expect(tree.map(multiplyByTwo)).to.be.an.instanceOf(Tree);
   });
+
+  it('should not mutate input tree', () => {
+    var copyTree = Object.assign(new Tree(), tree);
+
+    tree.map(multiplyByTwo);
+
+    expect(tree).to.eql(copyTree);
+  });
 });
