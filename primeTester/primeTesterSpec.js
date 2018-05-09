@@ -40,8 +40,8 @@ describe('primeTester', function() {
     expect(primeTester(67280421310721));
   });
 
-  xit('should handle M127', function() {
-    // expect(primeTester(170141183460469231731687303715884105727));
+  it('should handle M127', function() {
+    expect(primeTester(170141183460469231731687303715884105727));
   });
 });
 
