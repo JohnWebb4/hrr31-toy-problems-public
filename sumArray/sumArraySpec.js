@@ -26,4 +26,8 @@ describe('sumArray', () => {
     sumArray(aTest);
     expect(aTest).to.eql(tests[0]);
   });
+
+  it('should return a number', () => {
+    expect(sumArray(tests[0])).to.be.a('number');
+  });
 });
