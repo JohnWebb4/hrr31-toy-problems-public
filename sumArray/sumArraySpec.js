@@ -30,4 +30,10 @@ describe('sumArray', () => {
   it('should return a number', () => {
     expect(sumArray(tests[0])).to.be.a('number');
   });
+
+  it('should get largest contiguous sum', () => {
+    tests.forEach((testArray, index) => {
+      expect(sumArray(testArray)).to.equal(results[index]);
+    });
+  });
 });

@@ -77,9 +77,3 @@ var sumArray = function(array) {
     return greatestContSum;
   }, 0);
 };
-
-sumArray([1, 2, 3]); // => 6
-sumArray([1, 2, 3, -4]); // 6
-sumArray([1, 2, 3, -4, 5]); // 7
-sumArray([4, -1, 5]); // => 8
-sumArray([10, -11, 11]); // 11
