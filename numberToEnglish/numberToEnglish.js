@@ -12,6 +12,22 @@
 *
  */
 
+ /* Whiteboarding
+  * I: No arguments. Context this is Number object
+  * O: String english equivalent
+  * C: None
+  * E: Decimals, Numbers ending repeat every power of 1,000 (10,000 => ten + thousand), 11 - 19
+  *
+  * Break every power of thousand 100,555 => 100*10^3 + 555
+  * Call function to convert anything less than 1,000
+  ** Break apart on powers of ten
+  ** Convert 100 + 50 + 5 => One hundred fifty five
+  ** Loop through numbers and convert
+  ** If number is 10 then combine with next number and return result (10 + 1 => 11 => eleven)
+  ** return total result
+  * Take result of inner function and add appropriate place (100,000 => one hundred + thousand)
+ */
+
 var numbersToWords = {
   0: 'zero',
   1: 'one',
@@ -54,5 +70,23 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function () {
-  // return my value as english words
+  // Handle negative numbers
+  if (this < 0) {
+    return 'negative ' + (-this).toEnglish();
+  }
+  // Define inner function
+  var toEnglishLessThanAThousand = function(number) {
+
+  };
+
+  var stringNumber = '';
+  // Break every one thousand
+  for (var powerOfThousand = 0; powerOfThousand < this; powerOfThousand *= 1000) {
+    var nextPowerOfThousand = powerOfThousand * 1000;
+    var roundedValueToPower = Math.floor(this / nextPowerOfThousand) * 1000 - Math.floor(this / powerOfThousand);
+    stringNumber = stringNumber + ' ' + toEnglishLessThanAThousand(roundedValueToPower);
+    if (powerOfThousand >= 1000) {
+      stringNumber = stringNumber + ' ' + numbersToPlace[powerOfThousand];
+    }
+  }
 };
