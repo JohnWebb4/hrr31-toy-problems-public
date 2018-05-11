@@ -117,15 +117,14 @@ Number.prototype.toEnglish = function () {
   var stringNumber = '';
   // Break every one thousand
   for (var powerOfThousand = 1; powerOfThousand < this; powerOfThousand *= 1000) {
-    debugger;
     var nextPowerOfThousand = powerOfThousand * 1000;
     var roundedValueToPower = Math.floor(this / powerOfThousand) - Math.floor(this / nextPowerOfThousand) * 1000;
 
-    if (powerOfThousand >= 1000) {
+    if (roundedValueToPower > 0) {
       stringNumber = addStringToEndAndSpaceIfNeeded(numbersToPlace[powerOfThousand], stringNumber);
       stringNumber =  addStringToEndAndSpaceIfNeeded(toEnglishLessThanAThousand(roundedValueToPower), stringNumber);
 
-    } else if (this < 1000) {
+    } else if (this === 0) {
       stringNumber = toEnglishLessThanAThousand(roundedValueToPower);
     }
   }
