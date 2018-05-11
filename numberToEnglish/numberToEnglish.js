@@ -75,12 +75,10 @@ Number.prototype.toEnglish = function () {
     return 'negative ' + (-this).toEnglish();
   }
 
-  var addStringToEndAndSpaceIfNeeded = function(stringBase) {
-    if (stringBase.length === 0) {
-      return Array.from(arguments).slice(1).join(' ');
-    } else {
-      return stringBase + ' ' + Array.from(arguments).slice(1).join(' ');
-    }
+  var addStringToEndAndSpaceIfNeeded = function() {
+    return Array.from(arguments).filter((value) => {
+      return value !== '';
+    }).join(' ');
   }
 
   // Define inner function
@@ -122,9 +120,13 @@ Number.prototype.toEnglish = function () {
     debugger;
     var nextPowerOfThousand = powerOfThousand * 1000;
     var roundedValueToPower = Math.floor(this / powerOfThousand) - Math.floor(this / nextPowerOfThousand) * 1000;
-    stringNumber =  addStringToEndAndSpaceIfNeeded(stringNumber, toEnglishLessThanAThousand(roundedValueToPower));
+
     if (powerOfThousand >= 1000) {
-      stringNumber = addStringToEndAndSpaceIfNeeded(stringNumber, numbersToPlace[powerOfThousand]);
+      stringNumber = addStringToEndAndSpaceIfNeeded(numbersToPlace[powerOfThousand], stringNumber);
+      stringNumber =  addStringToEndAndSpaceIfNeeded(toEnglishLessThanAThousand(roundedValueToPower), stringNumber);
+
+    } else if (this < 1000) {
+      stringNumber = toEnglishLessThanAThousand(roundedValueToPower);
     }
   }
 
