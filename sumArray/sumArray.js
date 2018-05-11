@@ -25,61 +25,45 @@
  */
 
 /* Whiteboard
- * Split array when flipping sign ([[1, 2, 3], [-1, -2, -3]])
- * Sum inner arrays an map to array of sums
- *
- * Declare contiguous sum
- * Iterate over array of sums
- ** If negative peak at next element
- *** If greater than absolute value of negative number, then add
+ * Use recusion
+ * Base: If array length 1
+ * Recursive case: If array is greater than one
+ * Set value to sum of entire array
+ * Find index of smallest number in array
+ * Split on smallest number (remove smallest number from either array)
+ * Recall sum array on both halves
+ * Compare and return greatest sum (total sum, or sum of either half)
  */
 
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
-  var isPositiveSum = true;
+  // Termination case
+  if (array.length === 0) {
+    return null;
+  }
 
-  var sumArray = array.reduce((sumArray, number) => {
-    var isNumberPositive = number >= 0;
+  // Base case
+  if (array.length === 1) {
+    return array[0];
+  }
 
-    if (isPositiveSum === isNumberPositive) {
-     sumArray[sumArray.length - 1] = Number(sumArray[sumArray.length - 1]) + number;
+  var totalSum = array.reduce((sum, number) => {
+    return sum + number;
+  });
+
+  var smallestNumber = array.reduce((previousSmallNumber, number) => {
+    if (number < previousSmallNumber) {
+      return number;
     } else {
-      sumArray.push([number]);
-      isPositiveSum = isNumberPositive;
+      return previousSmallNumber;
     }
+  });
 
-    return sumArray;
-  }, [[0]]);
+  var smallestNumberIndex = array.indexOf(smallestNumber);
 
-  var index = 0;
-  var isContinuous = true;
-  return sumArray.reduce((greatestContSum, continuousSameSignSum) => {
-    if (isContinuous) {
-      if (continuousSameSignSum >= 0) {
-        greatestContSum += continuousSameSignSum;
-      } else {
-        var nextContinuousSameSignSum = sumArray[index + 1];
-        var continousSumOfNextTwoSameSignSums = greatestContSum + continuousSameSignSum + nextContinuousSameSignSum;
-        if (nextContinuousSameSignSum > continousSumOfNextTwoSameSignSums) {
-          isContinuous = false;
-        } else {
-          greatestContSum += continuousSameSignSum;
-        }
-      }
-    } else {
-      if (continuousSameSignSum >= greatestContSum) {
-        greatestContSum = continuousSameSignSum;
-        isContinuous = true;
-      }
-    }
+  var firstHalfSum = sumArray(array.slice(0, smallestNumberIndex));
 
-    index++;
-    return greatestContSum;
-  }, 0);
+  var lastHalfSum = sumArray(array.slice(smallestNumberIndex + 1));
+
+  return Math.max(totalSum, firstHalfSum, lastHalfSum);
 };
-
-sumArray([1, 2, 3]); // => 6
-sumArray([1, 2, 3, -4]); // 6
-sumArray([1, 2, 3, -4, 5]); // 7
-sumArray([4, -1, 5]); // => 8
-sumArray([10, -11, 11]); // 11
