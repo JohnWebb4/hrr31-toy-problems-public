@@ -14,7 +14,6 @@ describe('sumArray', () => {
     results = [
       6, 6, 7, 8, 11
     ];
-
   });
 
   it('should be a function', () => {
