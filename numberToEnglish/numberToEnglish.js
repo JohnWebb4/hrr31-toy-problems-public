@@ -74,19 +74,55 @@ Number.prototype.toEnglish = function () {
   if (this < 0) {
     return 'negative ' + (-this).toEnglish();
   }
+
+  var addStringToEndAndSpaceIfNeeded = function(stringBase) {
+    if (stringBase.length === 0) {
+      return Array.from(arguments).slice(1).join(' ');
+    } else {
+      return stringBase + ' ' + Array.from(arguments).slice(1).join(' ');
+    }
+  }
+
   // Define inner function
   var toEnglishLessThanAThousand = function(number) {
+    // Break on decimal places
+    var multipleOfOneHundred = Math.floor(number / 100);
+    var multipleOfTen = Math.floor(number / 10) - multipleOfOneHundred * 10;
+    var mutipleOfOne = Math.floor(number) - multipleOfTen * 10 - multipleOfOneHundred * 100;
 
+    var LessThanAThousandString = '';
+    if (multipleOfOneHundred > 0) {
+      LessThanAThousandString = addStringToEndAndSpaceIfNeeded(numbersToWords[multipleOfOneHundred], numbersToPlace[100]);
+    }
+
+    var isTens = false;
+    if (multipleOfTen > 0) {
+      if (multipleOfTen === 1) {
+        isTens = true;
+        LessThanAThousandString = addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[multipleOfTen * 10 + mutipleOfOne]);
+      } else {
+        LessThanAThousandString = addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToPlace[multipleOfTen * 10]);
+      }
+    }
+
+    if (!isTens) {
+      LessThanAThousandString =  addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[mutipleOfOne]);
+    }
+
+    return LessThanAThousandString;
   };
 
   var stringNumber = '';
   // Break every one thousand
-  for (var powerOfThousand = 0; powerOfThousand < this; powerOfThousand *= 1000) {
+  for (var powerOfThousand = 1; powerOfThousand < this; powerOfThousand *= 1000) {
+    debugger;
     var nextPowerOfThousand = powerOfThousand * 1000;
-    var roundedValueToPower = Math.floor(this / nextPowerOfThousand) * 1000 - Math.floor(this / powerOfThousand);
-    stringNumber = stringNumber + ' ' + toEnglishLessThanAThousand(roundedValueToPower);
+    var roundedValueToPower = Math.floor(this / powerOfThousand) - Math.floor(this / nextPowerOfThousand) * 1000;
+    stringNumber =  addStringToEndAndSpaceIfNeeded(stringNumber, toEnglishLessThanAThousand(roundedValueToPower));
     if (powerOfThousand >= 1000) {
-      stringNumber = stringNumber + ' ' + numbersToPlace[powerOfThousand];
+      stringNumber = addStringToEndAndSpaceIfNeeded(stringNumber, numbersToPlace[powerOfThousand]);
     }
   }
+
+  return stringNumber;
 };
