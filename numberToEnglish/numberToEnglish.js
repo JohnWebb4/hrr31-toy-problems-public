@@ -101,12 +101,16 @@ Number.prototype.toEnglish = function () {
         isTens = true;
         LessThanAThousandString = addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[multipleOfTen * 10 + mutipleOfOne]);
       } else {
-        LessThanAThousandString = addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToPlace[multipleOfTen * 10]);
+        LessThanAThousandString = addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[multipleOfTen * 10]);
       }
     }
 
     if (!isTens) {
-      LessThanAThousandString =  addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[mutipleOfOne]);
+      if (mutipleOfOne > 0) {
+        LessThanAThousandString =  addStringToEndAndSpaceIfNeeded(LessThanAThousandString, numbersToWords[mutipleOfOne]);
+      } else if (LessThanAThousandString.length === 0) {
+        LessThanAThousandString = numbersToWords[mutipleOfOne];
+      }
     }
 
     return LessThanAThousandString;
