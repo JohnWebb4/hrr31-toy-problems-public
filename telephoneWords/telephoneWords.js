@@ -27,6 +27,14 @@
   *
   */
 
+/*
+ * Decision tree problem
+ * I: Up to 4 digit string of numbers
+ * O: Array of all letter equivalent combinations
+ * C: None
+ * E: 0 and 1 should remain unchanged
+*/
+
 var phoneDigitsToLetters = {
   0: '0',
   1: '1',
@@ -42,5 +50,19 @@ var phoneDigitsToLetters = {
 
 
 var telephoneWords = function(digitString) {
+  // Termination Case
+  if (digitString.length === 0) {
+    return [];
+  // Base Case
+  } else if (digitString.length === 1) {
+    return phoneDigitsToLetters[digitString].split('');
+  } else {
+    var charCombinations = telephoneWords(digitString[0]).split('');
+    var previousWordCombinations = telephoneWords(digitString.substr(1));
+
+    return charCombinations.reduce((wordCombinations, char) => {
+      return wordCombinations
+    }, []);
+  }
   // TODO: return every combination that can be spelled on a phone with these digits
 };
