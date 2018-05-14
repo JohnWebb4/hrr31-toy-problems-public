@@ -77,4 +77,8 @@ describe('treeMapInPlace', () => {
     tree.mapInPlace(multiplyByTwo);
     expect(tree).to.eql(resultTree);
   });
+
+  it('should return initial tree', () => {
+    expect(tree.mapInPlace(multiplyByTwo)).to.eql(resultTree);
+  });
 });
