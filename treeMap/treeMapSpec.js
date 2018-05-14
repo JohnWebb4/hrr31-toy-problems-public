@@ -72,4 +72,9 @@ describe('treeMapInPlace', () => {
   it('should be a function', () => {
     expect(tree.mapInPlace).to.be.a('function');
   });
+
+  it('should mutate input tree', () => {
+    tree.mapInPlace(multiplyByTwo);
+    expect(tree).to.eql(resultTree);
+  });
 });
