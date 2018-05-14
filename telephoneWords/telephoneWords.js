@@ -57,10 +57,13 @@ var telephoneWords = function(digitString) {
   } else if (digitString.length === 1) {
     return phoneDigitsToLetters[digitString].split('');
   } else {
-    var charCombinations = telephoneWords(digitString[0]).split('');
+    var charCombinations = telephoneWords(digitString[0]);
     var previousWordCombinations = telephoneWords(digitString.substr(1));
 
     return charCombinations.reduce((wordCombinations, char) => {
+      previousWordCombinations.forEach((previousWordCombo) => {
+        wordCombinations.push(char + previousWordCombo);
+      });
       return wordCombinations
     }, []);
   }
