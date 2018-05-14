@@ -24,4 +24,8 @@ describe('telephoneWords', () => {
   it('should return an array', () => {
     expect(Array.isArray(telephoneWords(phoneNumber))).to.be.true;
   });
+
+  it('should return all word combinations', () => {
+    expect(telephoneWords(phoneNumber)).to.eql(possiblePhoneWords);
+  });
 });
