@@ -23,9 +23,32 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+// Whiteboard
+// I: Function and object
+// O: Function bound to object
+// C: None
+// E: Empty Objects, arrays
+
+// Breakdown
+// Return new function
+// Use call / apply to set context
+// Set this context
+// Set initial argument(s) context
+// Whe returned function is called concat with initial arguments
+// Call function
+
+// More Whiteboard
+// Parameters need function, this, initial parameters (Rest?)
+// Return function that accepts arguments
+//// Function concats initial arguments with passed arguments
+//// Function calls apply with this context and concated arguments
+//// Returns result
+
+var bind = function(func, objThis, ...initArgs) {
+  return function() {
+    var totalArgs = initArgs.concat(Array.from(arguments));
+    return func.apply(objThis, totalArgs);
+  }
 };
 
 /*
@@ -53,7 +76,17 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
+// Whiteboard
+// Get this, and initial arguments (Rest)
+// Return function that accepts arguments
+//// Concat initial arguments with passed arguments
+//// Call apply on outer function passing in this and arguments
+//// Return result
+
+Function.prototype.bind = function(objThis, ...initArgs) {
+  // Maintain context
+  return () => {
+    var totalArgs = initArgs.context(Array.from(arguments));
+    return this.apply(objThis, totalArgs);
+  }
 };
