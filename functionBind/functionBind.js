@@ -85,8 +85,9 @@ var bind = function(func, objThis, ...initArgs) {
 
 Function.prototype.bind = function(objThis, ...initArgs) {
   // Maintain context
-  return () => {
-    var totalArgs = initArgs.context(Array.from(arguments));
-    return this.apply(objThis, totalArgs);
+  var context = this;
+  return function() {
+    var totalArgs = initArgs.concat(Array.from(arguments));
+    return context.apply(objThis, totalArgs);
   }
 };
