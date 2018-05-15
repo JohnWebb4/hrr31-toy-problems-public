@@ -14,10 +14,16 @@ describe('bind', function() {
     expect(bind).to.be.a('function');
   });
 
-  it('should accept this param', function() {
+  it('should accept this parameters', function() {
     var boundShout = bind(alice.shout, alice);
     expect(boundShout()).to.equal('alice');
     boundShout = bind(alice.shout, {name: 'bob'});
     expect(boundShout()).to.equal('bob');
+  });
+
+  it('should accept initial parameters', function() {
+    var func = function(a, b) { return a + b; };
+    var boundFunc = bind(func, null, 'foo');
+    expect(boundFunc('bar')).to.equal('foobar');
   });
 });
