@@ -47,7 +47,7 @@ const coinValueIncrements = [
 
 var makeChange = function(total, maxChangeValue = 200) {
   if (total === 0) {
-    return 0;
+    return 1;
   } else if (total === 1) {
     return 1;
   }
