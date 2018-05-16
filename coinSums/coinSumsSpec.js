@@ -6,7 +6,7 @@ describe('coinSum', function() {
       0, 1, 2, 3
     ];
     changeResults = [
-      0, 1, 2, 2
+      1, 1, 2, 2
     ];
   });
 
