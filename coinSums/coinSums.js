@@ -24,8 +24,43 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
-var makeChange = function(total) {
+// Whiteboard
+// I: Change total
+// O: Number of combinations to make change
+// C: None
+// E: total is zero.
+// Assumptions: No fractional totals
 
+// Whiteboard
+// If total is zero return 0
+// If total is 1 return 1
+// Declare number of combinations
+// Iterate over types of changes while less than total
+//// Subtract increment of change and call on self
+//// Increment number of combinations based on result
+////// If returned 0 evenly divides number increment by 1
+// Return result
+
+const coinValueIncrements = [
+  1, 2, 5, 10, 20, 50, 100, 200
+];
+
+var makeChange = function(total, maxChangeValue = 200) {
+  if (total === 0) {
+    return 0;
+  } else if (total === 1) {
+    return 1;
+  }
+
+  var numChangeCombinations = 0;
+
+  for (var coinValueIndex = 0; coinValueIncrements[coinValueIndex] <= total; coinValueIndex++) {
+    var coinValue = coinValueIncrements[coinValueIndex];
+    if (coinValue <= maxChangeValue) {
+      // If coinValue evenly divides total, then 0 is returned, and interpret as 1 combination
+      numChangeCombinations += makeChange(total - coinValue, coinValue) || 1;
+    }
+  }
+
+  return numChangeCombinations;
 };
-
-
