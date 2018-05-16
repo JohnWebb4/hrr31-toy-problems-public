@@ -47,7 +47,7 @@ const coinValueIncrements = [
 
 var makeChange = function(total, maxChangeValue = 200) {
   if (total === 0) {
-    return 0;
+    return 1;
   } else if (total === 1) {
     return 1;
   }
@@ -57,8 +57,7 @@ var makeChange = function(total, maxChangeValue = 200) {
   for (var coinValueIndex = 0; coinValueIncrements[coinValueIndex] <= total; coinValueIndex++) {
     var coinValue = coinValueIncrements[coinValueIndex];
     if (coinValue <= maxChangeValue) {
-      // If coinValue evenly divides total, then 0 is returned, and interpret as 1 combination
-      numChangeCombinations += makeChange(total - coinValue, coinValue) || 1;
+      numChangeCombinations += makeChange(total - coinValue, coinValue);
     }
   }
 
