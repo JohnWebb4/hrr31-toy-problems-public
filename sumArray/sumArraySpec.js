@@ -35,4 +35,8 @@ describe('sumArray', () => {
       expect(sumArray(testArray)).to.equal(results[index]);
     });
   });
+
+  it('should handle largest sum of all negative numbers', () => {
+    expect(sumArray([-7,-6,-9])).to.equal(-6);
+  });
 });
