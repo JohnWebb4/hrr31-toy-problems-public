@@ -1,5 +1,5 @@
 describe('numberToEnglish', () => {
-  it('should pass', () => {
-
+  it('should be a function', () => {
+    expect(Number.prototype.toEnglish).to.be.a('function');
   });
 });
