@@ -57,30 +57,8 @@
 var jsonpRequest = function(url, callback) {
   var script = document.createElement('script');
 
-  script.src = url + '?q=serverCallback';
+  script.src = url + '?callback=callback';
 
-  document.getElementsByTagName('head')[0].appendChild(script);
+  window.callback = callback;
+  document.getElementsByTagName('html')[0].appendChild(script);
 };
-
-var serverCallback = function(res, callback) {
-  var body = '';
-
-  res.on('data', function(chunk) {
-    body += chunk;
-  });
-
-  res.on('end', function() {
-    var json = JSON.parse(body);
-    callback(json);
-  });
-};
-
-// jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
-//   console.log(data.response); // "Aw yeah, now we're JSONPartying"
-//   console.log(data.random); // 3558
-// });
-
-// // Subsequent requests should have properly random responses:
-// jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
-//   console.log(data.random); // 1733
-// });
