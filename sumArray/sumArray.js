@@ -51,6 +51,7 @@ var sumArray = function(array) {
     return sum + number;
   });
 
+  // Get smallest number
   var smallestNumber = array.reduce((previousSmallNumber, number) => {
     if (number < previousSmallNumber) {
       return number;
@@ -59,11 +60,21 @@ var sumArray = function(array) {
     }
   });
 
-  var smallestNumberIndex = array.indexOf(smallestNumber);
+  var smallestNumberIndex = array.lastIndexOf(smallestNumber);
 
-  var firstHalfSum = sumArray(array.slice(0, smallestNumberIndex));
+  var firstHalfSum;
+  if (smallestNumberIndex !== 0) {
+    firstHalfSum = sumArray(array.slice(0, smallestNumberIndex));
+  } else {
+    firstHalfSum = smallestNumber;
+  }
 
-  var lastHalfSum = sumArray(array.slice(smallestNumberIndex + 1));
+  var lastHalfSum;
+  if (smallestNumberIndex !== array.length - 1) {
+    lastHalfSum = sumArray(array.slice(smallestNumberIndex + 1));
+  } else {
+    lastHalfSum = smallestNumber;
+  }
 
   return Math.max(totalSum, firstHalfSum, lastHalfSum);
 };
