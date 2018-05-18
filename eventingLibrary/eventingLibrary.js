@@ -61,7 +61,7 @@ var mixEvents = function(obj) {
 
   obj.on = function(eventName, callback) {
     this.events = this.events || {};
-    this.events[eventName] = this.events.eventName || [];
+    this.events[eventName] = this.events[eventName] || [];
     this.events[eventName].push(callback);
   };
 
