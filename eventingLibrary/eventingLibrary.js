@@ -65,7 +65,7 @@ var mixEvents = function(obj) {
     this.events[eventName].push(callback);
   };
 
-  obj.trigger = function(eventName) {
+  obj.trigger = function(eventName, ...args) {
     if (!this.events) {
       return;
     }
@@ -75,7 +75,7 @@ var mixEvents = function(obj) {
     }
 
     this.events[eventName].forEach(function(callback) {
-      callback();
+      callback.apply(this, args);
     });
   }
 
