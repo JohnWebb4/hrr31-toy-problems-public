@@ -65,7 +65,10 @@ var mixEvents = function(obj) {
     this.events[eventName].push(callback);
   };
 
-  obj.trigger = function(eventName, ...args) {
+  obj.trigger = function(eventName) {
+    // Can't use ES6 Rest Params
+    var restArgs = Array.from(arguments).slice(1);
+
     if (!this.events) {
       return;
     }
@@ -75,7 +78,7 @@ var mixEvents = function(obj) {
     }
 
     this.events[eventName].forEach(function(callback) {
-      callback.apply(this, args);
+      callback.apply(this, restArgs);
     });
   }
 
