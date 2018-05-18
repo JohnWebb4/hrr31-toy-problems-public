@@ -46,4 +46,14 @@ describe('eventingLibrary / mixEvents', function() {
 
     expect(notifyUserTriggered && depositTriggered).to.be.true;
   });
+
+  it('should pass arguments to callback', function() {
+    var wasTriggered = false;
+
+    mixObj.on('deposit', function(triggeredState) {wasTriggered = triggeredState;});
+
+    mixObj.trigger('deposit', true);
+
+    expect(wasTriggered).to.be.true;
+  });
 });
