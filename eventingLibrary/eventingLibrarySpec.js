@@ -34,4 +34,16 @@ describe('eventingLibrary / mixEvents', function() {
 
     expect(wasTriggered).to.be.true;
   });
+
+  it('should trigger multiple listeners on same event', function() {
+    var notifyUserTriggered = false;
+    var depositTriggered = false;
+
+    mixObj.on('deposit', function() {notifyUserTriggered = true;});
+    mixObj.on('deposit', function() {depositTriggered = true;});
+
+    mixObj.trigger('deposit');
+
+    expect(notifyUserTriggered && depositTriggered).to.be.true;
+  });
 });
