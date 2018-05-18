@@ -21,7 +21,17 @@ describe('eventingLibrary / mixEvents', function() {
 
   it('should register event', function() {
     mixObj.on('deposit', function() {conosle.log('hi');} );
-    console.log('Events', mixObj.events);
+
     expect(mixObj.events.deposit).to.be.an('array');
+  });
+
+  it('should trigger event', function() {
+    var wasTriggered = false;
+
+    mixObj.on('deposit', function() {wasTriggered = true;});
+
+    mixObj.trigger('deposit');
+
+    expect(wasTriggered).to.be.true;
   });
 });
