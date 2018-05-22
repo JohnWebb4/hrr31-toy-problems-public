@@ -42,15 +42,23 @@ var Node = function(value) {
 };
 
 var hasCycle = function(linkedList) {
-  var maxNumberOfNodes = 4000000000; // Upper limit of objects in Node.js
+  var currentNode = linkedList.next;
+  var slowNode = linkedList;
+  var updateSlowNode = false;
 
-  for (var counter = 0; counter < maxNumberOfNodes; counter++) {
-    if (linkedList.next) {
-      linkedList = linkedList.next;
-    } else {
+  do {
+    if (currentNode === null) {
       return false;
+    } if (currentNode === slowNode) {
+      return true;
     }
-  }
 
-  return true;
+    currentNode = currentNode.next;
+
+    if (updateSlowNode) {
+      slowNode = slowNode.next;
+    }
+
+    updateSlowNode = !updateSlowNode;
+  } while (true);
 };
