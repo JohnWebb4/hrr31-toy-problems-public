@@ -2,7 +2,7 @@
  * Assignment: Write a function that returns true if a linked list contains a cycle, or false if it terminates somewhere
  *
  * Explanation:
- * 
+ *
  * Generally, we assume that a linked list will terminate in a null next pointer, as follows:
  *
  * A -> B -> C -> D -> E -> null
@@ -31,10 +31,26 @@
  * Constraint 3: Do not mutate the original nodes in any way
  */
 
+/* Whiteboarding
+ * I: Linked list
+ * O: Boolean (Is a cyclic list)
+ * C: Linear time, constant space, Do NOT mutate initial linked list
+ * E: Is not cyclic, very small cycle A -> B -> A, Entire list cycles A -> B -> C -> A
+*/
 var Node = function(value) {
   return { value: value, next: null };
 };
 
 var hasCycle = function(linkedList) {
-  // TODO: implement me!
+  var maxNumberOfNodes = 4000000000; // Upper limit of objects in Node.js
+
+  for (var counter = 0; counter < maxNumberOfNodes; counter++) {
+    if (linkedList.next) {
+      linkedList = linkedList.next;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
 };
