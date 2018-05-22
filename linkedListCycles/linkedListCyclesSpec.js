@@ -24,4 +24,9 @@ describe('linkedListCycles', function() {
   it('should return a Boolean', function() {
     expect(hasCycle(linearList)).to.be.a('boolean');
   });
+
+  it('should return false for linear linked list', function() {
+    expect(hasCycle(linearList)).to.be.false;
+  });
+
 });
