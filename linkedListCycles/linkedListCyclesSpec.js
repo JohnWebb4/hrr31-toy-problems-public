@@ -29,4 +29,7 @@ describe('linkedListCycles', function() {
     expect(hasCycle(linearList)).to.be.false;
   });
 
+  it('should return true for cyclic lined list', function() {
+    expect(hasCycle(cyclicList)).to.be.true;
+  });
 });
