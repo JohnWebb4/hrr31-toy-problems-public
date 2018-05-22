@@ -58,22 +58,29 @@ var makeHashTable = function() {
   var storageLimit = 4;
   var size = 0;
 
-  result.insert = function(key, value) {
-    // Resize storage
-    if (size + 1 >= Math.floor(storageLimit * 3 / 4)) {
-      var tempStorage = storage.slice();
-      storage = [];
-      storageLimit = 2 * storageLimit;
+  result.resize = function(newStorageLimit) {
+    var tempStorage = storage.slice();
+    storage = [];
+    storageLimit = newStorageLimit;
 
-      tempStorage.forEach(function(index) {
+    tempStorage.forEach(function(index) {
+      if (index) {
         index.forEach(function(keyValue) {
           result.insert(keyValue.key, keyValue.value);
         });
-      });
+      }
+    });
+  };
+
+  result.insert = function(key, value) {
+    // Resize storage
+    if (size + 1 >= Math.floor(storageLimit * 3 / 4)) {
+      this.resize(storageLimit * 2);
     }
 
     // Add value
     var index = getIndexBelowMaxForKey(key, storageLimit);
+
     storage[index] = storage[index] || [];
     for (var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
       if (key === storage[index].key) {
@@ -87,6 +94,7 @@ var makeHashTable = function() {
 
   result.retrieve = function(key) {
     var index = getIndexBelowMaxForKey(key, storageLimit);
+
     for (var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
       if (key === storage[index].key) {
         return storage[index][keysInIndex].value;
@@ -94,9 +102,19 @@ var makeHashTable = function() {
     }
   };
 
-  result.remove = function(/*...*/
-) {
-    // TODO: implement `remove`
+  result.remove = function(key) {
+    if (size - 1 <= Math.floor(storageLimit / 4)) {
+      this.resize(storageLimit / 2);
+    }
+
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+
+    for(var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
+      if (key === storage[index].key) {
+        storage[index].key = undefined;
+        return;
+      }
+    }
   };
 
   return result;
