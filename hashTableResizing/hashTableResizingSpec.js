@@ -36,4 +36,12 @@ describe('hashTableResizing', function() {
     var ratio = diffs[0] / sum(diffs);
     expect(ratio).to.be.above(1 / (n * 2));
   });
+
+  it('should return stored values', function() {
+    var hashTable = makeHashTable();
+    hashTable.insert('William Shatner\'s most well known role', 'Captain Kirk');
+    var value = hashTable.retrieve('William Shatner\'s most well known role');
+    expect(value).to.exist();
+    expect(value).to.equal('Captain Kirk');
+  });
 });
