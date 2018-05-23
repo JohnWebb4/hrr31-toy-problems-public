@@ -134,7 +134,7 @@ Number.prototype.toEnglish = function () {
   };
 
   for (var threeDigits of arrayNumber) {
-    thousandsEnglish = lessThanAThousandToEnglish(threeDigits)
+    var thousandsEnglish = lessThanAThousandToEnglish(threeDigits)
     if (thousandsEnglish) {
       if (numbersToPlace[place]) {
         if (stringEnglish) {
