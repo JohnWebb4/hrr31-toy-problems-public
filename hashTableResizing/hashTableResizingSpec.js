@@ -49,4 +49,13 @@ describe('hashTableResizing', function() {
     var hashTable = makeHashTable();
     expect(hashTable.retrieve('echo?')).to.be.undefined;
   });
+
+  it('should update values', function() {
+    var hashTable = makeHashTable();
+    hashTable.insert('Tarantino\'s best movie', 'Jackie Brown');
+    hashTable.insert('Tarantino\'s best movie', 'Pulp Fiction');
+    var value = hashTable.retrieve('Tarantino\'s best movie');
+    expect(value).to.not.be.null;
+    expect(value).to.equal('Pulp Fiction');
+  });
 });
