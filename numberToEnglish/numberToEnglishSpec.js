@@ -46,4 +46,15 @@ describe('numberToEnglish', () => {
     expect(630 .toEnglish()).to.equal('six hundred thirty');
     expect(922 .toEnglish()).to.equal('nine hundred twenty-two');
   });
+
+  it('should write thousands', () => {
+    expect(1000 .toEnglish()).to.equal('one thousand');
+    expect(50000 .toEnglish()).to.equal('fifty thousand');
+    expect(700000 .toEnglish()).to.equal('seven hundred thousand');
+
+    expect(5625 .toEnglish()).to.equal('five thousand six hundred twenty-five');
+    expect(17490 .toEnglish()).to.equal('seventeen thousand four hundred ninety');
+    expect(355003 .toEnglish()).to.equal('three hundred fifty-five thousand three');
+    expect(845913 .toEnglish()).to.equal('eight hundred forty-five thousand nine hundred thirteen');
+  });
 });
