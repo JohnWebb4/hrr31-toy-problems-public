@@ -44,4 +44,9 @@ describe('hashTableResizing', function() {
     expect(value).to.be.a('string');
     expect(value).to.equal('Captain Kirk');
   });
+
+  it('should return undefined for incorrect key', function() {
+    var hashTable = makeHashTable();
+    expect(hashTable.retrieve('echo?')).to.be.undefined;
+  });
 });
