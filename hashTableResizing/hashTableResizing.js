@@ -95,8 +95,8 @@ var makeHashTable = function() {
   result.retrieve = function(key) {
     var index = getIndexBelowMaxForKey(key, storageLimit);
 
-    for (var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
-      if (key === storage[index].key) {
+    for (var keysInIndex = 0; keysInIndex < storage[index].length; keysInIndex++) {
+      if (key === storage[index][keysInIndex].key) {
         return storage[index][keysInIndex].value;
       }
     }
