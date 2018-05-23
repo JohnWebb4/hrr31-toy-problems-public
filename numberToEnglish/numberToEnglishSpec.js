@@ -69,4 +69,10 @@ describe('numberToEnglish', () => {
     expect(2385024582 .toEnglish()).to.equal('two billion three hundred eighty-five million twenty-four thousand five hundred eighty-two');
     expect(973563700353 .toEnglish()).to.equal('nine hundred seventy-three billion five hundred sixty-three million seven hundred thousand three hundred fifty-three');
   });
+
+  it('should write very large numbers', () => {
+    expect(1000000000000 .toEnglish()).to.equal('one trillion');
+    expect(1000000000000000 .toEnglish()).to.equal('one quadrillion');
+    expect(1000000000000000000 .toEnglish()).to.equal('one quintillion');
+  });
 });
