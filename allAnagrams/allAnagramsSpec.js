@@ -14,4 +14,8 @@ describe('allAnagrams', function() {
   it('should return an array', function() {
     expect(allAnagrams(string)).to.be.an('array');
   });
+
+  it('should return all anagrams', function() {
+    expect(allAnagrams(string)).to.eql(resultAnagrams);
+  });
 });
