@@ -4,7 +4,7 @@ describe('allAnagrams', function() {
 
   beforeEach(function() {
     string = 'abc';
-    var resultAnagrams = [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ];
+    resultAnagrams = [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ];
   });
 
   it('should be a function', function() {
