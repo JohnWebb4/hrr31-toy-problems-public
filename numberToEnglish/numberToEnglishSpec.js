@@ -63,4 +63,10 @@ describe('numberToEnglish', () => {
     expect(2385024 .toEnglish()).to.equal('two million three hundred eighty-five thousand twenty-four');
     expect(973563700 .toEnglish()).to.equal('nine hundred seventy-three million five hundred sixty-three thousand seven hundred');
   });
+
+  it('should write billions', () => {
+    expect(1000000000 .toEnglish()).to.equal('one billion');
+    expect(2385024582 .toEnglish()).to.equal('two billion three hundred eighty-five million twenty-four thousand five hundred eighty-two');
+    expect(973563700353 .toEnglish()).to.equal('nine hundred seventy-three billion five hundred sixty-three million seven hundred thousand three hundred fifty-three');
+  });
 });
