@@ -57,4 +57,10 @@ describe('numberToEnglish', () => {
     expect(355003 .toEnglish()).to.equal('three hundred fifty-five thousand three');
     expect(845913 .toEnglish()).to.equal('eight hundred forty-five thousand nine hundred thirteen');
   });
+
+  it('should write millions', () => {
+    expect(1000000 .toEnglish()).to.equal('one million');
+    expect(2385024 .toEnglish()).to.equal('two million three hundred eighty-five thousand twenty-four');
+    expect(973563700 .toEnglish()).to.equal('nine hundred seventy-three million five hundred sixty-three thousand seven hundred');
+  });
 });
