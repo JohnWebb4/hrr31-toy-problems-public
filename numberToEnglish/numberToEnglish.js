@@ -86,9 +86,7 @@ Number.prototype.toEnglish = function () {
 
 
   var toEnglishIfNotZero = function(digit) {
-    console.log('Digit', digit);
     if (digit.match(/^0*$/g)) {
-      console.log('Is zero');
       return '';
     }
 
@@ -96,7 +94,6 @@ Number.prototype.toEnglish = function () {
   }
 
   var lessThanAHundredToEnglish = function(arrayDigits) {
-    console.log('Array digits in hundreds', arrayDigits);
     var stringEnglish = '';
 
     // If double digits
@@ -121,32 +118,29 @@ Number.prototype.toEnglish = function () {
   };
 
   var lessThanAThousandToEnglish = function(arrayDigits) {
-    console.log('Array digits in thousands', arrayDigits);
     var stringEnglish = '';
 
     if (arrayDigits.length === 3) {
-      console.log('hundreds place');
       var hundredsEnglish = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
       if (hundredsEnglish !== numbersToWords[0]) {
-        stringEnglish += hundredsEnglish + numbersToPlace[100];
+        stringEnglish += hundredsEnglish + ' ' + numbersToPlace[100];
       }
     }
 
-    console.log('tens');
+    stringEnglish += stringEnglish && lessThanAHundredToEnglish(arrayDigits.slice(-2)) ? ' ' : '';
     stringEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
 
     return stringEnglish;
   };
 
-  console.log('Array number', arrayNumber);
   for (var threeDigits of arrayNumber) {
-    console.log('Three digits', threeDigits);
-    stringEnglish = lessThanAThousandToEnglish(threeDigits) + numbersToPlace[place] + stringEnglish;
+    var arrayStringBuilder = [lessThanAThousandToEnglish(threeDigits), numbersToPlace[place], stringEnglish];
+    arrayStringBuilder = arrayStringBuilder.filter((value) => Boolean(value));
+    stringEnglish = arrayStringBuilder.join(' ');
 
     // Finally
     place *= 1000;
   }
 
-  console.log('String English', stringEnglish);
   return stringEnglish;
 };
