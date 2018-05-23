@@ -75,4 +75,8 @@ describe('numberToEnglish', () => {
     expect(1000000000000000 .toEnglish()).to.equal('one quadrillion');
     expect(1000000000000000000 .toEnglish()).to.equal('one quintillion');
   });
+
+  it('should write MAX_INT', () => {
+    expect(Math.pow(2, 53).toEnglish()).to.equal('nine quadrillion seven trillion one hundred ninety-nine billion two hundred fifty-four million seven hundred forty thousand nine hundred ninety-two');
+  });
 });
