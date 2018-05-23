@@ -59,6 +59,7 @@ var numbersToWords = {
   90: 'ninety',
 };
 var numbersToPlace = {
+  1: '',
   10: 'ten',
   100: 'hundred',
   1000: 'thousand',
@@ -75,12 +76,77 @@ Number.prototype.toEnglish = function () {
     return 'negative ' + (-this).toEnglish();
   }
 
-  var stringNumber = this.toString();
+  var reverseStringNumber = this .toString().split('').reverse().join('').match(/\d{1,3}/g);
+  var arrayNumber = reverseStringNumber.map(function(stringDigits) {
+    return stringDigits.split('').reverse();
+  });
+
   var stringEnglish = '';
+  var place = 1;
 
-  for (character of stringNumber.split('')) {
 
+  var toEnglishIfNotZero = function(digit) {
+    console.log('Digit', digit);
+    if (digit.match(/^0*$/g)) {
+      console.log('Is zero');
+      return '';
+    }
 
+    return numbersToWords[digit];
   }
 
+  var lessThanAHundredToEnglish = function(arrayDigits) {
+    console.log('Array digits in hundreds', arrayDigits);
+    var stringEnglish = '';
+
+    // If double digits
+    if (arrayDigits.length === 2) {
+      if (arrayDigits[0] === '1') {
+        return toEnglishIfNotZero(arrayDigits.join(''));
+      }
+
+      var tensDigit = toEnglishIfNotZero(arrayDigits[0] + '0');
+      var onesDigit = toEnglishIfNotZero(arrayDigits[arrayDigits.length - 1]);
+
+      if (tensDigit && onesDigit) {
+        return `${tensDigit}-${onesDigit}`;
+      }
+
+      return tensDigit + onesDigit
+
+    } else {
+      return numbersToWords[arrayDigits[0]];
+    }
+
+  };
+
+  var lessThanAThousandToEnglish = function(arrayDigits) {
+    console.log('Array digits in thousands', arrayDigits);
+    var stringEnglish = '';
+
+    if (arrayDigits.length === 3) {
+      console.log('hundreds place');
+      var hundredsEnglish = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
+      if (hundredsEnglish !== numbersToWords[0]) {
+        stringEnglish += hundredsEnglish + numbersToPlace[100];
+      }
+    }
+
+    console.log('tens');
+    stringEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
+
+    return stringEnglish;
+  };
+
+  console.log('Array number', arrayNumber);
+  for (var threeDigits of arrayNumber) {
+    console.log('Three digits', threeDigits);
+    stringEnglish = lessThanAThousandToEnglish(threeDigits) + numbersToPlace[place] + stringEnglish;
+
+    // Finally
+    place *= 1000;
+  }
+
+  console.log('String English', stringEnglish);
+  return stringEnglish;
 };
