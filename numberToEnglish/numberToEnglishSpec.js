@@ -1,4 +1,4 @@
-xdescribe('numberToEnglish', () => {
+describe('numberToEnglish', () => {
   it('should be a function', () => {
     expect(Number.prototype.toEnglish).to.be.a('function');
   });
@@ -31,5 +31,19 @@ xdescribe('numberToEnglish', () => {
     expect(44 .toEnglish()).to.equal('forty-four');
     expect(67 .toEnglish()).to.equal('sixty-seven');
     expect(99 .toEnglish()).to.equal('ninety-nine');
+  });
+
+  it('should write hundreds', () => {
+    expect(100 .toEnglish()).to.equal('one hundred');
+    expect(500 .toEnglish()).to.equal('five hundred');
+    expect(700 .toEnglish()).to.equal('seven hundred');
+
+    expect(100 .toEnglish()).to.equal('one hundred');
+    expect(500 .toEnglish()).to.equal('five hundred');
+    expect(700 .toEnglish()).to.equal('seven hundred');
+
+    expect(275 .toEnglish()).to.equal('two hundred seventy-five');
+    expect(630 .toEnglish()).to.equal('six hundred thirty');
+    expect(922 .toEnglish()).to.equal('nine hundred twenty-two');
   });
 });
