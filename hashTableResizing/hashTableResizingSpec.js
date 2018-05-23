@@ -41,7 +41,7 @@ describe('hashTableResizing', function() {
     var hashTable = makeHashTable();
     hashTable.insert('William Shatner\'s most well known role', 'Captain Kirk');
     var value = hashTable.retrieve('William Shatner\'s most well known role');
-    expect(value).to.exist();
+    expect(value).to.be.a('string');
     expect(value).to.equal('Captain Kirk');
   });
 });
