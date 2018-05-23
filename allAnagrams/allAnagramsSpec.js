@@ -18,4 +18,11 @@ describe('allAnagrams', function() {
   it('should return all anagrams', function() {
     expect(allAnagrams(string)).to.eql(resultAnagrams);
   });
+
+  it('should return unique anagrams', function() {
+    var expected = ['apps', 'apsp', 'aspp', 'paps', 'pasp', 'ppas', 'ppsa', 'psap', 'pspa', 'sapp', 'spap', 'sppa'];
+    var match = true;
+    var result = allAnagrams('apps');
+    expect(result.length).to.equal(expected.length);
+  });
 });
