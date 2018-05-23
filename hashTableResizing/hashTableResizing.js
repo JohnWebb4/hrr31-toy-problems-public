@@ -82,14 +82,15 @@ var makeHashTable = function() {
     var index = getIndexBelowMaxForKey(key, storageLimit);
 
     storage[index] = storage[index] || [];
-    for (var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
-      if (key === storage[index].key) {
+    for (var keysInIndex = 0; keysInIndex < storage[index].length; keysInIndex++) {
+      if (key === storage[index][keysInIndex].key) {
         storage[index][keysInIndex].value = value;
         return;
       }
     }
 
     storage[index].push({key: key, value: value});
+    size++;
   };
 
   result.retrieve = function(key) {
@@ -114,6 +115,7 @@ var makeHashTable = function() {
     for(var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
       if (key === storage[index].key) {
         storage[index].key = undefined;
+        size--;
         return;
       }
     }
