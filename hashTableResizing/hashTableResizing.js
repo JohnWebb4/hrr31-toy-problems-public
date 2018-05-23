@@ -112,9 +112,14 @@ var makeHashTable = function() {
 
     var index = getIndexBelowMaxForKey(key, storageLimit);
 
-    for(var keysInIndex = 0; keysInIndex < storage[index].length - 1; keysInIndex++) {
-      if (key === storage[index].key) {
-        storage[index].key = undefined;
+    for(var keysInIndex = 0; keysInIndex < storage[index].length; keysInIndex++) {
+      console.log('Index', storage[index][keysInIndex]);
+      if (key === storage[index][keysInIndex].key) {
+        console.log('HELP!!');
+        storage[index][keysInIndex] = undefined;
+        if (storage[index].length === 1) {
+          storage[index] = undefined;
+        }
         size--;
         return;
       }

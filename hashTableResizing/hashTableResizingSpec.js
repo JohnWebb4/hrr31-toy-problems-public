@@ -58,4 +58,12 @@ describe('hashTableResizing', function() {
     expect(value).to.not.be.null;
     expect(value).to.equal('Pulp Fiction');
   });
+
+  it('should remove values', function() {
+    var hashTable = makeHashTable();
+    hashTable.insert('Spielberg\'s best movie', 'Jaws');
+    hashTable.remove('Spielberg\'s best movie');
+    var value = hashTable.retrieve('Spielberg\'s best movie');
+    expect(value).to.be.undefined;
+  });
 });
