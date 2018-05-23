@@ -134,9 +134,17 @@ Number.prototype.toEnglish = function () {
   };
 
   for (var threeDigits of arrayNumber) {
-    var arrayStringBuilder = [lessThanAThousandToEnglish(threeDigits), numbersToPlace[place], stringEnglish];
-    arrayStringBuilder = arrayStringBuilder.filter((value) => Boolean(value));
-    stringEnglish = arrayStringBuilder.join(' ');
+    thousandsEnglish = lessThanAThousandToEnglish(threeDigits)
+    if (thousandsEnglish) {
+      if (numbersToPlace[place]) {
+        if (stringEnglish) {
+          stringEnglish = ' ' + numbersToPlace[place] + ' ' + stringEnglish;
+        } else {
+          stringEnglish = ' ' + numbersToPlace[place];
+        }
+      }
+      stringEnglish = thousandsEnglish + stringEnglish;
+    }
 
     // Finally
     place *= 1000;
