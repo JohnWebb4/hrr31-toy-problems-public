@@ -55,7 +55,7 @@ $(function () {
       if (typeof value1 === 'string') {
         return  value1 > value2;
       }
-      if (typeof value1 === 'number') {
+      else if (typeof value1 === 'number') {
         return value1 > value2;
       } else {
         return value1 < value2;
