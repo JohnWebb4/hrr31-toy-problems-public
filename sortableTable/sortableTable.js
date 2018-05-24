@@ -39,7 +39,7 @@ $(function () {
   $('#myTable thead tr').on('click', 'th', function(event) {
     var sortIndex = $(event.target).index();
 
-    $items = $('#myTable tbody tr');
+    var $items = $('#myTable tbody tr');
 
     var parseString = function(string) {
       if (!isNaN(Number(string))) {
@@ -53,10 +53,15 @@ $(function () {
 
     var shouldSwap = function(value1, value2) {
       if (typeof value1 === 'string') {
+        return  value1 > value2;
+      }
+      if (typeof value1 === 'number') {
         return value1 > value2;
+      } else {
+        return value1 < value2;
+
       }
 
-      return value1 < value2;
     };
 
     var swapNodes = function(node1, node2) {
