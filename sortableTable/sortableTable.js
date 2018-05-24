@@ -42,13 +42,21 @@ $(function () {
     $items = $('#myTable tbody tr');
 
     var parseString = function(string) {
-      if (Number(string) !== NaN){
+      if (!isNaN(Number(string))) {
         return Number(string);
-      } else if (new Date(string).valueOf !== NaN) {
+      } else if (!isNaN(new Date(string).valueOf())) {
         return new Date(string);
       } else {
         return string
       }
+    };
+
+    var shouldSwap = function(value1, value2) {
+      if (typeof value1 === 'string') {
+        return value1 > value2;
+      }
+
+      return value1 < value2;
     };
 
     var swapNodes = function(node1, node2) {
@@ -60,7 +68,6 @@ $(function () {
     };
 
     // Bubble sort
-    var counter = 0;
     var changedValue = false;
     do {
       changedValue = false;
@@ -68,7 +75,7 @@ $(function () {
         if (index < $items.length - 1) {
           var value1 = parseString(getDataFromTableRows($items, index, sortIndex));
           var value2 = parseString(getDataFromTableRows($items, index + 1, sortIndex));
-          if (value1 < value2) {
+          if (shouldSwap(value1, value2)) {
             swapNodes($items[index], $items[index + 1]);
             $items = $('#myTable tbody tr');
 
@@ -76,7 +83,6 @@ $(function () {
           }
         }
       });
-      counter++;
     } while(changedValue);
   });
 });
