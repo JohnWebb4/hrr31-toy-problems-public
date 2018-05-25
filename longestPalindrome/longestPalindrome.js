@@ -33,20 +33,38 @@
 
 var longestPalindrome = function (sentence) {
   var longestPalindrome = '';
+
   for (var charIndex = 0; charIndex < sentence.length; charIndex++) {
-    var numSameChars = 0;
-    do {
-      if (sentence[charIndex - numSameChars - 1] === sentence[charIndex + numSameChars + 1]) {
-        numSameChars++;
-      } else {
-        break;
+    var palindromeBegin = charIndex;
+    var palindromeEnd = charIndex;
+    var isPalindrome = false;
+
+    if (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1]) {
+      // Odd length palindrome
+      palindromeBegin = palindromeBegin - 1;
+      palindromeEnd = palindromeEnd + 1;
+
+      isPalindrome = true;
+    } else if (sentence[palindromeBegin] === sentence[palindromeEnd + 1]) {
+      // Even length palindrome
+      palindromeEnd = palindromeEnd + 1;
+
+      isPalindrome = true;
+    }
+
+    if (isPalindrome) {
+      while (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1]) {
+        palindromeBegin--;
+        palindromeEnd++;
       }
-    } while (charIndex + numSameChars < sentence.length &&
-      charIndex - numSameChars >= 0);
-    var palindrome = sentence.slice(charIndex - numSameChars, charIndex + numSameChars + 1);
-    if (palindrome.length > longestPalindrome.length) {
-      longestPalindrome = palindrome;
+
+      palindrome = sentence.slice(palindromeBegin, palindromeEnd + 1);
+
+      if (palindrome.length > longestPalindrome.length) {
+        longestPalindrome = palindrome;
+      }
     }
   }
+
   return longestPalindrome;
 };
