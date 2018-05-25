@@ -36,10 +36,13 @@ var longestPalindrome = function (sentence) {
   for (var charIndex = 0; charIndex < sentence.length; charIndex++) {
     var numSameChars = 0;
     do {
-      numSameChars++;
+      if (sentence[charIndex - numSameChars - 1] === sentence[charIndex + numSameChars + 1]) {
+        numSameChars++;
+      } else {
+        break;
+      }
     } while (charIndex + numSameChars < sentence.length &&
-      charIndex - numSameChars >= 0 &&
-      sentence[charIndex - numSameChars] === sentence[charIndex + numSameChars]);
+      charIndex - numSameChars >= 0);
     var palindrome = sentence.slice(charIndex - numSameChars, charIndex + numSameChars + 1);
     if (palindrome.length > longestPalindrome.length) {
       longestPalindrome = palindrome;
