@@ -53,7 +53,8 @@ var longestPalindrome = function (sentence) {
     }
 
     if (isPalindrome) {
-      while (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1]) {
+      while (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1] &&
+        palindromeBegin - 1 >= 0 && palindromeEnd + 1 < sentence.length) {
         palindromeBegin--;
         palindromeEnd++;
       }
