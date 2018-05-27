@@ -46,17 +46,22 @@ var allAnagrams = function(string) {
 
   // Recursion
   var anagrams = [];
+  var prevCharacters = [];
 
   for (var charIndex = 0; charIndex < string.length; charIndex++) {
     var char = string[charIndex];
-    var stringLessChar = string.slice(0, charIndex) + string.slice(charIndex + 1);
 
-    var someAnagramsLessChar = allAnagrams(stringLessChar);
-    var someAnagrams = someAnagramsLessChar.map(function(anagram) {
-      return char + anagram;
-    });
+    if (!prevCharacters.includes(char)) {
+      var stringLessChar = string.slice(0, charIndex) + string.slice(charIndex + 1);
 
-    anagrams = anagrams.concat(someAnagrams);
+      var someAnagramsLessChar = allAnagrams(stringLessChar);
+      var someAnagrams = someAnagramsLessChar.map(function(anagram) {
+        return char + anagram;
+      });
+
+      anagrams = anagrams.concat(someAnagrams);
+      prevCharacters.push(char);
+    }
   }
 
   return anagrams;
