@@ -36,5 +36,9 @@ describe('implementingOperators', () => {
       expect(divide(1, 1)).to.equal(1);
       expect(divide(4, 2)).to.equal(2);
     });
+
+    it('should return NaN for divide by zero', () => {
+      expect(divide(1, 0)).to.eql(NaN);
+    });
   });
 });
