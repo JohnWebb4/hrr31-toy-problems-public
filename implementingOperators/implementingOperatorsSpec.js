@@ -6,4 +6,8 @@ describe('implementingOperators', () => {
   it('should return a number', () => {
     expect(multiply(1, 1)).to.be.a('number');
   });
+
+  it('should return the product of two positive integers', () => {
+    expect(multiply(1, 1)).to.equal(1);
+  });
 });
