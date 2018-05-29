@@ -9,9 +9,24 @@
 //
 // Terror mode: Re-implement all three functions using only bitwise operators.
 
-
+/* Whiteboarding
+ * I: Two numbers
+ * O: One Number (product)
+ * C: None
+ * E: One number is zero, Negative numbers
+*/
 var multiply = function(x, y) {
-  // TODO: should return the product of x * y
+  var isNegative = Boolean((x < 0) ^ (y < 0));
+
+  var absX = Math.abs(x);
+  var absY = Math.abs(y);
+
+  var product = 0;
+  for (var indexY = 0; indexY < absY; indexY++) {
+    product += absX;
+  }
+
+  return isNegative ? -product : product;
 };
 
 var divide = function(x, y) {
