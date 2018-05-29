@@ -15,4 +15,9 @@ describe('implementingOperators', () => {
     expect(multiply(1, 0)).to.equal(0);
     expect(multiply(0, 1)).to.equal(0);
   });
+
+  it('should handle negative numbers', () => {
+    expect(multiply(-1, 1)).to.equal(-1);
+    expect(multiply(3, -2)).to.equal(-6);
+  });
 });
