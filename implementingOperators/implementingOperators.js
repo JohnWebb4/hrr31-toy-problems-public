@@ -29,12 +29,29 @@ var multiply = function(x, y) {
   return isNegative ? -product : product;
 };
 
+/* Whitebaording
+ * I: Two numbers
+ * O: One number (quotient)
+ * C: None
+ * E: Negative numbers, and divide by zero
+*/
 var divide = function(x, y) {
-  // TODO: should return the quotient of x / y
+  if (y === 0) {
+    return NaN;
+  }
+
+  var isNegative = Boolean((x < 0) ^ (y < 0));
+
+  var absX = Math.abs(x);
+  var absY = Math.abs(y);
+
+  var quotient;
+  for (quotient = 0; multiply(absY, quotient) < absX; quotient++) {}
+
+  return isNegative ? -quotient : quotient;
 };
 
 var modulo = function(x, y) {
-  // TODO: should return the remainder of x / y
 };
 
 
