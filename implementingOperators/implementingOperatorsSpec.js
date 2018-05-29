@@ -27,5 +27,9 @@ describe('implementingOperators', () => {
     it('divide should be a function', () => {
       expect(divide).to.be.a('function');
     });
+
+    it('divide should return a number', () => {
+      expect(divide(1, 1)).to.be.a('number');
+    });
   });
 });
