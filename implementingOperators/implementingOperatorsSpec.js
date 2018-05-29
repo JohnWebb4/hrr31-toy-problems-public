@@ -40,5 +40,10 @@ describe('implementingOperators', () => {
     it('should return NaN for divide by zero', () => {
       expect(divide(1, 0)).to.eql(NaN);
     });
+
+    it('should divide negative numbers', () => {
+      expect(divide(-9, 3)).to.equal(-3);
+      expect(divide(9, -3)).to.equal(-3);
+    });
   });
 });
