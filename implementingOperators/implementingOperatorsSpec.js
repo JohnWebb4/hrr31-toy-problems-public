@@ -31,5 +31,10 @@ describe('implementingOperators', () => {
     it('divide should return a number', () => {
       expect(divide(1, 1)).to.be.a('number');
     });
+
+    it('should divide positive integers', () => {
+      expect(divide(1, 1)).to.equal(1);
+      expect(divide(4, 2)).to.equal(2);
+    });
   });
 });
