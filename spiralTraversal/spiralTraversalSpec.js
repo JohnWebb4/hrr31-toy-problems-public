@@ -19,4 +19,8 @@ describe('spiralTraversal', () => {
   it('should return an array', () => {
     expect(spiralTraversal(arrayToTraverse)).to.be.an('array');
   });
+
+  it('should spiral traverse array', () => {
+    expect(spiralTraversal(arrayToTraverse)).to.eql(spiralArray);
+  });
 });
