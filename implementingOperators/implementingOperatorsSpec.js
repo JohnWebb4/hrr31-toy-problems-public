@@ -55,5 +55,11 @@ describe('implementingOperators', () => {
     it('should return an integer', () => {
       expect(modulo(1, 1)).to.be.a('number');
     });
+
+    it('should handle positibe modulos', () => {
+      expect(modulo(1, 1)).to.equal(0);
+      expect(modulo(2, 3)).to.equal(2);
+      expect(modulo(5, 3)).to.equal(2);
+    });
   });
 });
