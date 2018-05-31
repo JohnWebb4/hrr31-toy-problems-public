@@ -1,0 +1,34 @@
+{
+  "name": "hrr31-toy-problems",
+  "version": "1.0.0",
+  "description": "Toy Problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon --inspect index.js",
+    "eslint": "./node_modules/eslint/bin/eslint.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnWebb4/hrr31-toy-problems.git"
+  },
+  "keywords": [
+    "Toy",
+    "Problems",
+    "Practice",
+    "coding"
+  ],
+  "author": "Hack Reactor, John Webb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnWebb4/hrr31-toy-problems/issues"
+  },
+  "homepage": "https://github.com/JohnWebb4/hrr31-toy-problems#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0"
+  }
+}
