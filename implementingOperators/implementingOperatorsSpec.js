@@ -73,5 +73,10 @@ describe('implementingOperators', () => {
       expect(modulo(2, -3)).to.equal(2);
       expect(modulo(-5, -3)).to.equal(-2);
     });
+
+    it('should handle zero modulo dividend', () => {
+      expect(modulo(1, 0)).to.eql(NaN);
+      expect(modulo(5, 0)).to.eql(NaN);
+    });
   });
 });
