@@ -52,6 +52,18 @@ var divide = function(x, y) {
 };
 
 var modulo = function(x, y) {
+  if (y === 0) {
+    return NaN;
+  }
+
+  const isNegative = x < 0;
+
+  let remainder = Math.abs(x);
+  let absY = Math.abs(y);
+
+  while (remainder >= absY) {
+    remainder -= absY;
+  }
+
+  return isNegative ? -remainder : remainder;
 };
-
-
