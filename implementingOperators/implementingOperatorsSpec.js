@@ -67,5 +67,11 @@ describe('implementingOperators', () => {
       expect(modulo(-2, 3)).to.equal(-2);
       expect(modulo(-5, 3)).to.equal(-2);
     })
+
+    it('should handle negative modulo dividend', () => {
+      expect(modulo(1, -1)).to.equal(0);
+      expect(modulo(2, -3)).to.equal(2);
+      expect(modulo(-5, -3)).to.equal(-2);
+    });
   });
 });
