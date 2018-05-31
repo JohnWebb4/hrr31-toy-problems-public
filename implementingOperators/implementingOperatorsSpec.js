@@ -1,6 +1,6 @@
 describe('implementingOperators', () => {
   describe('multiply', () => {
-    it('multiply should be a function', () => {
+    it('should be a function', () => {
       expect(multiply).to.be.a('function');
     });
 
@@ -24,11 +24,11 @@ describe('implementingOperators', () => {
   });
 
   describe('divide', () => {
-    it('divide should be a function', () => {
+    it('should be a function', () => {
       expect(divide).to.be.a('function');
     });
 
-    it('divide should return a number', () => {
+    it('should return a number', () => {
       expect(divide(1, 1)).to.be.a('number');
     });
 
@@ -48,8 +48,12 @@ describe('implementingOperators', () => {
   });
 
   describe('modulo', () => {
-    it('modulo should be a function', () => {
+    it('should be a function', () => {
       expect(modulo).to.be.a('function');
+    });
+
+    it('should return an integer', () => {
+      expect(modulo(1, 1)).to.be.a('number');
     });
   });
 });
