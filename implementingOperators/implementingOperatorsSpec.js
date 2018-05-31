@@ -46,4 +46,10 @@ describe('implementingOperators', () => {
       expect(divide(9, -3)).to.equal(-3);
     });
   });
+
+  describe('modulo', () => {
+    it('modulo should be a function', () => {
+      expect(modulo).to.be.a('function');
+    });
+  });
 });
