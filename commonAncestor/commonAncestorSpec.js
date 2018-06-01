@@ -8,8 +8,10 @@ describe('commonAncestor', () => {
 
   beforeEach(() => {
     grandma = new Tree();
+    uncle = new Tree();
     mom = new Tree();
     me = new Tree();
+    brother = new Tree();
     potato = new Tree();
 
     grandma.addChild(mom);
