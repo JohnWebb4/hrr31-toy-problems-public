@@ -18,15 +18,15 @@ describe('commonAncestor', () => {
     expect(grandma.getClosestCommonAncestor).to.be.a('function');
   });
 
-  it('should return a boolean', () => {
-    expect(grandma.getClosestCommonAncestor(mom)).to.be.a('boolean');
+  it('should return a tree', () => {
+    expect(grandma.getClosestCommonAncestor(mom)).to.be.an('object');
   });
 
-  it('should be true for self', () => {
-    expect(me.getClosestCommonAncestor(me)).to.be.true;
+  it('should be me for ancestor with self', () => {
+    expect(me.getClosestCommonAncestor(me)).to.equal(me);
   });
 
-  it('should be true for direct parent', () => {
-    expect(me.getClosestCommonAncestor(mom)).to.be.true;
+  it('should be mom for direct parent', () => {
+    expect(me.getClosestCommonAncestor(mom)).to.equal(mom);
   });
 });
