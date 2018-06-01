@@ -45,4 +45,9 @@ describe('commonAncestor', () => {
   it('should be grandma for uncle', () => {
     expect(me.getClosestCommonAncestor(uncle)).to.equal(grandma);
   });
+
+  it('should be able to flip tree calling function', () => {
+    expect(brother.getClosestCommonAncestor(me)).to.equal(mom);
+    expect(uncle.getClosestCommonAncestor(me)).to.equal(grandma);
+  });
 });
