@@ -2,6 +2,8 @@ describe('commonAncestor', () => {
   let grandma;
   let mom;
   let me;
+  let brother;
+  let uncle;
   let potato;
 
   beforeEach(() => {
@@ -11,7 +13,9 @@ describe('commonAncestor', () => {
     potato = new Tree();
 
     grandma.addChild(mom);
+    grandma.addChild(uncle);
     mom.addChild(me);
+    mom.addChild(brother);
   });
 
   it('should be a function', () => {
@@ -32,5 +36,9 @@ describe('commonAncestor', () => {
 
   it('should be grandma for indirect parent', () => {
     expect(me.getClosestCommonAncestor(grandma)).to.equal(grandma);
+  });
+
+  it('should be mom for sibling', () => {
+    expect(me.getClosestCommonAncestor(brother)).to.equal(mom);
   });
 });
