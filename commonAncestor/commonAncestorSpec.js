@@ -29,4 +29,8 @@ describe('commonAncestor', () => {
   it('should be mom for direct parent', () => {
     expect(me.getClosestCommonAncestor(mom)).to.equal(mom);
   });
+
+  it('should be grandma for indirect parent', () => {
+    expect(me.getClosestCommonAncestor(grandma)).to.equal(grandma);
+  });
 });
