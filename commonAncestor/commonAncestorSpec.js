@@ -22,7 +22,11 @@ describe('commonAncestor', () => {
     expect(grandma.getClosestCommonAncestor(mom)).to.be.a('boolean');
   });
 
-  it('should return true for self', () => {
+  it('should be true for self', () => {
     expect(me.getClosestCommonAncestor(me)).to.be.true;
+  });
+
+  it('should be true for direct parent', () => {
+    expect(me.getClosestCommonAncestor(mom)).to.be.true;
   });
 });
