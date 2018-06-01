@@ -21,4 +21,8 @@ describe('commonAncestor', () => {
   it('should return a boolean', () => {
     expect(grandma.getClosestCommonAncestor(mom)).to.be.a('boolean');
   });
+
+  it('should return true for self', () => {
+    expect(me.getClosestCommonAncestor(me)).to.be.true;
+  });
 });
