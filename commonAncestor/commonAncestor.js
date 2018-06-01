@@ -15,6 +15,7 @@
 
 var Tree = function() {
   this.children = [];
+  this.parent;
 };
 
 /**
@@ -23,6 +24,7 @@ var Tree = function() {
 Tree.prototype.addChild = function(child) {
   if (!this.isDescendant(child)) {
     this.children.push(child);
+    child.parent = this;
   } else {
     throw new Error('That child is already a child of this tree');
   }
@@ -38,9 +40,38 @@ Tree.prototype.addChild = function(child) {
   *  3.) between my grandma and my grandma -> my grandma
   *  4.) between me and a potato -> null
   */
-Tree.prototype.getClosestCommonAncestor = function(/*...*/
-) {
-  // TODO: implement me!
+
+/* Notes
+ * Use isDescendent to check for ancestry
+
+ * Whiteboard
+ * I: Tree (called relative)
+ * O: Tree or null
+ * C: None
+ * E: me and my brother, me and myself, me and potato
+
+ * Psuedocode
+ * Check if passed relative is descendent
+ * If true return self
+ * Check if parent is null
+ * If null, return false
+ * If Tree, recursively call on parent and return result
+*/
+Tree.prototype.getClosestCommonAncestor = function(relative) {
+  if(this === relative) {
+    return this;
+  }
+
+  if (this.isDescendant(relative)){
+    return this;
+  }
+
+  if (!this.parent) {
+    return null;
+  }
+
+  // Recursion
+  return this.parent.getClosestCommonAncestor(relative);
 };
 
 /**
