@@ -50,4 +50,8 @@ describe('commonAncestor', () => {
     expect(brother.getClosestCommonAncestor(me)).to.equal(mom);
     expect(uncle.getClosestCommonAncestor(me)).to.equal(grandma);
   });
+
+  it('should return null when no common ancestor', () => {
+    expect(me.getClosestCommonAncestor(potato)).to.eql(null);
+  });
 });
