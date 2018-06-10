@@ -25,6 +25,10 @@ describe('commonAncestor', () => {
     it('should be a function', () => {
       expect(grandma.getAncestorPath).to.be.a('function');
     });
+
+    it('should return an array', () => {
+      expect(grandma.getAncestorPath(mom)).to.be.an('array');
+    });
   });
 
   describe('getClosestCommonAncestor', () => {
