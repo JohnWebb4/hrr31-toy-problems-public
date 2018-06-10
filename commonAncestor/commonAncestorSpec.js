@@ -41,6 +41,10 @@ describe('commonAncestor', () => {
     it('should be [grandma, mom, me] for path with grandma and me', () => {
       expect(grandma.getAncestorPath(me)).to.eql([grandma, mom, me]);
     });
+
+    it('should be null for no ancestor path', () => {
+      expect(potato.getAncestorPath(me)).to.be.null;
+    });
   });
 
   describe('getClosestCommonAncestor', () => {
