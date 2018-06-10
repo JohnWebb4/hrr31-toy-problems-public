@@ -49,17 +49,33 @@ Tree.prototype.addChild = function addChild(child) {
  * E: me and my brother, me and myself, me and potato
 
  * Psuedocode
- * Check if passed relative is descendent
- * If true return self
- * Check if parent is null
- * If null, return false
- * If Tree, recursively call on parent and return result
+ * Loop through passed arguments
+ * Get ancestor path
+ * Initially set path to overall ancestor path
+ * Initially set common ancestor to closest ancestor in path
+ * If common ancestor is already defined (all other relatives)
+ * Move up ancestors until common ancestor
+ * After all realtives return common ancestor
 */
 Tree.prototype.getClosestCommonAncestor = function getClosestCommonAncestor(...relatives) {
-  let commonAncestor = null;
+  let commonAncestorPath = null;
+  let commonAncestor;
 
   relatives.forEach((relative) => {
-    const relativePath = this.getAncestorPath(relative);
+    if (commonAncestor === undefined) {
+      commonAncestorPath = this.getAncestorPath(relative);
+      commonAncestor = commonAncestorPath[commonAncestorPath.length - 1];
+      // Continue to next relative
+      return;
+    }
+
+    while (commonAncestor !== null) {
+      if (commonAncestor.isDescendant(relative) || commonAncestor === relative) {
+        break;
+      } else {
+        commonAncestor = commonAncestorPath.pop() || null;
+      }
+    }
   });
 
   return commonAncestor;
@@ -128,15 +144,15 @@ Tree.prototype.isDescendant = function isDescendant(child) {
   if (this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
-  } else {
-    for (let i = 0; i < this.children.length; i += 1) {
-      if (this.children[i].isDescendant(child)) {
-        // `child` is descendant of this tree
-        return true;
-      }
-    }
-    return false;
   }
+
+  for (let i = 0; i < this.children.length; i += 1) {
+    if (this.children[i].isDescendant(child)) {
+      // `child` is descendant of this tree
+      return true;
+    }
+  }
+  return false;
 };
 
 /**
