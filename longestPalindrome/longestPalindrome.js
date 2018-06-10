@@ -31,23 +31,23 @@
  * Return longest palindrome
 */
 
-var longestPalindrome = function (sentence) {
-  var longestPalindrome = '';
+let longestPalindrome = (sentence) => {
+  let theLongestPalindrome = '';
 
-  for (var charIndex = 0; charIndex < sentence.length; charIndex++) {
-    var palindromeBegin = charIndex;
-    var palindromeEnd = charIndex;
-    var isPalindrome = false;
+  sentence.split('').forEach((char, charIndex) => {
+    let palindromeBegin = charIndex;
+    let palindromeEnd = charIndex;
+    let isPalindrome = false;
 
     if (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1]) {
       // Odd length palindrome
-      palindromeBegin = palindromeBegin - 1;
-      palindromeEnd = palindromeEnd + 1;
+      palindromeBegin -= 1;
+      palindromeEnd += 1;
 
       isPalindrome = true;
     } else if (sentence[palindromeBegin] === sentence[palindromeEnd + 1]) {
       // Even length palindrome
-      palindromeEnd = palindromeEnd + 1;
+      palindromeEnd += 1;
 
       isPalindrome = true;
     }
@@ -55,17 +55,17 @@ var longestPalindrome = function (sentence) {
     if (isPalindrome) {
       while (sentence[palindromeBegin - 1] === sentence[palindromeEnd + 1] &&
         palindromeBegin - 1 >= 0 && palindromeEnd + 1 < sentence.length) {
-        palindromeBegin--;
-        palindromeEnd++;
+        palindromeBegin -= 1;
+        palindromeEnd += 1;
       }
 
-      palindrome = sentence.slice(palindromeBegin, palindromeEnd + 1);
+      const palindrome = sentence.slice(palindromeBegin, palindromeEnd + 1);
 
-      if (palindrome.length > longestPalindrome.length) {
-        longestPalindrome = palindrome;
+      if (palindrome.length > theLongestPalindrome.length) {
+        theLongestPalindrome = palindrome;
       }
     }
-  }
+  });
 
-  return longestPalindrome;
+  return theLongestPalindrome;
 };
