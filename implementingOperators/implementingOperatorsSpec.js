@@ -45,6 +45,29 @@ describe('implementingOperators', () => {
       expect(divide(-9, 3)).to.equal(-3);
       expect(divide(9, -3)).to.equal(-3);
     });
+
+    it('should divide to three decimal places', () => {
+      expect(divide(0, 10)).to.be.below((0 / 10) + 0.001);
+      expect(divide(0, 10)).to.be.above((0 / 10) - 0.001);
+
+      expect(divide(2, 3)).to.be.below((2 / 3) + 0.001);
+      expect(divide(2, 3)).to.be.above((2 / 3) - 0.001);
+
+      expect(divide(5, 2)).to.be.below((5 / 2) + 0.001);
+      expect(divide(5, 2)).to.be.above((5 / 2) - 0.001);
+
+      expect(divide(6, 4)).to.be.below((6 / 4) + 0.001);
+      expect(divide(6, 4)).to.be.above((6 / 4) - 0.001);
+
+      expect(divide(35, 8)).to.be.below((35 / 8) + 0.001);
+      expect(divide(35, 8)).to.be.above((35 / 8) - 0.001);
+
+      expect(divide(45, 12)).to.be.below((45 / 12) + 0.001);
+      expect(divide(45, 12)).to.be.above((45 / 12) - 0.001);
+
+      expect(divide(3782, 80)).to.be.below((3782 / 80) + 0.001);
+      expect(divide(3782, 80)).to.be.above((3782 / 80) - 0.001);
+    });
   });
 
   describe('modulo', () => {
@@ -66,7 +89,7 @@ describe('implementingOperators', () => {
       expect(modulo(-1, 1)).to.equal(0);
       expect(modulo(-2, 3)).to.equal(-2);
       expect(modulo(-5, 3)).to.equal(-2);
-    })
+    });
 
     it('should handle negative modulo dividend', () => {
       expect(modulo(1, -1)).to.equal(0);

@@ -13,18 +13,16 @@
   * grandma.getAncestorPath(me); // => [grandma, mom, me]
 */
 
-var Tree = function() {
+function Tree() {
   this.children = [];
-  this.parent;
-};
+}
 
 /**
   * add an immediate child
   */
-Tree.prototype.addChild = function(child) {
+Tree.prototype.addChild = function addChild(child) {
   if (!this.isDescendant(child)) {
     this.children.push(child);
-    child.parent = this;
   } else {
     throw new Error('That child is already a child of this tree');
   }
@@ -51,27 +49,36 @@ Tree.prototype.addChild = function(child) {
  * E: me and my brother, me and myself, me and potato
 
  * Psuedocode
- * Check if passed relative is descendent
- * If true return self
- * Check if parent is null
- * If null, return false
- * If Tree, recursively call on parent and return result
+ * Loop through passed arguments
+ * Get ancestor path
+ * Initially set path to overall ancestor path
+ * Initially set common ancestor to closest ancestor in path
+ * If common ancestor is already defined (all other relatives)
+ * Move up ancestors until common ancestor
+ * After all realtives return common ancestor
 */
-Tree.prototype.getClosestCommonAncestor = function(relative) {
-  if(this === relative) {
-    return this;
-  }
+Tree.prototype.getClosestCommonAncestor = function getClosestCommonAncestor(...relatives) {
+  let commonAncestorPath = null;
+  let commonAncestor;
 
-  if (this.isDescendant(relative)){
-    return this;
-  }
+  relatives.forEach((relative) => {
+    if (commonAncestor === undefined) {
+      commonAncestorPath = this.getAncestorPath(relative);
+      commonAncestor = commonAncestorPath[commonAncestorPath.length - 1];
+      // Continue to next relative
+      return;
+    }
 
-  if (!this.parent) {
-    return null;
-  }
+    while (commonAncestor !== null) {
+      if (commonAncestor.isDescendant(relative) || commonAncestor === relative) {
+        break;
+      } else {
+        commonAncestor = commonAncestorPath.pop() || null;
+      }
+    }
+  });
 
-  // Recursion
-  return this.parent.getClosestCommonAncestor(relative);
+  return commonAncestor;
 };
 
 /**
@@ -82,35 +89,77 @@ Tree.prototype.getClosestCommonAncestor = function(relative) {
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-) {
-  // TODO: implement me!
+
+/* Whiteboard
+ * I: Tree
+ * O: Array of trees
+ * C: None
+ * E: Me and myself, me and brother, direct parent, indirect parent
+*/
+
+/* Psuedocode
+ * Check is identical, return [me] if so
+ * Check if not a descendant, return null
+ * Loop through children and find next relative
+ * Recursively call on child
+ * Return null if no ancestor path
+ * If ancestor path, add current ancestor to beginning and return
+ *
+*/
+Tree.prototype.getAncestorPath = function getAncestorPath(relative) {
+  // Base case: Is itself
+  if (this === relative) {
+    return [this];
+  }
+
+  // Termination case: No parent
+  if (!this.isDescendant(relative)) {
+    return null;
+  }
+
+  // Recursive case
+  let childAncestor = null;
+  this.children.forEach((child) => {
+    if (child.isDescendant(relative) || child === relative) {
+      childAncestor = child;
+    }
+  });
+
+  const ancestorPath = childAncestor.getAncestorPath(relative);
+
+  if (!ancestorPath) {
+    return null;
+  }
+
+  ancestorPath.unshift(this);
+
+  return ancestorPath;
 };
 
 /**
   * check to see if the provided tree is already a child of this
   * tree __or any of its sub trees__
   */
-Tree.prototype.isDescendant = function(child) {
+Tree.prototype.isDescendant = function isDescendant(child) {
   if (this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].isDescendant(child)) {
-        // `child` is descendant of this tree
-        return true;
-      }
-    }
-    return false;
   }
+
+  for (let i = 0; i < this.children.length; i += 1) {
+    if (this.children[i].isDescendant(child)) {
+      // `child` is descendant of this tree
+      return true;
+    }
+  }
+  return false;
 };
 
 /**
   * remove an immediate child
   */
-Tree.prototype.removeChild = function(child) {
-  var index = this.children.indexOf(child);
+Tree.prototype.removeChild = function removeChild(child) {
+  const index = this.children.indexOf(child);
   if (index !== -1) {
     // remove the child
     this.children.splice(index, 1);

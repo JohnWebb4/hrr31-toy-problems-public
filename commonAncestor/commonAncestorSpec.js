@@ -20,40 +20,68 @@ describe('commonAncestor', () => {
     mom.addChild(brother);
   });
 
-  it('should be a function', () => {
-    expect(grandma.getClosestCommonAncestor).to.be.a('function');
+
+  describe('getAncestorPath', () => {
+    it('should be a function', () => {
+      expect(grandma.getAncestorPath).to.be.a('function');
+    });
+
+    it('should return an array', () => {
+      expect(grandma.getAncestorPath(mom)).to.be.an('array');
+    });
+
+    it('should be [me] for path with myself', () => {
+      expect(me.getAncestorPath(me)).to.eql([me]);
+    });
+
+    it('should be [mom, me] for path with mom and myself', () => {
+      expect(mom.getAncestorPath(me)).to.eql([mom, me]);
+    });
+
+    it('should be [grandma, mom, me] for path with grandma and me', () => {
+      expect(grandma.getAncestorPath(me)).to.eql([grandma, mom, me]);
+    });
+
+    it('should be null for no ancestor path', () => {
+      expect(potato.getAncestorPath(me)).to.be.null;
+    });
   });
 
-  it('should return a tree', () => {
-    expect(grandma.getClosestCommonAncestor(mom)).to.be.an('object');
-  });
+  describe('getClosestCommonAncestor', () => {
+    it('should be a function', () => {
+      expect(grandma.getClosestCommonAncestor).to.be.a('function');
+    });
 
-  it('should be me for ancestor with self', () => {
-    expect(me.getClosestCommonAncestor(me)).to.equal(me);
-  });
+    it('should return a tree', () => {
+      expect(grandma.getClosestCommonAncestor(mom)).to.be.an('object');
+    });
 
-  it('should be mom for direct parent', () => {
-    expect(me.getClosestCommonAncestor(mom)).to.equal(mom);
-  });
+    it('should be me for ancestor with self', () => {
+      expect(me.getClosestCommonAncestor(me, me)).to.equal(me);
+    });
 
-  it('should be grandma for indirect parent', () => {
-    expect(me.getClosestCommonAncestor(grandma)).to.equal(grandma);
-  });
+    it('should be me for direct parent', () => {
+      expect(mom.getClosestCommonAncestor(me, mom)).to.equal(mom);
+    });
 
-  it('should be mom for sibling', () => {
-    expect(me.getClosestCommonAncestor(brother)).to.equal(mom);
-  });
+    it('should be grandma for indirect parent', () => {
+      expect(grandma.getClosestCommonAncestor(me, grandma)).to.equal(grandma);
+    });
 
-  it('should be grandma for uncle', () => {
-    expect(me.getClosestCommonAncestor(uncle)).to.equal(grandma);
-  });
+    it('should be mom for sibling', () => {
+      expect(mom.getClosestCommonAncestor(me, brother)).to.equal(mom);
+    });
 
-  it('should be able to flip tree calling function', () => {
-    expect(brother.getClosestCommonAncestor(me)).to.equal(mom);
-    expect(uncle.getClosestCommonAncestor(me)).to.equal(grandma);
-  });
+    it('should be grandma for uncle', () => {
+      expect(grandma.getClosestCommonAncestor(me, uncle)).to.equal(grandma);
+    });
 
-  it('should return null when no common ancestor', () => {
-    expect(me.getClosestCommonAncestor(potato)).to.eql(null);
+    it('should return null when no common ancestor', () => {
+      expect(grandma.getClosestCommonAncestor(me, potato)).to.be.null;
+    });
+
+    it('should get closest common ancestor', () => {
+      expect(grandma.getClosestCommonAncestor(me, brother)).to.equal(mom);
+    });
   });
 });

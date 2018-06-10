@@ -15,14 +15,14 @@
  * C: None
  * E: One number is zero, Negative numbers
 */
-var multiply = function(x, y) {
-  var isNegative = Boolean((x < 0) ^ (y < 0));
+let multiply = (x, y) => {
+  const isNegative = Boolean((x < 0) ^ (y < 0));
 
-  var absX = Math.abs(x);
-  var absY = Math.abs(y);
+  const absX = Math.abs(x);
+  const absY = Math.abs(y);
 
-  var product = 0;
-  for (var indexY = 0; indexY < absY; indexY++) {
+  let product = 0;
+  for (let indexY = 0; indexY < absY; indexY += 1) {
     product += absX;
   }
 
@@ -35,31 +35,43 @@ var multiply = function(x, y) {
  * C: None
  * E: Negative numbers, and divide by zero
 */
-var divide = function(x, y) {
+let divide = (x, y, decimalPlaces=3) => {
   if (y === 0) {
     return NaN;
   }
 
-  var isNegative = Boolean((x < 0) ^ (y < 0));
+  const isNegative = Boolean((x < 0) ^ (y < 0));
 
-  var absX = Math.abs(x);
-  var absY = Math.abs(y);
+  const absX = Math.abs(x);
+  const absY = Math.abs(y);
 
-  var quotient;
-  for (quotient = 0; multiply(absY, quotient) < absX; quotient++) {}
+  let quotient = 0;
+
+  while (multiply(absY, quotient) < absX) {
+    quotient += 1;
+  }
+
+  // If decimals needed
+  const closestMultiple = multiply(absY, quotient);
+  if ((closestMultiple !== absX) && decimalPlaces > 0) {
+    quotient -= 1;
+    const closestSmallerMultiple = multiply(absY, quotient);
+    const remainder = absX - closestSmallerMultiple;
+    quotient = Number(`${quotient}.${divide(multiply(remainder, 10 ** decimalPlaces), absY, 0)}`);
+  }
 
   return isNegative ? -quotient : quotient;
 };
 
-var modulo = function(x, y) {
+let modulo = (x, y) => {
   if (y === 0) {
     return NaN;
   }
 
   const isNegative = x < 0;
 
+  const absY = Math.abs(y);
   let remainder = Math.abs(x);
-  let absY = Math.abs(y);
 
   while (remainder >= absY) {
     remainder -= absY;
