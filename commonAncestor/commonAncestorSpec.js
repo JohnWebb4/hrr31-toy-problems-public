@@ -79,5 +79,9 @@ describe('commonAncestor', () => {
     it('should return null when no common ancestor', () => {
       expect(grandma.getClosestCommonAncestor(me, potato)).to.be.null;
     });
+
+    it('should get closest common ancestor', () => {
+      expect(grandma.getClosestCommonAncestor(me, brother)).to.equal(mom);
+    });
   });
 });
