@@ -37,6 +37,10 @@ describe('commonAncestor', () => {
     it('should be [mom, me] for path with mom and myself', () => {
       expect(mom.getAncestorPath(me)).to.eql([mom, me]);
     });
+
+    it('should be [grandma, mom, me] for path with grandma and me', () => {
+      expect(grandma.getAncestorPath(me)).to.eql([grandma, mom, me]);
+    });
   });
 
   describe('getClosestCommonAncestor', () => {
