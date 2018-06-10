@@ -29,6 +29,10 @@ describe('commonAncestor', () => {
     it('should return an array', () => {
       expect(grandma.getAncestorPath(mom)).to.be.an('array');
     });
+
+    it('should be [me] for path with myself', () => {
+      expect(me.getAncestorPath(me)).to.eql([me]);
+    });
   });
 
   describe('getClosestCommonAncestor', () => {
