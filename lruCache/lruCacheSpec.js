@@ -16,4 +16,8 @@ describe('lruCache', () => {
   it('should have a get function', () => {
     expect(lruCache.get).to.be.a('function');
   });
+
+  it('should have a set function', () => {
+    expect(lruCache.set).to.be.a('function');
+  });
 });
