@@ -24,4 +24,9 @@ describe('lruCache', () => {
   it('should have a set function', () => {
     expect(lruCache.set).to.be.a('function');
   });
+
+  it('should get a set value', () => {
+    lruCache.set('test', 'value');
+    expect(lruCache.get('test')).to.equal('value');
+  });
 });
