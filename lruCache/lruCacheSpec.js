@@ -17,6 +17,10 @@ describe('lruCache', () => {
     expect(lruCache.get).to.be.a('function');
   });
 
+  it('should return null for missing item', () => {
+    expect(lruCache.get('test')).to.be.null;
+  });
+
   it('should have a set function', () => {
     expect(lruCache.set).to.be.a('function');
   });
