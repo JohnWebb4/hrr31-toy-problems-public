@@ -29,4 +29,9 @@ describe('lruCache', () => {
     lruCache.set('test', 'value');
     expect(lruCache.get('test')).to.equal('value');
   });
+
+  it('should increment size on setting a value', () => {
+    lruCache.set('test', 'value');
+    expect(lruCache.size()).to.equal(1);
+  });
 });
