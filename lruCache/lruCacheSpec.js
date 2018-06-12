@@ -1,12 +1,12 @@
 describe('lruCache', () => {
-  var lruCache;
+  let lruCache;
 
   beforeEach(() => {
-    lruCache = LRUCache(3);
+    lruCache = new LRUCache(3);
   });
 
-  it('should be a function', () => {
-    expect(LRUCache).to.be.a('function');
+  it('should have a size function', () => {
+    expect(lruCache.size).to.be.a('function');
   });
 
   it('should get size', () => {
