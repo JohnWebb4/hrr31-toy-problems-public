@@ -63,4 +63,19 @@ describe('lruCache', () => {
     expect(lruCache.get('the')).to.equal('value2');
     expect(lruCache.get('best')).to.equal('value3');
   });
+
+  it('should keep values recenlty set', () => {
+    lruCache.set('tests', 'value');
+    lruCache.set('are', 'value1');
+    lruCache.set('the', 'value2');
+
+    lruCache.set('tests', 'valueOther');
+
+    lruCache.set('best', 'value3');
+
+    expect(lruCache.get('tests')).to.equal('valueOther');
+    expect(lruCache.get('are')).to.be.null;
+    expect(lruCache.get('the')).to.equal('value2');
+    expect(lruCache.get('best')).to.equal('value3');
+  });
 });
