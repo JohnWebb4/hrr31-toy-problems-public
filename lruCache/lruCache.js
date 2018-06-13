@@ -193,6 +193,19 @@ LRUCache.prototype.get = function get(key) {
 };
 
 LRUCache.prototype.set = function set(key, val) {
+  // If already set
+  let item = this.list.head;
+
+  while (item !== null) {
+    if (item.val.key === key) {
+      item.val.val = val;
+      this.list.moveToFront(item);
+      return;
+    }
+
+    item = item.next;
+  }
+
   while (this.listSize + 1 > this.limit) {
     this.list.pop();
     this.listSize -= 1;
