@@ -48,4 +48,19 @@ describe('lruCache', () => {
 
     expect(lruCache.size()).to.equal(3);
   });
+
+  it('should keep values recently searched', () => {
+    lruCache.set('tests', 'value');
+    lruCache.set('are', 'value1');
+    lruCache.set('the', 'value2');
+
+    lruCache.get('tests');
+
+    lruCache.set('best', 'value3');
+
+    expect(lruCache.get('tests')).to.equal('value');
+    expect(lruCache.get('are')).to.be.null;
+    expect(lruCache.get('the')).to.equal('value2');
+    expect(lruCache.get('best')).to.equal('value3');
+  });
 });
