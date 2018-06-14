@@ -40,6 +40,10 @@ describe('queueStack', () => {
       stack.push('hi');
       expect(stack.size()).to.equal(2);
     });
+
+    it('should have pop', () => {
+      expect(stack.pop).to.be.a('function');
+    });
   });
 
   describe('queue', () => {
