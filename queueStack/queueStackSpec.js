@@ -55,6 +55,11 @@ describe('queueStack', () => {
       stack.pop();
       expect(stack.size()).to.equal(0);
     });
+
+    it('should return null for popping an empty stack', () => {
+      expect(stack.pop()).to.equal(null);
+      expect(stack.size()).to.equal(0);
+    });
   });
 
   describe('queue', () => {
