@@ -26,6 +26,15 @@ describe('queueStack', () => {
       expect(stack.push(1)).to.equal(1);
     });
 
+    it('should push any data type', () => {
+      expect(stack.push(1)).to.equal(1);
+      expect(stack.push('test')).to.equal('test');
+      expect(stack.push(undefined)).to.equal(undefined);
+      expect(stack.push(null)).to.equal(null);
+      expect(stack.push({ test: true })).to.eql({ test: true });
+      expect(stack.push([1, 2, 3])).to.eql([1, 2, 3]);
+    });
+
     it('should increment size on push', () => {
       stack.push(1);
       stack.push('hi');
