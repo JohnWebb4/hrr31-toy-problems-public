@@ -25,6 +25,12 @@ describe('queueStack', () => {
     it('should return item pushed', () => {
       expect(stack.push(1)).to.equal(1);
     });
+
+    it('should increment size on push', () => {
+      stack.push(1);
+      stack.push('hi');
+      expect(stack.size()).to.equal(2);
+    });
   });
 
   describe('queue', () => {
