@@ -14,6 +14,10 @@ describe('queueStack', () => {
       expect(stack.size).to.be.a('function');
     });
 
+    it('should return zero for empty stack', () => {
+      expect(stack.size()).to.equal(0);
+    });
+
     it('should have push', () => {
       expect(stack.push).to.be.a('function');
     });
