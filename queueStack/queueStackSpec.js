@@ -49,6 +49,12 @@ describe('queueStack', () => {
       stack.push('test');
       expect(stack.pop()).to.equal('test');
     });
+
+    it('should decrement size on pop', () => {
+      stack.push('test');
+      stack.pop();
+      expect(stack.size()).to.equal(0);
+    });
   });
 
   describe('queue', () => {
