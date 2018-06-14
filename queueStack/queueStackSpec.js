@@ -44,6 +44,11 @@ describe('queueStack', () => {
     it('should have pop', () => {
       expect(stack.pop).to.be.a('function');
     });
+
+    it('should return value popped', () => {
+      stack.push('test');
+      expect(stack.pop()).to.equal('test');
+    });
   });
 
   describe('queue', () => {
