@@ -1,11 +1,21 @@
 describe('queueStack', () => {
   describe('stack', () => {
+    let stack;
+
+    beforeEach(() => {
+      stack = new Stack();
+    });
+
     it('should be a psuedoclassical class', () => {
       expect(Stack).to.be.a('function');
     });
 
     it('should have push', () => {
-      expect(Stack.push).to.be.a('fuction');
+      expect(stack.push).to.be.a('function');
+    });
+
+    it('should return item pushed', () => {
+      expect(stack.push(1)).to.equal(1);
     });
   });
 
