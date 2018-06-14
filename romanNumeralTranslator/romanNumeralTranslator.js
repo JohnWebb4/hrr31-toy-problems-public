@@ -39,7 +39,6 @@ const translateRomanNumeral = function(romanNumeral) {
     }
 
     prevNumeral = char;
-    console.log('Value', value, char, romanNumeral);
     return sum + value;
   }, 0);
 };
