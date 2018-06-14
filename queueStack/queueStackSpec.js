@@ -63,8 +63,18 @@ describe('queueStack', () => {
   });
 
   describe('queue', () => {
+    let queue;
+
+    beforeEach(() => {
+      queue = new Queue();
+    });
+
     it('should be a psuedoclassical class', () => {
       expect(Queue).to.be.a('function');
+    });
+
+    it('should have size', () => {
+      expect(queue.size).to.be.a('function');
     });
   });
 });
