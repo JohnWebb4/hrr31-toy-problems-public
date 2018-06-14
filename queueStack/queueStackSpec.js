@@ -10,6 +10,10 @@ describe('queueStack', () => {
       expect(Stack).to.be.a('function');
     });
 
+    it('should have size', () => {
+      expect(stack.size).to.be.a('function');
+    });
+
     it('should have push', () => {
       expect(stack.push).to.be.a('function');
     });
