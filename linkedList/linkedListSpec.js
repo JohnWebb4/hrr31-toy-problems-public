@@ -15,4 +15,9 @@ describe('linkedList', () => {
   it('should return item added to tail', () => {
     expect(linkedList.addToTail(1)).to.equal(1);
   });
+
+  it('should return item removed from head', () => {
+    linkedList.addToTail(1);
+    expect(linkedList.removeHead()).to.equal(1);
+  });
 });
