@@ -6,7 +6,7 @@ describe('hashTable', () => {
   });
 
   it('should make a hash table with insert, retrieve, and remove', () => {
-    const hashTable = makeHashTable();
+    hashTable = makeHashTable();
     expect(hashTable).to.be.an('object');
     expect(hashTable.insert).to.be.a('function');
     expect(hashTable.retrieve).to.be.a('function');
@@ -30,5 +30,11 @@ describe('hashTable', () => {
     for (let i = 0; i < 2000; i += 1) {
       expect(hashTable.retrieve(i)).to.equal(i);
     }
+  });
+
+  it('should remove values', () => {
+    hashTable.insert(1, 1);
+    hashTable.remove(1);
+    expect(hashTable.retrieve(1)).to.equal(undefined);
   });
 });
