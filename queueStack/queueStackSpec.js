@@ -84,5 +84,9 @@ describe('queueStack', () => {
     it('should have enqueue', () => {
       expect(queue.enqueue).to.be.a('function');
     });
+
+    it('should return item enqueued', () => {
+      expect(queue.enqueue(1)).to.equal(1);
+    });
   });
 });
