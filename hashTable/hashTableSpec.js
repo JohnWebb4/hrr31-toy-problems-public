@@ -1,6 +1,8 @@
 describe('hashTable', () => {
-  it('should have makeHashTable', () => {
-    expect(makeHashTable).to.be.a('function');
+  let hashTable;
+
+  beforeEach(() => {
+    hashTable = makeHashTable();
   });
 
   it('should make a hash table with insert, retrieve, and remove', () => {
@@ -9,5 +11,9 @@ describe('hashTable', () => {
     expect(hashTable.insert).to.be.a('function');
     expect(hashTable.retrieve).to.be.a('function');
     expect(hashTable.remove).to.be.a('function');
+  });
+
+  it('should return inserted item', () => {
+    expect(hashTable.insert('key', 1)).to.equal(1);
   });
 });
