@@ -106,5 +106,10 @@ describe('queueStack', () => {
     it('should return null for empty queue', () => {
       expect(queue.dequeue()).to.equal(null);
     });
+
+    it('should return a queued item', () => {
+      queue.enqueue(1);
+      expect(queue.dequeue()).to.equal(1);
+    });
   });
 });
