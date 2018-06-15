@@ -60,6 +60,19 @@ describe('queueStack', () => {
       expect(stack.pop()).to.equal(null);
       expect(stack.size()).to.equal(0);
     });
+
+    it('should be return in FIFO', () => {
+      stack.push(1);
+      stack.push(2);
+      expect(stack.pop()).to.equal(2);
+      stack.push(3);
+      stack.push(4);
+      expect(stack.pop()).to.equal(4);
+      expect(stack.pop()).to.equal(3);
+      expect(stack.pop()).to.equal(1);
+      // Test empty stack
+      expect(stack.pop()).to.equal(null);
+    });
   });
 
   describe('queue', () => {
@@ -110,6 +123,19 @@ describe('queueStack', () => {
     it('should return a queued item', () => {
       queue.enqueue(1);
       expect(queue.dequeue()).to.equal(1);
+    });
+
+    it('should return queued items in FILO', () => {
+      queue.enqueue(1);
+      queue.enqueue(2);
+      expect(queue.dequeue()).to.equal(1);
+      queue.enqueue(3);
+      queue.enqueue(4);
+      expect(queue.dequeue()).to.equal(2);
+      expect(queue.dequeue()).to.equal(3);
+      expect(queue.dequeue()).to.equal(4);
+      // Dequeue empty array
+      expect(queue.dequeue()).to.equal(null);
     });
   });
 });
