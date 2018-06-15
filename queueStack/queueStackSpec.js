@@ -102,5 +102,9 @@ describe('queueStack', () => {
     it('should have dequeue', () => {
       expect(queue.dequeue).to.be.a('function');
     });
+
+    it('should return null for empty queue', () => {
+      expect(queue.dequeue()).to.equal(null);
+    });
   });
 });
