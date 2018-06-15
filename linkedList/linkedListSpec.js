@@ -27,4 +27,17 @@ describe('linkedList', () => {
     linkedList.addToTail(1);
     expect(linkedList.contains(1)).to.be.true;
   });
+
+  it('should handle add, removing, and containing together', () => {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+
+    expect(linkedList.contains(1)).to.be.true;
+    expect(linkedList.contains(2)).to.be.true;
+
+    linkedList.removeHead();
+
+    expect(linkedList.contains(1)).to.be.false;
+    expect(linkedList.contains(2)).to.be.true;
+  });
 });
