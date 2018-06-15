@@ -88,5 +88,15 @@ describe('queueStack', () => {
     it('should return item enqueued', () => {
       expect(queue.enqueue(1)).to.equal(1);
     });
+
+    it('should enqueue any data type', () => {
+      expect(queue.enqueue(1)).to.equal(1);
+      expect(queue.enqueue(true)).to.equal(true);
+      expect(queue.enqueue(undefined)).to.equal(undefined);
+      expect(queue.enqueue(null)).to.equal(null);
+      expect(queue.enqueue('test')).to.equal('test');
+      expect(queue.enqueue([1, 2, 3])).to.eql([1, 2, 3]);
+      expect(queue.enqueue({ test: true })).to.eql({ test: true });
+    });
   });
 });
