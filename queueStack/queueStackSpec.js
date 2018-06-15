@@ -61,7 +61,7 @@ describe('queueStack', () => {
       expect(stack.size()).to.equal(0);
     });
 
-    it('should be return in FIFO', () => {
+    it('should be return in FILO', () => {
       stack.push(1);
       stack.push(2);
       expect(stack.pop()).to.equal(2);
@@ -125,7 +125,7 @@ describe('queueStack', () => {
       expect(queue.dequeue()).to.equal(1);
     });
 
-    it('should return queued items in FILO', () => {
+    it('should return queued items in FIFO', () => {
       queue.enqueue(1);
       queue.enqueue(2);
       expect(queue.dequeue()).to.equal(1);
