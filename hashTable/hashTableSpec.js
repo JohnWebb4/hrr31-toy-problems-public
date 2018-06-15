@@ -21,4 +21,14 @@ describe('hashTable', () => {
     hashTable.insert('key', 1);
     expect(hashTable.retrieve('key')).to.equal(1);
   });
+
+  it('should handle collisions', () => {
+    for (let i = 0; i < 2000; i += 1) {
+      hashTable.insert(i, i);
+    }
+
+    for (let i = 0; i < 2000; i += 1) {
+      expect(hashTable.retrieve(i)).to.equal(i);
+    }
+  });
 });
