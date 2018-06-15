@@ -98,5 +98,9 @@ describe('queueStack', () => {
       expect(queue.enqueue([1, 2, 3])).to.eql([1, 2, 3]);
       expect(queue.enqueue({ test: true })).to.eql({ test: true });
     });
+
+    it('should have dequeue', () => {
+      expect(queue.dequeue).to.be.a('function');
+    });
   });
 });
