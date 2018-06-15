@@ -80,5 +80,9 @@ describe('queueStack', () => {
     it('should return zero for empty queue', () => {
       expect(queue.size()).to.equal(0);
     });
+
+    it('should have enqueue', () => {
+      expect(queue.enqueue).to.be.a('function');
+    });
   });
 });
