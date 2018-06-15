@@ -16,4 +16,9 @@ describe('hashTable', () => {
   it('should return inserted item', () => {
     expect(hashTable.insert('key', 1)).to.equal(1);
   });
+
+  it('should retrieve value', () => {
+    hashTable.insert('key', 1);
+    expect(hashTable.retrieve('key')).to.equal(1);
+  });
 });
