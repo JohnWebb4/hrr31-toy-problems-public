@@ -19,5 +19,12 @@ describe('linkedList', () => {
   it('should return item removed from head', () => {
     linkedList.addToTail(1);
     expect(linkedList.removeHead()).to.equal(1);
+    // No item in linked list expect undefined
+    expect(linkedList.removeHead()).to.equal(undefined);
+  });
+
+  it('should check if value is contained', () => {
+    linkedList.addToTail(1);
+    expect(linkedList.contains(1)).to.be.true;
   });
 });
