@@ -1,5 +1,5 @@
 describe('hashTable', () => {
-  it('should pass', () => {
-    return true;
+  it('should have makeHashTable', () => {
+    expect(makeHashTable).to.be.a('function');
   });
 });
