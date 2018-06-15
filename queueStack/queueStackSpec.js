@@ -76,5 +76,9 @@ describe('queueStack', () => {
     it('should have size', () => {
       expect(queue.size).to.be.a('function');
     });
+
+    it('should return zero for empty queue', () => {
+      expect(queue.size()).to.equal(0);
+    });
   });
 });
