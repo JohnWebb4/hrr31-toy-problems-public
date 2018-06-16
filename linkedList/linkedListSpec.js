@@ -20,7 +20,7 @@ describe('linkedList', () => {
     linkedList.addToTail(1);
     expect(linkedList.removeHead()).to.equal(1);
     // No item in linked list expect undefined
-    expect(linkedList.removeHead()).to.equal(undefined);
+    expect(linkedList.removeHead()).to.be.null;
   });
 
   it('should check if value is contained', () => {
@@ -29,15 +29,15 @@ describe('linkedList', () => {
   });
 
   it('should handle add, removing, and containing together', () => {
-    linkedList.addToTail(1);
-    linkedList.addToTail(2);
-
-    expect(linkedList.contains(1)).to.be.true;
-    expect(linkedList.contains(2)).to.be.true;
-
-    linkedList.removeHead();
-
-    expect(linkedList.contains(1)).to.be.false;
-    expect(linkedList.contains(2)).to.be.true;
+    expect(linkedList.tail).to.be.null;
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.contains(5)).to.be.true;
+    expect(linkedList.contains(6)).to.be.false;
+    expect(linkedList.removeHead()).to.equal(4);
+    expect(linkedList.tail.value).to.equal(5);
+    expect(linkedList.removeHead()).to.equal(5);
+    expect(linkedList.removeHead()).to.be.null;
   });
 });

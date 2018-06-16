@@ -20,8 +20,8 @@
 
 
 const LinkedList = function LinkedList() {
-  this.head = undefined;
-  this.tail = undefined;
+  this.head = null;
+  this.tail = null;
 };
 
 // write methods here!
@@ -43,7 +43,7 @@ LinkedList.prototype.addToTail = function addToTail(value) {
 
 LinkedList.prototype.removeHead = function removeHead() {
   if (!this.head) {
-    return undefined;
+    return null;
   }
 
   const { value } = this.head;
