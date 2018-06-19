@@ -13,4 +13,16 @@ describe('rockPaperScissors', () => {
   it('should return an empty array for zero rounds', () => {
     expect(rockPaperScissors(0)).to.eql([]);
   });
+
+  it('should return all combinations', () => {
+    const expected = [
+      ['rock'], ['paper'], ['scissors'],
+    ];
+
+    const actual = rockPaperScissors(1);
+
+    expected.forEach((result) => {
+      expect(actual.includes(result)).to.equal(true);
+    });
+  });
 });
