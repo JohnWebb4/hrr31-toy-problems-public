@@ -9,4 +9,8 @@ describe('rockPaperScissors', () => {
     expect(rpsArray[0]).to.be.an('array');
     expect(rpsArray[0][0]).to.be.a('string');
   });
+
+  it('should return an empty array for zero rounds', () => {
+    expect(rockPaperScissors(0)).to.eql([]);
+  });
 });
