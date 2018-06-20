@@ -1,7 +1,4 @@
-describe('binaryHeap', () => {
-  let binaryHeap;
+const { describe } = require('mocha');
 
-  beforeEach(() => {
-    binaryHeap = new BinaryHeap();
-  });
+describe('binaryHeap', () => {
 });
