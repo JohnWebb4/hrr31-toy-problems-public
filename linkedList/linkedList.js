@@ -71,3 +71,5 @@ LinkedList.prototype.makeNode = function makeNode(value, next) {
     value, next,
   };
 };
+
+module.exports = LinkedList;
