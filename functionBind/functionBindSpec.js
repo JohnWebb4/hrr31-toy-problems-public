@@ -1,60 +1,64 @@
-describe('bind', function() {
-  var alice;
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
 
-  beforeEach(function() {
+const bind = require('./functionBind');
+
+describe('bind', () => {
+  let alice;
+
+  beforeEach(() => {
     alice = {
       name: 'alice',
-      shout: function(){
+      shout() {
         return this.name;
-      }
-    }
+      },
+    };
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(bind).to.be.a('function');
   });
 
-  it('should accept this parameters', function() {
-    var boundShout = bind(alice.shout, alice);
+  it('should accept this parameters', () => {
+    let boundShout = bind(alice.shout, alice);
     expect(boundShout()).to.equal('alice');
-    boundShout = bind(alice.shout, {name: 'bob'});
+    boundShout = bind(alice.shout, { name: 'bob' });
     expect(boundShout()).to.equal('bob');
   });
 
-  it('should accept initial parameters', function() {
-    var func = function(a, b) { return a + b; };
-    var boundFunc = bind(func, null, 'foo');
+  it('should accept initial parameters', () => {
+    const func = (a, b) => (a + b);
+    const boundFunc = bind(func, null, 'foo');
     expect(boundFunc('bar')).to.equal('foobar');
   });
 });
 
-describe('bind prototype', function() {
-  var alice;
+describe('bind prototype', () => {
+  let alice;
 
-  beforeEach(function() {
+  beforeEach(() => {
     alice = {
       name: 'alice',
-      shout: function(){
+      shout() {
         return this.name;
-      }
-    }
+      },
+    };
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(bind).to.be.a('function');
   });
 
-  it('should accept this parameters', function() {
-    var boundShout = alice.shout.bind(alice);
+  it('should accept this parameters', () => {
+    let boundShout = alice.shout.bind(alice);
     expect(boundShout()).to.equal('alice');
-    boundShout = alice.shout.bind({name: 'bob'});
+    boundShout = alice.shout.bind({ name: 'bob' });
     expect(boundShout()).to.equal('bob');
   });
 
-  it('should accept initial parameters', function() {
-    var func = function(a, b) { return a + b };
-    var boundFunc = func.bind(null, 'foo');
+  it('should accept initial parameters', () => {
+    const func = (a, b) => (a + b);
+    const boundFunc = func.bind(null, 'foo');
     expect(boundFunc('bar')).to.equal('foobar');
   });
 });
-
