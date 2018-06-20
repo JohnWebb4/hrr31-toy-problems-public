@@ -1,3 +1,7 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+const Tree = require('./commonAncestor');
+
 describe('commonAncestor', () => {
   let grandma;
   let mom;
@@ -43,7 +47,7 @@ describe('commonAncestor', () => {
     });
 
     it('should be null for no ancestor path', () => {
-      expect(potato.getAncestorPath(me)).to.be.null;
+      expect(potato.getAncestorPath(me)).to.equal(null);
     });
   });
 
@@ -77,7 +81,7 @@ describe('commonAncestor', () => {
     });
 
     it('should return null when no common ancestor', () => {
-      expect(grandma.getClosestCommonAncestor(me, potato)).to.be.null;
+      expect(grandma.getClosestCommonAncestor(me, potato)).to.equal(null);
     });
 
     it('should get closest common ancestor', () => {
