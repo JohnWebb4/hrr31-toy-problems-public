@@ -20,54 +20,54 @@
  * - It is not necessary to write a way to remove listeners.
  */
 
- // Whiteboard
- // I: Object to extend
- // O: Input object extended with on and trigger
- // C: No space/time complexity. See Caveats.
- // E: Multiple listeners for same event.
+// Whiteboard
+// I: Object to extend
+// O: Input object extended with on and trigger
+// C: No space/time complexity. See Caveats.
+// E: Multiple listeners for same event.
 
- // Breakdown
- // Declare events object in obj to hold all events
- // Declare on function in obj
- // Declare trigger event in obj
- // Return obj
+// Breakdown
+// Declare events object in obj to hold all events
+// Declare on function in obj
+// Declare trigger event in obj
+// Return obj
 
 
- // On functon
- // I: event name, and callback (accepts no arguments)
- // O: None
- // C: None
- // E: Adding multiple listeners to same callback
+// On functon
+// I: event name, and callback (accepts no arguments)
+// O: None
+// C: None
+// E: Adding multiple listeners to same callback
 
- // Breakdown on
- //// If events does not exit, create empty object
- //// If event name exists as ken in events, push callback
- //// Else create array with callback as first element
+// Breakdown on
+// // If events does not exit, create empty object
+// // If event name exists as ken in events, push callback
+// // Else create array with callback as first element
 
- // Trigger event
- // I: event name
- // O: None
- // C: None
- // E: Call all listeners for callback
+// Trigger event
+// I: event name
+// O: None
+// C: None
+// E: Call all listeners for callback
 
- // Breakdown trigger
- //// If events doesn't exist return
- //// If event name does not exit in events return
- //// Get array at event name
- //// Iterate through array and call listener callback
+// Breakdown trigger
+// // If events doesn't exist return
+// // If event name does not exit in events return
+// // Get array at event name
+// // Iterate through array and call listener callback
 
-var mixEvents = function(obj) {
+const mixEvents = (obj) => {
   obj.events = {};
 
-  obj.on = function(eventName, callback) {
+  obj.on = function on(eventName, callback) {
     this.events = this.events || {};
     this.events[eventName] = this.events[eventName] || [];
     this.events[eventName].push(callback);
   };
 
-  obj.trigger = function(eventName) {
+  obj.trigger = function trigger(eventName) {
     // Can't use ES6 Rest Params
-    var restArgs = Array.from(arguments).slice(1);
+    const restArgs = Array.from(arguments).slice(1);
 
     if (!this.events) {
       return;
@@ -77,10 +77,12 @@ var mixEvents = function(obj) {
       return;
     }
 
-    this.events[eventName].forEach(function(callback) {
+    this.events[eventName].forEach((callback) => {
       callback.apply(this, restArgs);
     });
-  }
+  };
 
   return obj;
 };
+
+module.exports = mixEvents;
