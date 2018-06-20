@@ -14,6 +14,16 @@ describe('rockPaperScissors', () => {
     expect(rockPaperScissors(0)).to.eql([]);
   });
 
+  function isDeepEqualArrayofArrays(actual, expected) {
+    return expected.every(result => (
+      actual.some(actualResult => (
+        actualResult.every((value, index) => (
+          value === result[index]
+        ))
+      ))
+    ));
+  }
+
   it('should return all combinations', () => {
     const expected = [
       ['rock'], ['paper'], ['scissors'],
@@ -21,8 +31,6 @@ describe('rockPaperScissors', () => {
 
     const actual = rockPaperScissors(1);
 
-    expected.forEach((result) => {
-      expect(actual.includes(result)).to.equal(true);
-    });
+    expect(isDeepEqualArrayofArrays(actual, expected)).to.equal(true);
   });
 });
