@@ -1,3 +1,8 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const makeHashTable = require('./hashTable');
+
 describe('hashTable', () => {
   let hashTable;
 
