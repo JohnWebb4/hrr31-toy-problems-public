@@ -1,3 +1,8 @@
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const { divide, modulo, multiply } = require('./implementingOperators');
+
 describe('implementingOperators', () => {
   describe('multiply', () => {
     it('should be a function', () => {

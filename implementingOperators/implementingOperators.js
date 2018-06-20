@@ -15,7 +15,7 @@
  * C: None
  * E: One number is zero, Negative numbers
 */
-let multiply = (x, y) => {
+const multiply = (x, y) => {
   const isNegative = Boolean((x < 0) ^ (y < 0));
 
   const absX = Math.abs(x);
@@ -35,7 +35,7 @@ let multiply = (x, y) => {
  * C: None
  * E: Negative numbers, and divide by zero
 */
-let divide = (x, y, decimalPlaces=3) => {
+const divide = (x, y, decimalPlaces = 3) => {
   if (y === 0) {
     return NaN;
   }
@@ -63,7 +63,7 @@ let divide = (x, y, decimalPlaces=3) => {
   return isNegative ? -quotient : quotient;
 };
 
-let modulo = (x, y) => {
+const modulo = (x, y) => {
   if (y === 0) {
     return NaN;
   }
@@ -79,3 +79,7 @@ let modulo = (x, y) => {
 
   return isNegative ? -remainder : remainder;
 };
+
+module.exports.multiply = multiply;
+module.exports.divide = divide;
+module.exports.modulo = modulo;
