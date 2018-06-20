@@ -31,11 +31,11 @@
 // Whiteboard
 // What is JSONP? Json with padding.
 // How do I initiate a jsonp request?
-//// Can't use Jquery
-//// Can't use XMLHttpRequest
-//// Need to add script tag to body.
-////// Set script source to url
-////// Supply callback ?callback=...
+// // Can't use Jquery
+// // Can't use XMLHttpRequest
+// // Need to add script tag to body.
+// // // Set script source to url
+// // // Supply callback ?callback=...
 
 // Callback Structure
 // O: None.
@@ -54,11 +54,13 @@
 // Set script source with query callback set to callback
 // Append script tag to document
 
-var jsonpRequest = function(url, callback) {
-  var script = document.createElement('script');
+const jsonpRequest = (url, callback) => {
+  const script = document.createElement('script');
 
-  script.src = url + '?callback=callback';
+  script.src = `${url}?callback=callback`;
 
   window.callback = callback;
   document.getElementsByTagName('html')[0].appendChild(script);
 };
+
+module.exports = jsonpRequest;
