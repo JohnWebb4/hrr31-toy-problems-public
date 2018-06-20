@@ -1,3 +1,8 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const longestPalindrome = require('./longestPalindrome');
+
 describe('longestPalindrome', () => {
   let sentence;
   let sentenceEven;
