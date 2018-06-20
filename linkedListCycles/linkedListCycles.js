@@ -1,5 +1,7 @@
 /*
- * Assignment: Write a function that returns true if a linked list contains a cycle, or false if it terminates somewhere
+ * Assignment: Write a function that
+ * returns true if a linked list contains a cycle, or
+ * false if it terminates somewhere
  *
  * Explanation:
  *
@@ -7,8 +9,10 @@
  *
  * A -> B -> C -> D -> E -> null
  *
- * A 'cycle' in a linked list is when traversing the list would result in visiting the same nodes over and over
- * This is caused by pointing a node in the list to another node that already appeared earlier in the list. Example:
+ * A 'cycle' in a linked list is when
+ * traversing the list would result in visiting the same nodes over and over
+ * This is caused by pointing a node in the list to
+ * another node that already appeared earlier in the list. Example:
  *
  * A -> B -> C
  *      ^    |
@@ -37,19 +41,17 @@
  * C: Linear time, constant space, Do NOT mutate initial linked list
  * E: Is not cyclic, very small cycle A -> B -> A, Entire list cycles A -> B -> C -> A
 */
-var Node = function(value) {
-  return { value: value, next: null };
+const Node = function Node(value) {
+  return { value, next: null };
 };
 
-var hasCycle = function(linkedList) {
-  var currentNode = linkedList.next;
-  var slowNode = linkedList;
-  var updateSlowNode = false;
+const hasCycle = function hasCycle(linkedList) {
+  let currentNode = linkedList.next;
+  let slowNode = linkedList;
+  let updateSlowNode = false;
 
   do {
-    if (currentNode === null) {
-      return false;
-    } if (currentNode === slowNode) {
+    if (currentNode === slowNode) {
       return true;
     }
 
@@ -60,5 +62,10 @@ var hasCycle = function(linkedList) {
     }
 
     updateSlowNode = !updateSlowNode;
-  } while (true);
+  } while (currentNode);
+
+  return false;
 };
+
+module.exports.Node = Node;
+module.exports.hasCycle = hasCycle;
