@@ -33,4 +33,16 @@ describe('rockPaperScissors', () => {
 
     expect(isDeepEqualArrayofArrays(actual, expected)).to.equal(true);
   });
+
+  it('should return all combinations for two rounds', () => {
+    const expected = [
+      ['rock', 'rock'], ['rock', 'paper'], ['rock', 'scissors'],
+      ['paper', 'rock'], ['paper', 'paper'], ['paper', 'scissors'],
+      ['scissors', 'rock'], ['scissors', 'paper'], ['scissors', 'scissors'],
+    ];
+
+    const actual = rockPaperScissors(2);
+
+    expect(isDeepEqualArrayofArrays(actual, expected)).to.equal(true);
+  });
 });
