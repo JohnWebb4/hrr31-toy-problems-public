@@ -21,19 +21,20 @@
 // Return value
 
 // Reduce array to object
-// Key number value and store another object with lowest index and if occured an even number of times
+// Key number value and store another object with lowest index,
+// and if occured an even number of times
 
 
-var evenOccurrence = function(arr) {
-  var valueFirstEvenOccurence = null;
-  var indexFirstEvenOccurence = arr.length;
+const evenOccurrence = (arr) => {
+  let valueFirstEvenOccurence = null;
+  let indexFirstEvenOccurence = arr.length;
 
-  var countOccurances = arr.reduce(function(occurances, number, index) {
-    if (occurances[number]) {
-      occurances[number]['isEvenOccurance'] = !occurances[number]['isEvenOccurance'];
+  arr.reduce((occurances, number, index) => {
+    const tempOccurances = occurances.slice();
+    if (tempOccurances[number]) {
+      tempOccurances[number].isEvenOccurance = !tempOccurances[number].isEvenOccurance;
 
-      var isEvenOccurance = occurances[number]['isEvenOccurance'];
-      var firstIndex = occurances[number]['firstIndex'];
+      const { isEvenOccurance, firstIndex } = tempOccurances[number];
 
       if (isEvenOccurance && firstIndex < indexFirstEvenOccurence) {
         valueFirstEvenOccurence = number;
@@ -41,19 +42,21 @@ var evenOccurrence = function(arr) {
       }
 
       if (number === valueFirstEvenOccurence && !isEvenOccurance) {
-       valueFirstEvenOccurence = null;
-       indexFirstEvenOccurence = arr.length;
+        valueFirstEvenOccurence = null;
+        indexFirstEvenOccurence = arr.length;
       }
-
     } else {
-      occurances[number] = {
+      tempOccurances[number] = {
         firstIndex: index,
-        isEvenOccurance: false
+        isEvenOccurance: false,
       };
     }
 
-    return occurances;
+    return tempOccurances;
   }, {});
 
   return valueFirstEvenOccurence;
 };
+
+module.exports = evenOccurrence;
+
