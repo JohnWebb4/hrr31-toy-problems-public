@@ -36,7 +36,7 @@
  */
 
 // Solved in O(n) time with O(1) memory
-var sumArray = function(array) {
+const sumArray = (array) => {
   // Termination case
   if (array.length === 0) {
     return null;
@@ -47,29 +47,27 @@ var sumArray = function(array) {
     return array[0];
   }
 
-  var totalSum = array.reduce((sum, number) => {
-    return sum + number;
-  });
+  const totalSum = array.reduce((sum, number) => sum + number);
 
   // Get smallest number
-  var smallestNumber = array.reduce((previousSmallNumber, number) => {
+  const smallestNumber = array.reduce((previousSmallNumber, number) => {
     if (number < previousSmallNumber) {
       return number;
-    } else {
-      return previousSmallNumber;
     }
+
+    return previousSmallNumber;
   });
 
-  var smallestNumberIndex = array.lastIndexOf(smallestNumber);
+  const smallestNumberIndex = array.lastIndexOf(smallestNumber);
 
-  var firstHalfSum;
+  let firstHalfSum;
   if (smallestNumberIndex !== 0) {
     firstHalfSum = sumArray(array.slice(0, smallestNumberIndex));
   } else {
     firstHalfSum = smallestNumber;
   }
 
-  var lastHalfSum;
+  let lastHalfSum;
   if (smallestNumberIndex !== array.length - 1) {
     lastHalfSum = sumArray(array.slice(smallestNumberIndex + 1));
   } else {

@@ -1,6 +1,11 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const sumArray = require('./sumArray');
+
 describe('sumArray', () => {
-  var tests;
-  var results;
+  let tests;
+  let results;
 
   beforeEach(() => {
     tests = [
@@ -11,11 +16,11 @@ describe('sumArray', () => {
       [10, -11, 11], // 11
       [1, 2, 3, -4, 5, -4, 5, -4], // 8
       [1, 2, 3, -4, 5, -4, 5, -4, -4], // 8
-      [1, 2, 3,- 4, 5, -4, 5, -4, -4, -1] // 8
+      [1, 2, 3, -4, 5, -4, 5, -4, -4, -1], // 8
     ];
 
     results = [
-      6, 6, 7, 8, 11, 8, 8, 8
+      6, 6, 7, 8, 11, 8, 8, 8,
     ];
   });
 
@@ -24,7 +29,7 @@ describe('sumArray', () => {
   });
 
   it('should not mutate the input array', () => {
-    var aTest = tests[0].slice();
+    const aTest = tests[0].slice();
     sumArray(aTest);
     expect(aTest).to.eql(tests[0]);
   });
@@ -40,7 +45,7 @@ describe('sumArray', () => {
   });
 
   it('should handle largest sum of all negative numbers', () => {
-    expect(sumArray([-7,-6,-9])).to.equal(-6);
+    expect(sumArray([-7, -6, -9])).to.equal(-6);
     expect(sumArray([-3, -2, -1, -2, -3])).to.equal(-1);
   });
 });
