@@ -30,7 +30,10 @@ const makeBoard = function makeBoard(n) {
 
 /* Whiteboarding
  * O: Number of possibilities
- * I: N: board size, board: a Board class object, i: Robot starting column (from left), j: Robot starting row (from top)
+ * I: N: board size,
+ * board: a Board class object,
+ * i: Robot starting column (from left),
+ * j: Robot starting row (from top)
  * C: None
  * E: None
 
@@ -55,3 +58,5 @@ const robotPaths = function robotPaths(n, board, i, j) {
   return pathCount;
 };
 
+module.exports.makeBoard = makeBoard;
+module.exports.robotPaths = robotPaths;

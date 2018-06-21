@@ -1,3 +1,8 @@
+const { beforeEach, xdescribe, it } = require('mocha');
+const { expect } = require('chai');
+
+const { makeBoard, robotPaths } = require('./robotPaths');
+
 xdescribe('robotPaths', () => {
   let board;
   let n;
