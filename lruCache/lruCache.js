@@ -214,3 +214,5 @@ LRUCache.prototype.set = function set(key, val) {
   this.list.unshift(new LRUCacheItem(key, val));
   this.listSize += 1;
 };
+
+module.exports = LRUCache;

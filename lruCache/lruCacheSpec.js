@@ -1,3 +1,8 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const LRUCache = require('./lruCache');
+
 describe('lruCache', () => {
   let lruCache;
 
@@ -18,7 +23,7 @@ describe('lruCache', () => {
   });
 
   it('should return null for missing item', () => {
-    expect(lruCache.get('test')).to.be.null;
+    expect(lruCache.get('test')).to.equal(null);
   });
 
   it('should have a set function', () => {
@@ -41,7 +46,7 @@ describe('lruCache', () => {
     lruCache.set('the', 'value2');
     lruCache.set('best', 'value3');
 
-    expect(lruCache.get('tests')).to.be.null;
+    expect(lruCache.get('tests')).to.equal(null);
     expect(lruCache.get('are')).to.equal('value1');
     expect(lruCache.get('the')).to.equal('value2');
     expect(lruCache.get('best')).to.equal('value3');
@@ -59,7 +64,7 @@ describe('lruCache', () => {
     lruCache.set('best', 'value3');
 
     expect(lruCache.get('tests')).to.equal('value');
-    expect(lruCache.get('are')).to.be.null;
+    expect(lruCache.get('are')).to.equal(null);
     expect(lruCache.get('the')).to.equal('value2');
     expect(lruCache.get('best')).to.equal('value3');
   });
@@ -74,7 +79,7 @@ describe('lruCache', () => {
     lruCache.set('best', 'value3');
 
     expect(lruCache.get('tests')).to.equal('valueOther');
-    expect(lruCache.get('are')).to.be.null;
+    expect(lruCache.get('are')).to.equal(null);
     expect(lruCache.get('the')).to.equal('value2');
     expect(lruCache.get('best')).to.equal('value3');
   });
