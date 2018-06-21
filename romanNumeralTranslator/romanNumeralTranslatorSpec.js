@@ -1,3 +1,8 @@
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const translateRomanNumeral = require('./romanNumeralTranslator');
+
 describe('romanNumeralTranslator', () => {
   it('should be a function', () => {
     expect(translateRomanNumeral).to.be.a('function');
