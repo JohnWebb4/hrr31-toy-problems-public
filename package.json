@@ -4,8 +4,9 @@
   "description": "Toy Problems",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "node index.js",
     "test": "find ./ -name '*Spec.js' | xargs mocha",
+    "server-dev": "nodemon --inspect index.js",
     "eslint": "./node_modules/eslint/bin/eslint.js"
   },
   "repository": {
