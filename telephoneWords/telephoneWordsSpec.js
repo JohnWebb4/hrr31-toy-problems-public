@@ -1,6 +1,11 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const telephoneWords = require('./telephoneWords');
+
 describe('telephoneWords', () => {
-  var phoneNumber;
-  var numberPossibilities;
+  let phoneNumber;
+  let possiblePhoneWords;
 
   beforeEach(() => {
     phoneNumber = '0123';
@@ -13,7 +18,7 @@ describe('telephoneWords', () => {
       '01BF',
       '01CD',
       '01CE',
-      '01CF'
+      '01CF',
     ];
   });
 
@@ -22,7 +27,7 @@ describe('telephoneWords', () => {
   });
 
   it('should return an array', () => {
-    expect(Array.isArray(telephoneWords(phoneNumber))).to.be.true;
+    expect(Array.isArray(telephoneWords(phoneNumber))).to.equal(true);
   });
 
   it('should return all word combinations', () => {
