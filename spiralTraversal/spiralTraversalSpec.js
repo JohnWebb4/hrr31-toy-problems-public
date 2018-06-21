@@ -1,3 +1,8 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const spiralTraversal = require('./spiralTraversal');
+
 describe('spiralTraversal', () => {
   let arrayToTraverse;
   let spiralArray;
