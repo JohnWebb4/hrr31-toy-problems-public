@@ -80,6 +80,10 @@ const modulo = (x, y) => {
   return isNegative ? -remainder : remainder;
 };
 
-module.exports.multiply = multiply;
-module.exports.divide = divide;
-module.exports.modulo = modulo;
+try {
+  module.exports.multiply = multiply;
+  module.exports.divide = divide;
+  module.exports.modulo = modulo;
+} catch (e) {
+  // Loading webpage, ignore
+}

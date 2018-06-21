@@ -70,4 +70,8 @@ const longestPalindrome = (sentence) => {
   return theLongestPalindrome;
 };
 
-module.exports = longestPalindrome;
+try {
+  module.exports = longestPalindrome;
+} catch (e) {
+  // Loading webpage, ignore
+}

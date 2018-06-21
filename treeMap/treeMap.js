@@ -139,3 +139,9 @@ Tree.prototype.removeChild = function removeChild(child) {
     throw new Error('That node is not an immediate child of this tree');
   }
 };
+
+try {
+  module.exports = Tree;
+} catch (e) {
+  // Loading webpage, ignore
+}

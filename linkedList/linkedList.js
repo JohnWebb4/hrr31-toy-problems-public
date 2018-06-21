@@ -72,4 +72,8 @@ LinkedList.prototype.makeNode = function makeNode(value, next) {
   };
 };
 
-module.exports = LinkedList;
+try {
+  module.exports = LinkedList;
+} catch (e) {
+  // Loading webpage, ignore
+}

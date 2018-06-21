@@ -108,4 +108,8 @@ Tree.prototype.removeChild = function removeChild(child) {
   }
 };
 
-module.exports = Tree;
+try {
+  module.exports = Tree;
+} catch (e) {
+  // Loading webpage, ignore
+}

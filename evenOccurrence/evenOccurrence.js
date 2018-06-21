@@ -58,5 +58,9 @@ const evenOccurrence = (arr) => {
   return valueFirstEvenOccurence;
 };
 
-module.exports = evenOccurrence;
+try {
+  module.exports = evenOccurrence;
+} catch (e) {
+  // Loading webpage, ignore
+}
 

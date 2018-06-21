@@ -81,4 +81,8 @@ const spiralTraversal = (matrix) => {
   return firstRow.concat(remainSpiral);
 };
 
-module.exports = spiralTraversal;
+try {
+  module.exports = spiralTraversal;
+} catch (e) {
+  // Loading webpage, ignore
+}

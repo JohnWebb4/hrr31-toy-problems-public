@@ -58,5 +58,9 @@ const robotPaths = function robotPaths(n, board, i, j) {
   return pathCount;
 };
 
-module.exports.makeBoard = makeBoard;
-module.exports.robotPaths = robotPaths;
+try {
+  module.exports.makeBoard = makeBoard;
+  module.exports.robotPaths = robotPaths;
+} catch (e) {
+  // Loading webpage, ignore
+}

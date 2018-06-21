@@ -67,4 +67,8 @@ const insertionSort = function insertionSort(array, comparator = (a, b) => {
   return array;
 };
 
-module.exports = insertionSort;
+try {
+  module.exports = insertionSort;
+} catch (e) {
+  // Loading webpage, ignore
+}

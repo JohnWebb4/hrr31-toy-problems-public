@@ -85,4 +85,8 @@ const mixEvents = (obj) => {
   return obj;
 };
 
-module.exports = mixEvents;
+try {
+  module.exports = mixEvents;
+} catch (e) {
+  // Loading webpage, ignore
+}

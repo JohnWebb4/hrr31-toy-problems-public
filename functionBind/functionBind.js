@@ -83,13 +83,18 @@ const bind = (func, objThis, ...initArgs) => (
 // // Call apply on outer function passing in this and arguments
 // // Return result
 
-Function.prototype.bind = function bind(objThis, ...initArgs) {
+Function.prototype.bind = function bindFunc(objThis, ...initArgs) {
   // Maintain context
   const context = this;
   return function boundFunc() {
+    console.log('Arguments', arguments);
     const totalArgs = initArgs.concat(Array.from(arguments));
     return context.apply(objThis, totalArgs);
   };
 };
 
-module.exports = bind;
+try {
+  module.exports = bind;
+} catch (e) {
+  // Loading webpage, ignore
+}

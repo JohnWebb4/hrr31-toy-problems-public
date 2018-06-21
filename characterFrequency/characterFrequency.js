@@ -108,4 +108,8 @@ const characterFrequency = function characterFrequency(string) {
   return result;
 };
 
-module.exports = characterFrequency;
+try {
+  module.exports = characterFrequency;
+} catch (e) {
+  // Loading webpage, ignore
+}

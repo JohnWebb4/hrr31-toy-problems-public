@@ -44,4 +44,8 @@ const translateRomanNumeral = (romanNumeral) => {
   }, 0);
 };
 
-module.exports = translateRomanNumeral;
+try {
+  module.exports = translateRomanNumeral;
+} catch (e) {
+  // Loading webpage, ignore
+}

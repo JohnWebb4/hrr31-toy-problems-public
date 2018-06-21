@@ -71,5 +71,9 @@ const Queue = function Queue() {
   };
 };
 
-module.exports.Stack = Stack;
-module.exports.Queue = Queue;
+try {
+  module.exports.Stack = Stack;
+  module.exports.Queue = Queue;
+} catch (e) {
+  // Loading webpage, ignore
+}
