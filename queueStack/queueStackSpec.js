@@ -1,3 +1,8 @@
+const { beforeEach, describe, it } = require('mocha');
+const { expect } = require('chai');
+
+const { Stack, Queue } = require('./queueStack');
+
 describe('queueStack', () => {
   describe('stack', () => {
     let stack;
