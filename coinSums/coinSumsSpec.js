@@ -1,6 +1,6 @@
 const { beforeEach, describe, it } = require('mocha');
 const { expect } = require('chai');
-const { makeChange } = require('./coinSums');
+const makeChange = require('./coinSums');
 
 describe('coinSum', () => {
   let changeTotals;
