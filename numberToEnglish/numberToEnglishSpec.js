@@ -1,3 +1,8 @@
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
+
+require('./numberToEnglish');
+
 describe('numberToEnglish', () => {
   it('should be a function', () => {
     expect(Number.prototype.toEnglish).to.be.a('function');
@@ -77,6 +82,6 @@ describe('numberToEnglish', () => {
   });
 
   it('should write MAX_INT', () => {
-    expect(Math.pow(2, 53).toEnglish()).to.equal('nine quadrillion seven trillion one hundred ninety-nine billion two hundred fifty-four million seven hundred forty thousand nine hundred ninety-two');
+    expect((2 ** 53).toEnglish()).to.equal('nine quadrillion seven trillion one hundred ninety-nine billion two hundred fifty-four million seven hundred forty thousand nine hundred ninety-two');
   });
 });
