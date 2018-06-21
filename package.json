@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "find ./ -name '*Spec.js' | xargs mocha",
+    "test": "find ./ -name '*Spec.js' | xargs mocha -b",
+    "mocha": "mocha",
     "server-dev": "nodemon --inspect index.js",
     "eslint": "./node_modules/eslint/bin/eslint.js"
   },
