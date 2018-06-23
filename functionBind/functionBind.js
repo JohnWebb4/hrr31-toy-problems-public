@@ -45,10 +45,9 @@
 // // Returns result
 
 const bind = (func, objThis, ...initArgs) => (
-  () => {
-    const totalArgs = initArgs.concat(Array.from(arguments));
-    return func.apply(objThis, totalArgs);
-  }
+  (...args) => (
+    func.apply(objThis, initArgs.concat(args))
+  )
 );
 
 /*
@@ -85,12 +84,9 @@ const bind = (func, objThis, ...initArgs) => (
 
 Function.prototype.bind = function bindFunc(objThis, ...initArgs) {
   // Maintain context
-  const context = this;
-  return function boundFunc() {
-    console.log('Arguments', arguments);
-    const totalArgs = initArgs.concat(Array.from(arguments));
-    return context.apply(objThis, totalArgs);
-  };
+  return (...args) => (
+    this.apply(objThis, initArgs.concat(args))
+  );
 };
 
 try {
