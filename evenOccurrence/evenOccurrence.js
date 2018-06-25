@@ -30,7 +30,7 @@ const evenOccurrence = (arr) => {
   let indexFirstEvenOccurence = arr.length;
 
   arr.reduce((occurances, number, index) => {
-    const tempOccurances = occurances.slice();
+    const tempOccurances = Object.assign({}, occurances);
     if (tempOccurances[number]) {
       tempOccurances[number].isEvenOccurance = !tempOccurances[number].isEvenOccurance;
 
@@ -58,9 +58,5 @@ const evenOccurrence = (arr) => {
   return valueFirstEvenOccurence;
 };
 
-try {
-  module.exports = evenOccurrence;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default evenOccurrence;
 

@@ -1,6 +1,6 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
-const Tree = require('./commonAncestor');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import Tree from './commonAncestor';
 
 describe('commonAncestor', () => {
   let grandma;

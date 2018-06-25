@@ -89,8 +89,4 @@ Function.prototype.bind = function bindFunc(objThis, ...initArgs) {
   );
 };
 
-try {
-  module.exports = bind;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default bind;

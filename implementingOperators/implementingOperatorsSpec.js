@@ -1,7 +1,7 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const { divide, modulo, multiply } = require('./implementingOperators');
+import { divide, modulo, multiply } from './implementingOperators';
 
 describe('implementingOperators', () => {
   describe('multiply', () => {

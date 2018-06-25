@@ -85,3 +85,5 @@ BinaryHeap.prototype.insert = function insert(value) {
 BinaryHeap.prototype.removeRoot = function removeRoot() {
   // TODO: Your code here
 };
+
+export default BinaryHeap;

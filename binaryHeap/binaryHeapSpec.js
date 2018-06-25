@@ -1,4 +1,4 @@
-const { describe } = require('mocha');
+import { describe } from 'mocha';
 
 describe('binaryHeap', () => {
 });

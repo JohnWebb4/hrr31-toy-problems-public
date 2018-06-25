@@ -72,7 +72,7 @@ const numbersToPlace = {
   1000000000000000000: 'quintillion',
 };
 
-Number.prototype.toEnglish = function toEnglish() {
+function toEnglish() {
   // Handle negative numbers
   if (this < 0) {
     return `negative ${(-this).toEnglish()}`;
@@ -115,7 +115,7 @@ Number.prototype.toEnglish = function toEnglish() {
     return numbersToWords[arrayDigits[0]];
   };
 
-  const lessThanAThousandToEnglish = function lessThanAHundredToEnglish(arrayDigits) {
+  const lessThanAThousandToEnglish = function lessThanAThousandToEnglish(arrayDigits) {
     let stringEnglish = '';
 
     if (arrayDigits.length === 3) {
@@ -131,7 +131,7 @@ Number.prototype.toEnglish = function toEnglish() {
     return stringEnglish;
   };
 
-  for (const threeDigits of arrayNumber) {
+  arrayNumber.forEach((threeDigits) => {
     const thousandsEnglish = lessThanAThousandToEnglish(threeDigits);
     if (thousandsEnglish) {
       if (numbersToPlace[place]) {
@@ -146,7 +146,11 @@ Number.prototype.toEnglish = function toEnglish() {
 
     // Finally
     place *= 1000;
-  }
+  });
 
   return stringEnglish;
-};
+}
+
+Number.prototype.toEnglish = toEnglish;
+
+export default toEnglish;

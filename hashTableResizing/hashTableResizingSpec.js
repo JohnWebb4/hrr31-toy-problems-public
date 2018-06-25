@@ -1,7 +1,7 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const makeHashTable = require('./hashTableResizing');
+import makeHashTable from './hashTableResizing';
 
 describe('hashTableResizing', () => {
   it('should be a function', () => {

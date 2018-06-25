@@ -72,8 +72,4 @@ LinkedList.prototype.makeNode = function makeNode(value, next) {
   };
 };
 
-try {
-  module.exports = LinkedList;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default LinkedList;

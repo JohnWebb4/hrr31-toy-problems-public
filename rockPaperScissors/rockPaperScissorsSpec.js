@@ -1,7 +1,7 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const rockPaperScissors = require('./rockPaperScissors');
+import rockPaperScissors from './rockPaperScissors';
 
 describe('rockPaperScissors', () => {
   it('should be a function', () => {

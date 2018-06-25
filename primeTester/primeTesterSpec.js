@@ -1,7 +1,7 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const { primeTester, primeSieve } = require('./primeTester');
+import { primeTester, primeSieve } from './primeTester';
 
 describe('primeTester', () => {
   it('should handle non-prime numbers', () => {

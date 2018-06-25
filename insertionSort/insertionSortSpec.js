@@ -1,7 +1,7 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const insertionSort = require('./insertionSort');
+import insertionSort from './insertionSort';
 
 describe('insertionSort', () => {
   const testingTransform = function testingTransform(array) {

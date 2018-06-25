@@ -70,8 +70,4 @@ const makeHashTable = function makeHashTable() {
   return result;
 };
 
-try {
-  module.exports = makeHashTable;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default makeHashTable;

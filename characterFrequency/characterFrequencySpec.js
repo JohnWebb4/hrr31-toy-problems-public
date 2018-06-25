@@ -1,6 +1,6 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
-const { characterFrequency } = require('./characterFrequency');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import characterFrequency from './characterFrequency';
 
 describe('characterFrequency', () => {
   let characterString;

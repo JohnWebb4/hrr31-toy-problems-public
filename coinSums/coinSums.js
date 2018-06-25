@@ -65,8 +65,4 @@ const makeChange = (total, maxChangeValue = 200) => {
   return numChangeCombinations;
 };
 
-try {
-  module.exports = makeChange;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default makeChange;

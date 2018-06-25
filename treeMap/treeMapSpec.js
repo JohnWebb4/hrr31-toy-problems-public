@@ -1,7 +1,7 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const Tree = require('./treeMap');
+import Tree from './treeMap';
 
 describe('treeMap', () => {
   let tree;

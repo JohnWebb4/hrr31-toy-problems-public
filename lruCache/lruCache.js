@@ -215,8 +215,4 @@ LRUCache.prototype.set = function set(key, val) {
   this.listSize += 1;
 };
 
-try {
-  module.exports = LRUCache;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default LRUCache;

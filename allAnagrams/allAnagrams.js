@@ -65,8 +65,4 @@ const allAnagrams = (string) => {
   return anagrams;
 };
 
-try {
-  module.exports = allAnagrams;
-} catch (e) {
-  // Loading webpage, do not export
-}
+export default allAnagrams;

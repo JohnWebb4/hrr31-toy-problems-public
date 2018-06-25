@@ -168,8 +168,4 @@ Tree.prototype.removeChild = function removeChild(child) {
   }
 };
 
-try {
-  module.exports = Tree;
-} catch (e) {
-  // Loading webpage, ignore
-}
+export default Tree;

@@ -1,6 +1,6 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
-const makeChange = require('./coinSums');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import makeChange from './coinSums';
 
 describe('coinSum', () => {
   let changeTotals;

@@ -1,7 +1,7 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
 
-const LinkedList = require('./linkedList.js');
+import LinkedList from './linkedList';
 
 describe('linkedList', () => {
   let linkedList;

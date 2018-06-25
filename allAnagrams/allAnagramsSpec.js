@@ -1,6 +1,6 @@
-const { beforeEach, describe, it } = require('mocha');
-const { expect } = require('chai');
-const allAnagrams = require('./allAnagrams.js');
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import allAnagrams from './allAnagrams';
 
 describe('allAnagrams', () => {
   let string;
