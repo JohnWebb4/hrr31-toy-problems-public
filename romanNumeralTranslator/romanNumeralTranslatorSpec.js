@@ -27,4 +27,8 @@ describe('romanNumeralTranslator', () => {
     expect(translateRomanNumeral('IX')).to.equal(9);
     expect(translateRomanNumeral('CIV')).to.equal(104);
   });
+
+  it('should return null if not passed a string', () => {
+    expect(translateRomanNumeral(50)).to.equal(null);
+  });
 });
