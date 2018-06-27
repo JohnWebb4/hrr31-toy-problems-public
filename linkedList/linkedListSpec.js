@@ -46,4 +46,13 @@ describe('linkedList', () => {
     expect(linkedList.removeHead()).to.equal(5);
     expect(linkedList.removeHead()).to.equal(null);
   });
+
+  it('should remove head and tail, when popping list with one element', () => {
+    linkedList.addToTail(4);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.tail.value).to.equal(4);
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
 });
