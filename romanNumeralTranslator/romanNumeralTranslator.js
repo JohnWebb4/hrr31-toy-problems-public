@@ -28,6 +28,10 @@ const DIGIT_VALUES = {
 };
 
 const translateRomanNumeral = (romanNumeral) => {
+  if (typeof romanNumeral !== 'string') {
+    return null;
+  }
+
   let prevNumeral;
 
   return (romanNumeral.split('')).reverse().reduce((sum, char) => {
