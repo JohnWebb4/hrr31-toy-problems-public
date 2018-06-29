@@ -48,21 +48,21 @@ const insertionSort = function insertionSort(array, comparator = (a, b) => {
   return 0;
 }) {
   // Bubble sort
-  let changedArray;
+  let isChanged;
 
   const sort = (element, index) => {
     if (index + 1 < array.length && comparator(element, array[index + 1]) > 0) {
       array[index] = array[index + 1];
       array[index + 1] = element;
-      changedArray = true;
+      isChanged = true;
     }
   };
 
   do {
-    changedArray = false;
+    isChanged = false;
 
     array.forEach(sort);
-  } while (changedArray);
+  } while (isChanged);
 
   return array;
 };

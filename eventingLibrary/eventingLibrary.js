@@ -65,10 +65,7 @@ const mixEvents = (obj) => {
     this.events[eventName].push(callback);
   };
 
-  obj.trigger = function trigger(eventName) {
-    // Can't use ES6 Rest Params
-    const restArgs = Array.from(arguments).slice(1);
-
+  obj.trigger = function trigger(eventName, ...restArgs) {
     if (!this.events) {
       return;
     }

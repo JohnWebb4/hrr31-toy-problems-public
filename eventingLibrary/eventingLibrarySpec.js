@@ -25,7 +25,8 @@ describe('eventingLibrary / mixEvents', () => {
   });
 
   it('should register event', () => {
-    mixObj.on('deposit', () => console.log('hi'));
+    const triggered = true;
+    mixObj.on('deposit', () => triggered);
 
     expect(mixObj.events.deposit).to.be.an('array');
   });

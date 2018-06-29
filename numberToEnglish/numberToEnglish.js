@@ -95,8 +95,6 @@ function toEnglish() {
   };
 
   const lessThanAHundredToEnglish = function lessThanAHundredToEnglish(arrayDigits) {
-    const stringEnglish = '';
-
     // If double digits
     if (arrayDigits.length === 2) {
       if (arrayDigits[0] === '1') {
@@ -116,19 +114,19 @@ function toEnglish() {
   };
 
   const lessThanAThousandToEnglish = function lessThanAThousandToEnglish(arrayDigits) {
-    let stringEnglish = '';
+    let thousandsEnglish = '';
 
     if (arrayDigits.length === 3) {
-      const hundredsEnglish = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
-      if (hundredsEnglish !== numbersToWords[0]) {
-        stringEnglish += `${hundredsEnglish} ${numbersToPlace[100]}`;
+      const resultEnglishHundreds = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
+      if (resultEnglishHundreds !== numbersToWords[0]) {
+        thousandsEnglish += `${resultEnglishHundreds} ${numbersToPlace[100]}`;
       }
     }
 
-    stringEnglish += stringEnglish && lessThanAHundredToEnglish(arrayDigits.slice(-2)) ? ' ' : '';
-    stringEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
+    thousandsEnglish += thousandsEnglish && lessThanAHundredToEnglish(arrayDigits.slice(-2)) ? ' ' : '';
+    thousandsEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
 
-    return stringEnglish;
+    return thousandsEnglish;
   };
 
   arrayNumber.forEach((threeDigits) => {

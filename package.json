@@ -4,13 +4,13 @@
   "description": "Toy Problems",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development --watch",
+    "lint": "eslint ./**/*.js",
+    "lint:fix": "eslint ./**/*.js --fix",
     "start": "node index.js",
-    "test": "find ./ -name '*Spec.js' | xargs mocha -b --compilers js:babel-core/register",
-    "server-dev": "nodemon --inspect index.js",
-    "eslint": "eslint ./**/*.js",
-    "eslint-fix": "eslint ./**/*.js --fix",
-    "webpack-dev": "webpack --mode=development --watch",
-    "postinstall": "webpack --mode=production"
+    "start:dev": "nodemon --inspect index.js",
+    "test": "find ./ -name '*Spec.js' | xargs mocha -b --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",

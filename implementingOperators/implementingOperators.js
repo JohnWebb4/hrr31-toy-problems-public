@@ -16,7 +16,7 @@
  * E: One number is zero, Negative numbers
 */
 const multiply = (x, y) => {
-  const isNegative = Boolean((x < 0) ^ (y < 0));
+  const isNegative = ((x < 0 && y >= 0) || (x >= 0 && y < 0));
 
   const absX = Math.abs(x);
   const absY = Math.abs(y);
@@ -40,7 +40,7 @@ const divide = (x, y, decimalPlaces = 3) => {
     return NaN;
   }
 
-  const isNegative = Boolean((x < 0) ^ (y < 0));
+  const isNegative = ((x < 0 && y >= 0) || (x >= 0 && y < 0));
 
   const absX = Math.abs(x);
   const absY = Math.abs(y);

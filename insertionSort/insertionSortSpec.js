@@ -119,8 +119,8 @@ describe('insertionSort', () => {
     array = testingTransform([0, 1, 2, 3, 4, 5]);
 
     insertionSort(array, (a, b) => {
-      const aIsOdd = a.value & 1;
-      const bIsOdd = b.value & 1;
+      const aIsOdd = a.value % 2;
+      const bIsOdd = b.value % 2;
 
       return aIsOdd - bIsOdd;
     });

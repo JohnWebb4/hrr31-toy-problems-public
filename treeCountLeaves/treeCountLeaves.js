@@ -46,7 +46,7 @@ Tree.prototype.countLeaves = function countLeaves() {
   // Recursive case
   return this.children.reduce((numLeaves, childTree) => {
     if (childTree === Object(childTree)) {
-      if (childTree.hasOwnProperty('value') && childTree.hasOwnProperty('children')) {
+      if (Object.prototype.hasOwnProperty.call(childTree, 'value') && Object.prototype.hasOwnProperty.call(childTree, 'children')) {
         numLeaves += childTree.countLeaves();
       }
     }
