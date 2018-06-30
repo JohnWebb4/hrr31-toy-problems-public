@@ -19,13 +19,20 @@
 // list.removeHead(); //yields 'null';
 
 
+/**
+ * Creates a linked list
+ * @class
+ */
 const LinkedList = function LinkedList() {
   this.head = null;
   this.tail = null;
 };
 
-// write methods here!
-
+/**
+ * Add element to tail
+ * @param {*} value Value to add
+ * @returns {*} Value added
+ */
 LinkedList.prototype.addToTail = function addToTail(value) {
   const node = this.makeNode(value);
 
@@ -41,6 +48,10 @@ LinkedList.prototype.addToTail = function addToTail(value) {
   return this.tail.value;
 };
 
+/**
+ * Remove element from head
+ * @returns {*} Value removed
+ */
 LinkedList.prototype.removeHead = function removeHead() {
   if (!this.head) {
     return null;
@@ -58,6 +69,11 @@ LinkedList.prototype.removeHead = function removeHead() {
   return value;
 };
 
+/**
+ * Check if list contains element
+ * @param {*} value Value to check
+ * @returns {boolean} Element exists in list
+ */
 LinkedList.prototype.contains = function contains(value) {
   let node = this.head;
 
@@ -71,6 +87,12 @@ LinkedList.prototype.contains = function contains(value) {
   return false;
 };
 
+/**
+ * Generate a node
+ * @param {*} value Value of node
+ * @param {*} next Next node in list
+ * @returns {*} Node object
+ */
 LinkedList.prototype.makeNode = function makeNode(value, next) {
   return {
     value, next,

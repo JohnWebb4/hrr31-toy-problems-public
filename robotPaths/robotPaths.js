@@ -6,7 +6,6 @@
  *  there to the bottom right corner?
  *
  *  make your solution work for a grid of any size.
- *
  */
 
 /**

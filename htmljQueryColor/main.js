@@ -1,5 +1,5 @@
 $(() => {
-  // --------------STEP 1--------------
+  // --------------STEP 1---------------
   // wrap every word in every `<p>` tag with a `<span>` tag.
   // for example: <p>Hey there</p>
   // becomes: <p><span>Hey</span><span>there</span></p>

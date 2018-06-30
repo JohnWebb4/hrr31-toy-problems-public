@@ -17,6 +17,9 @@
  * all non-empty string inputs to be valid roman numerals.
  */
 
+/**
+ * @type {Object} Roman numeral keys to values
+ */
 const DIGIT_VALUES = {
   I: 1,
   V: 5,
@@ -27,6 +30,11 @@ const DIGIT_VALUES = {
   M: 1000,
 };
 
+/**
+ * Translate roman numeral to number
+ * @param {string} romanNumeral Roman numeral to translate
+ * @returns {number} Number equivalent
+ */
 const translateRomanNumeral = (romanNumeral) => {
   if (typeof romanNumeral !== 'string') {
     return null;
