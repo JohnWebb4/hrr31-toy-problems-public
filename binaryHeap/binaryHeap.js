@@ -38,20 +38,25 @@
  * if it is less than its parent. After a swap it must compare itself to its new parent, continuing
  * until it is no longer less than its parent.
  *
- * Something similar happens when we want to remove the root node. Because we can only remove from the
- * end of the array we swap the position of the last node and the root node and then remove the now-last
- * node from the heap. The new root node now must be compared to its children and if it is not less than
- * both of them, be swapped with whichever of the two of them is the smallest. It is then compared with its
+ * Something similar happens when we want to remove the root node.
+ * Because we can only remove from the
+ * end of the array we swap the position of the last node and the root node,
+ * and then remove the now-last node from the heap.
+ * The new root node now must be compared to its children and if it is not less than
+ * both of them, be swapped with whichever of the two of them is the smallest.
+ * It is then compared with its
  * new children and this swapping continues until it is less than both its children.
  *
- * You can see a great visualization of a binary min heap in action here, play around with it until you can
+ * You can see a great visualization of a binary min heap in action here,
+ * play around with it until you can
  * easily guess how the heap will behave with both insertion and removal:
  * https://www.cs.usfca.edu/~galles/visualization/Heap.html
  */
 
 
 // Below is a binary heap whose nodes are integers. Its storage is an array and
-// its `getRoot` method is already written. `BinaryHeap`'s `this._compare` method is hard-coded to return
+// its `getRoot` method is already written.
+// `BinaryHeap`'s `this._compare` method is hard-coded to return
 // whether the fist element passed into it is less than the second. Use it when comparing nodes.
 //
 // Implement the `insert` and `removeRoot` methods, each operating in logarithmic time relative
@@ -59,31 +64,124 @@
 // the equations above to navigate parent / child relationships in the storage array, and write any
 // helper functions needed to assist you.
 //
-// Extra credit: `BinaryHeap`'s `this._compare` is hard-coded to assist in making a min heap, modify `BinaryHeap`
+// Extra credit:
+// `BinaryHeap`'s `this._compare` is hard-coded to assist in making a min heap, modify `BinaryHeap`
 // to accept an optional argument which is a function used as the sorting mechanism for the heap.
 // That way you can use your `BinaryHeap` class to construct a max heap or min heap or whatever.
 //
-// Extra extra credit: Implement `heapSort`. `heapSort` takes an array, constructs it into a `BinaryHeap`
-// and then iteratively returns the root of the `BinaryHeap` until its empty, thus returning a sorted array.
+// Extra extra credit:
+// Implement `heapSort`. `heapSort` takes an array, constructs it into a `BinaryHeap`
+// and then iteratively returns the root of the `BinaryHeap` until its empty,
+// thus returning a sorted array.
 
-
-function BinaryHeap() {
-  this._heap = [];
-  // this compare function will result in a minHeap, use it to make comparisons between nodes in your solution
-  this._compare = function _compare(i, j) { return i < j; };
+/**
+ * Generates a BinaryHeap
+ * @constructor
+ * @param {function} compare Optional comparator function
+*/
+function BinaryHeap(compare) {
+  this.heap = [];
+  this.size = 0;
+  // this compare function will result in a minHeap,
+  // use it to make comparisons between nodes in your solution
+  this.compare = compare || function _compare(i, j) { return i < j; };
 }
 
-// This function works just fine and shouldn't be modified
+/**
+ * This function works just fine and shouldn't be modified
+ * @returns { number } rootIndex Index of root
+*/
 BinaryHeap.prototype.getRoot = function getRoot() {
-  return this._heap[0];
+  return this.heap[0];
 };
 
+/**
+ * Get the index of the parent node
+ * @param {number} index - of child
+ * @returns {number} Index of parent
+*/
+BinaryHeap.prototype.getParentIndex = function getParentIndex(index) {
+  if (index === 0) {
+    // If root node
+    return undefined;
+  }
+
+  return Math.floor((index - 1) / 2);
+};
+
+/**
+ *  Sorts the node at the index
+ * @param {number} index index in heap
+*/
+BinaryHeap.prototype.sortNodeAtIndex = function sortNodeAtIndex(index) {
+  const parentIndex = this.getParentIndex(index);
+
+  if (this.compare(this.heap[index], this.heap[parentIndex])) {
+    const temp = this.heap[parentIndex];
+    this.heap[parentIndex] = this.heap[index];
+    this.heap[index] = temp;
+
+    this.sortNodeAtIndex(parentIndex);
+  }
+};
+
+/**
+ *  Insert value to end of heap
+ * @param {*} value
+ * @param {*} value inserted value
+ */
 BinaryHeap.prototype.insert = function insert(value) {
-  // TODO: Your code here
+  this.heap.push(value);
+  this.size += 1;
+  this.sortNodeAtIndex(this.heap.length - 1);
+  return value;
 };
 
+/**
+ * Remove root note
+ * @returns {*} value removed
+ */
 BinaryHeap.prototype.removeRoot = function removeRoot() {
-  // TODO: Your code here
+  if (this.size === 1) {
+    this.size -= 1;
+    return this.heap.shift();
+  } else if (this.size === 2) {
+    this.size -= 1;
+    return this.heap.shift();
+  }
+
+  let layer = 0;
+  let index = 0;
+  let leftIndex = 1;
+  const rootValue = this.heap[0];
+
+  while (leftIndex < this.size) {
+    const rightIndex = leftIndex + 1;
+
+    const leftNode = this.heap[leftIndex];
+    const rightNode = this.heap[rightIndex];
+
+    let smallestValue = leftNode;
+    let smallestValueIndex = leftIndex;
+
+    if (rightIndex < this.size && rightNode < leftNode) {
+      smallestValue = rightNode;
+      smallestValueIndex = rightIndex;
+    }
+
+    this.heap[index] = smallestValue;
+    index = smallestValueIndex;
+
+
+    layer += 1;
+    leftIndex = (layer * 2) + index;
+  }
+
+  // Last index is duplicate
+  this.heap.splice(index, 1);
+
+  this.size -= 1;
+  return rootValue;
 };
 
 export default BinaryHeap;
