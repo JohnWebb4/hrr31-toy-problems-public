@@ -31,4 +31,5 @@ bower_components
 # webpack
 bundle.js
 
+# Ignore babel
 .babelrc
