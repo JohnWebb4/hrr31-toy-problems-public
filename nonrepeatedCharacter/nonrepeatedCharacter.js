@@ -10,4 +10,6 @@ const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
   // TODO: your solution here
 };
 
-module.exports = firstNonRepeatedCharacter;
+if (module) {
+  module.exports = firstNonRepeatedCharacter;
+}

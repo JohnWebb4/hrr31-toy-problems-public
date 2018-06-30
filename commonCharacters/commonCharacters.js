@@ -15,4 +15,6 @@ const commonCharacters = function commonCharacters(string1, string2) {
   // TODO: Your code here!
 };
 
-module.exports = commonCharacters;
+if (module) {
+  module.exports = commonCharacters;
+}

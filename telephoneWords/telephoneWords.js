@@ -72,4 +72,6 @@ const telephoneWords = (digitString) => {
   // TODO: return every combination that can be spelled on a phone with these digits
 };
 
-module.exports = telephoneWords;
+if (module) {
+  module.exports = telephoneWords;
+}

@@ -80,4 +80,6 @@ const modulo = (x, y) => {
   return isNegative ? -remainder : remainder;
 };
 
-module.exports = { multiply, divide, modulo };
+if (module) {
+  module.exports = { multiply, divide, modulo };
+}
