@@ -20,9 +20,8 @@
  *
  */
 
-var nthFibonacci = function (n) {
+const nthFibonacci = function nthFibonacci(n) {
   // TODO: implement me!
 };
 
-
-
+export default nthFibonacci;
