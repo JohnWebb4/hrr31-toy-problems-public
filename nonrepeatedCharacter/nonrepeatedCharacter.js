@@ -6,6 +6,8 @@
  *   firstNonRepeatedCharacter('AACBDB'); // => 'C'
  */
 
-var firstNonRepeatedCharacter = function(string) {
+const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
   // TODO: your solution here
 };
+
+export default firstNonRepeatedCharacter;
