@@ -18,4 +18,14 @@ describe('binaryHeap', () => {
     expect(binaryHeap.insert(1)).to.equal(1);
     expect(binaryHeap.getRoot()).to.equal(1);
   });
+
+  it('should insert child nodes', () => {
+    binaryHeap.insert(0);
+    binaryHeap.insert(1);
+    binaryHeap.insert(2);
+
+    expect(binaryHeap.heap[0]).to.equal(0);
+    expect(binaryHeap.heap[1]).to.equal(1);
+    expect(binaryHeap.heap[2]).to.equal(2);
+  });
 });
