@@ -56,4 +56,4 @@ const translateRomanNumeral = (romanNumeral) => {
   }, 0);
 };
 
-export default translateRomanNumeral;
+module.exports = translateRomanNumeral;
