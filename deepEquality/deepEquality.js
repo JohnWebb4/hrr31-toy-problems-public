@@ -11,5 +11,7 @@
   * don't worry about handling cyclical object structures.
   *
   */
-var deepEquals = function(apple, orange) {
+const deepEquals = function deepEquals(apple, orange) {
 };
+
+export default deepEquals;
