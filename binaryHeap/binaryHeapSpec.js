@@ -43,7 +43,7 @@ describe('binaryHeap', () => {
     expect(binaryHeap.heap[4]).to.equal(0);
   });
 
-  it('should should remove a single element heap', () => {
+  it('should remove a single element heap', () => {
     binaryHeap.insert(0);
     binaryHeap.removeRoot();
     expect(binaryHeap.getRoot()).to.equal(undefined);
@@ -52,5 +52,20 @@ describe('binaryHeap', () => {
   it('should return removed element', () => {
     binaryHeap.insert(0);
     expect(binaryHeap.removeRoot()).to.equal(0);
+  });
+
+  it('should remove a mult-element heap', () => {
+    binaryHeap.insert(0);
+    binaryHeap.insert(1);
+    binaryHeap.insert(2);
+    binaryHeap.insert(3);
+    binaryHeap.insert(4);
+
+    binaryHeap.removeRoot();
+
+    expect(binaryHeap.heap[0]).to.equal(1);
+    expect(binaryHeap.heap[1]).to.equal(3);
+    expect(binaryHeap.heap[2]).to.equal(2);
+    expect(binaryHeap.heap[3]).to.equal(4);
   });
 });
