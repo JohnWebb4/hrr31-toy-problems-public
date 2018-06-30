@@ -37,4 +37,4 @@ const bubbleSort = function bubbleSort(array) {
   // Your code here.
 };
 
-export default bubbleSort;
+module.exports = bubbleSort;

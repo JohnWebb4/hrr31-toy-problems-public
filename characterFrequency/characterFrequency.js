@@ -109,4 +109,4 @@ const characterFrequency = function characterFrequency(string) {
   });
 };
 
-export default characterFrequency;
+module.exports = characterFrequency;

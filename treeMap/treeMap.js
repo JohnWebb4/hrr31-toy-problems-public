@@ -140,4 +140,4 @@ Tree.prototype.removeChild = function removeChild(child) {
   }
 };
 
-export default Tree;
+module.exports = Tree;

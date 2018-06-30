@@ -65,4 +65,4 @@ const allAnagrams = (string) => {
   return anagrams;
 };
 
-export default allAnagrams;
+module.exports = allAnagrams;

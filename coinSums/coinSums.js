@@ -65,4 +65,4 @@ const makeChange = (total, maxChangeValue = 200) => {
   return numChangeCombinations;
 };
 
-export default makeChange;
+module.exports = makeChange;

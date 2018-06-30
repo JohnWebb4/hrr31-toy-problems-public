@@ -58,5 +58,5 @@ const evenOccurrence = (arr) => {
   return valueFirstEvenOccurence;
 };
 
-export default evenOccurrence;
+module.exports = evenOccurrence;
 

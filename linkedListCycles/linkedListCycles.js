@@ -67,4 +67,4 @@ const hasCycle = function hasCycle(linkedList) {
   return false;
 };
 
-export { Node, hasCycle };
+module.exports = { Node, hasCycle };
