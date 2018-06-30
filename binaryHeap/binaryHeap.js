@@ -184,4 +184,4 @@ BinaryHeap.prototype.removeRoot = function removeRoot() {
   return rootValue;
 };
 
-export default BinaryHeap;
+module.exports = BinaryHeap;

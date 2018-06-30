@@ -12,4 +12,4 @@ const largestProductOfThree = function largestProductOfThree(array) {
   // TODO: everything
 };
 
-export default largestProductOfThree;
+module.exports = largestProductOfThree;

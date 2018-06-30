@@ -129,4 +129,4 @@ const makeHashTable = function makeHashTable() {
   return result;
 };
 
-export default makeHashTable;
+module.exports = makeHashTable;

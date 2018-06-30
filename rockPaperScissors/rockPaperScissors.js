@@ -49,4 +49,4 @@ const rockPaperScissors = function rockPaperScissors(numRounds = 3) {
   return results;
 };
 
-export default rockPaperScissors;
+module.exports = rockPaperScissors;

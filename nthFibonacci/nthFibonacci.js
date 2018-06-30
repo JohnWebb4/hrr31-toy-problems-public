@@ -24,4 +24,4 @@ const nthFibonacci = function nthFibonacci(n) {
   // TODO: implement me!
 };
 
-export default nthFibonacci;
+module.exports = nthFibonacci;

@@ -67,4 +67,4 @@ const insertionSort = function insertionSort(array, comparator = (a, b) => {
   return array;
 };
 
-export default insertionSort;
+module.exports = insertionSort;
