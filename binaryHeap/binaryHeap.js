@@ -54,25 +54,27 @@
  */
 
 
-// Below is a binary heap whose nodes are integers. Its storage is an array and
-// its `getRoot` method is already written.
-// `BinaryHeap`'s `this._compare` method is hard-coded to return
-// whether the fist element passed into it is less than the second. Use it when comparing nodes.
-//
-// Implement the `insert` and `removeRoot` methods, each operating in logarithmic time relative
-// to the size of the heap, and each restoring the heap's property of parent to child sorting. Use
-// the equations above to navigate parent / child relationships in the storage array, and write any
-// helper functions needed to assist you.
-//
-// Extra credit:
-// `BinaryHeap`'s `this._compare` is hard-coded to assist in making a min heap, modify `BinaryHeap`
-// to accept an optional argument which is a function used as the sorting mechanism for the heap.
-// That way you can use your `BinaryHeap` class to construct a max heap or min heap or whatever.
-//
-// Extra extra credit:
-// Implement `heapSort`. `heapSort` takes an array, constructs it into a `BinaryHeap`
-// and then iteratively returns the root of the `BinaryHeap` until its empty,
-// thus returning a sorted array.
+/**
+ Below is a binary heap whose nodes are integers. Its storage is an array and
+ its `getRoot` method is already written.
+ `BinaryHeap`'s `this._compare` method is hard-coded to return
+ whether the fist element passed into it is less than the second. Use it when comparing nodes.
+
+ Implement the `insert` and `removeRoot` methods, each operating in logarithmic time relative
+ to the size of the heap, and each restoring the heap's property of parent to child sorting. Use
+ the equations above to navigate parent / child relationships in the storage array, and write any
+ helper functions needed to assist you.
+
+ Extra credit:
+ `BinaryHeap`'s `this._compare` is hard-coded to assist in making a min heap, modify `BinaryHeap`
+ to accept an optional argument which is a function used as the sorting mechanism for the heap.
+ That way you can use your `BinaryHeap` class to construct a max heap or min heap or whatever.
+
+ Extra extra credit:
+ Implement `heapSort`. `heapSort` takes an array, constructs it into a `BinaryHeap`
+ and then iteratively returns the root of the `BinaryHeap` until its empty,
+ thus returning a sorted array.
+*/
 
 /**
  * Generates a BinaryHeap

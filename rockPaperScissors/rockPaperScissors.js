@@ -17,14 +17,15 @@
 *
 */
 
-// Input:    Number of rounds
-// Output:   Every possible combination
-
-// Options: 'rock', 'paper', 'scissors'
-// Array of length 3^n of arrays of n length
-
+/**
+ * @type {Array} Strings of value
+ */
 const rockPaperScissorsArray = ['rock', 'paper', 'scissors'];
 
+/**
+ * Get all possibilities for x rounds of rock, paper, scissors
+ * @param {*} [numRounds=3] Number of rounds
+ */
 const rockPaperScissors = function rockPaperScissors(numRounds = 3) {
   if (numRounds <= 0) {
     return [];
