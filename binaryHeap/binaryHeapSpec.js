@@ -28,4 +28,29 @@ describe('binaryHeap', () => {
     expect(binaryHeap.heap[1]).to.equal(1);
     expect(binaryHeap.heap[2]).to.equal(2);
   });
+
+  it('should swap nodes with parent', () => {
+    binaryHeap.insert(0);
+    binaryHeap.insert(-1);
+    binaryHeap.insert(1);
+    binaryHeap.insert(2);
+    binaryHeap.insert(-2);
+
+    expect(binaryHeap.heap[0]).to.equal(-2);
+    expect(binaryHeap.heap[1]).to.equal(-1);
+    expect(binaryHeap.heap[2]).to.equal(1);
+    expect(binaryHeap.heap[3]).to.equal(2);
+    expect(binaryHeap.heap[4]).to.equal(0);
+  });
+
+  it('should should remove a single element heap', () => {
+    binaryHeap.insert(0);
+    binaryHeap.removeRoot();
+    expect(binaryHeap.getRoot()).to.equal(undefined);
+  });
+
+  it('should return removed element', () => {
+    binaryHeap.insert(0);
+    expect(binaryHeap.removeRoot()).to.equal(0);
+  });
 });
