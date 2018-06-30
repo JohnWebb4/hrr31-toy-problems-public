@@ -8,6 +8,8 @@
  */
 
 
-var largestProductOfThree = function(array) {
+const largestProductOfThree = function largestProductOfThree(array) {
   // TODO: everything
 };
+
+export default largestProductOfThree;
