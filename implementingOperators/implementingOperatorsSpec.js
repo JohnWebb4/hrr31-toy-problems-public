@@ -1,3 +1,8 @@
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import { divide, modulo, multiply } from './implementingOperators';
+
 describe('implementingOperators', () => {
   describe('multiply', () => {
     it('should be a function', () => {

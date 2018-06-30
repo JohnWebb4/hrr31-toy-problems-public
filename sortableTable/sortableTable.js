@@ -6,7 +6,7 @@
  * words, integers, floats, and dates (in the form YYYY-MM-DD).
  *
  * Use the table provided in index.html.
- **/
+ * */
 
 /* Notes
  * Hook event on all table headers (<th>)
@@ -31,64 +31,64 @@
  ** Assign sorted elements to table body
 */
 
-$(function () {
-  var getDataFromTableRows = function($array, elementIndex, dataIndex) {
+const $ = require('jquery');
+
+$(() => {
+  const getDataFromTableRows = function getDataFromTableRows($array, elementIndex, dataIndex) {
     return $($($array[elementIndex]).find('td')[dataIndex]).text();
-  }
+  };
 
-  $('#myTable thead tr').on('click', 'th', function(event) {
-    var sortIndex = $(event.target).index();
+  $('#myTable thead tr').on('click', 'th', (event) => {
+    const sortIndex = $(event.target).index();
 
-    var $items = $('#myTable tbody tr');
+    let $items = $('#myTable tbody tr');
 
-    var parseString = function(string) {
-      if (!isNaN(Number(string))) {
+    const parseString = function parseString(string) {
+      if (!Number.isNaN(Number(string))) {
         return Number(string);
-      } else if (!isNaN(new Date(string).valueOf())) {
+      } else if (!Number.isNaN(new Date(string).valueOf())) {
         return new Date(string);
-      } else {
-        return string
       }
+      return string;
     };
 
-    var shouldSwap = function(value1, value2) {
+    const shouldSwap = function shouldSwap(value1, value2) {
       if (typeof value1 === 'string') {
-        return  value1 > value2;
-      }
-      else if (typeof value1 === 'number') {
         return value1 > value2;
-      } else {
-        return value1 < value2;
-
+      } else if (typeof value1 === 'number') {
+        return value1 > value2;
       }
-
+      return value1 < value2;
     };
 
-    var swapNodes = function(node1, node2) {
-      var copyNode1 = $(node1).clone(true);
-      var copyNode2 = $(node2).clone(true);
+    const swapNodes = function swapNodes(node1, node2) {
+      const copyNode1 = $(node1).clone(true);
+      const copyNode2 = $(node2).clone(true);
 
       $(node1).replaceWith(copyNode2);
       $(node2).replaceWith(copyNode1);
     };
 
     // Bubble sort
-    var changedValue = false;
+    let changedValue = false;
+
+    const sort = (index) => {
+      if (index < $items.length - 1) {
+        const value1 = parseString(getDataFromTableRows($items, index, sortIndex));
+        const value2 = parseString(getDataFromTableRows($items, index + 1, sortIndex));
+        if (shouldSwap(value1, value2)) {
+          swapNodes($items[index], $items[index + 1]);
+          $items = $('#myTable tbody tr');
+
+          changedValue = true;
+        }
+      }
+    };
+
     do {
       changedValue = false;
-      $items.each(function(index, value) {
-        if (index < $items.length - 1) {
-          var value1 = parseString(getDataFromTableRows($items, index, sortIndex));
-          var value2 = parseString(getDataFromTableRows($items, index + 1, sortIndex));
-          if (shouldSwap(value1, value2)) {
-            swapNodes($items[index], $items[index + 1]);
-            $items = $('#myTable tbody tr');
-
-            changedValue = true;
-          }
-        }
-      });
-    } while(changedValue);
+      $items.each(sort);
+    } while (changedValue);
   });
 });
 

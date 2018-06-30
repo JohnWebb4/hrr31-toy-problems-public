@@ -1,3 +1,8 @@
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import makeHashTable from './hashTable';
+
 describe('hashTable', () => {
   let hashTable;
 

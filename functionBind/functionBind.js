@@ -40,16 +40,15 @@
 // More Whiteboard
 // Parameters need function, this, initial parameters (Rest?)
 // Return function that accepts arguments
-//// Function concats initial arguments with passed arguments
-//// Function calls apply with this context and concated arguments
-//// Returns result
+// // Function concats initial arguments with passed arguments
+// // Function calls apply with this context and concated arguments
+// // Returns result
 
-var bind = function(func, objThis, ...initArgs) {
-  return function() {
-    var totalArgs = initArgs.concat(Array.from(arguments));
-    return func.apply(objThis, totalArgs);
-  }
-};
+const bind = (func, objThis, ...initArgs) => (
+  (...args) => (
+    func.apply(objThis, initArgs.concat(args))
+  )
+);
 
 /*
  * Function.prototype.bind:
@@ -79,15 +78,15 @@ var bind = function(func, objThis, ...initArgs) {
 // Whiteboard
 // Get this, and initial arguments (Rest)
 // Return function that accepts arguments
-//// Concat initial arguments with passed arguments
-//// Call apply on outer function passing in this and arguments
-//// Return result
+// // Concat initial arguments with passed arguments
+// // Call apply on outer function passing in this and arguments
+// // Return result
 
-Function.prototype.bind = function(objThis, ...initArgs) {
+Function.prototype.bind = function bindFunc(objThis, ...initArgs) {
   // Maintain context
-  var context = this;
-  return function() {
-    var totalArgs = initArgs.concat(Array.from(arguments));
-    return context.apply(objThis, totalArgs);
-  }
+  return (...args) => (
+    this.apply(objThis, initArgs.concat(args))
+  );
 };
+
+export default bind;

@@ -24,11 +24,16 @@ const DIGIT_VALUES = {
   L: 50,
   C: 100,
   D: 500,
-  M: 1000
+  M: 1000,
 };
 
-const translateRomanNumeral = function(romanNumeral) {
-  let prevNumeral = undefined;
+const translateRomanNumeral = (romanNumeral) => {
+  if (typeof romanNumeral !== 'string') {
+    return null;
+  }
+
+  let prevNumeral;
+
   return (romanNumeral.split('')).reverse().reduce((sum, char) => {
     let value = 0;
 
@@ -42,3 +47,5 @@ const translateRomanNumeral = function(romanNumeral) {
     return sum + value;
   }, 0);
 };
+
+export default translateRomanNumeral;

@@ -4,78 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Mocha Tests</title>
-    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+    <link rel="stylesheet" href="https://unpkg.com/mocha@5.2.0/mocha.css">
 
   </head>
   <body>
     <div id="mocha"></div>
-    <script src="bower_components/mocha/mocha.js"></script>
-    <script src="bower_components/chai/chai.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script crossorigin src="https://unpkg.com/mocha@5.2.0/mocha.js"></script>
+    <script crossorigin src="https://unpkg.com/chai@4.1.2/chai.js"></script>
+    <script crossorigin src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
     <script>
       mocha.setup({
-        'ui': 'bdd',
+        'ui': 'tdd',
         'bail': true
       });
-    </script>
-    <script>window.expect = chai.expect</script>
-
-    <!-- source files -->
-    <!-- <script type="text/javascript" src="evenOccurrence/evenOccurrence.js"></script> -->
-    <!-- <script type="text/javascript" src="treeCountLeaves/treeCountLeaves.js"></script> -->
-    <!-- <script type="text/javascript" src="primeTester/primeTester.js"></script> -->
-    <!-- <script type="text/javascript" src="insertionSort/insertionSort.js"></script> -->
-    <!-- <script type="text/javascript" src="characterFrequency/characterFrequency.js"></script> -->
-    <!-- <script type="text/javascript" src="treeMap/treeMap.js"></script> -->
-    <!-- <script type="text/javascript" src="sumArray/sumArray.js"></script> -->
-    <!-- <script type="text/javascript" src="numberToEnglish/numberToEnglish.js"></script> -->
-    <!-- <script type="text/javascript" src="telephoneWords/telephoneWords.js"></script> -->
-    <!-- <script type="text/javascript" src="functionBind/functionBind.js"></script> -->
-    <!-- <script type="text/javascript" src="coinSums/coinSums.js"></script> -->
-    <!-- <script type="text/javascript" src="jsonpFetcher/jsonpFetcher.js"></script> -->
-    <!-- <script type="text/javascript" src="eventingLibrary/eventingLibrary.js"></script> -->
-    <!-- <script type="text/javascript" src="hashTableResizing/hashTableResizing.js"></script> -->
-    <!-- <script type="text/javascript" src="linkedListCycles/linkedListCycles.js"></script> -->
-    <!-- <script type="text/javascript" src="allAnagrams/allAnagrams.js"></script> -->
-    <!-- <script type="text/javascript" src="longestPalindrome/longestPalindrome.js"></script> -->
-    <script type="text/javascript" src="lruCache/lruCache.js"></script>
-    <!-- <script type="text/javascript" src="implementingOperators/implementingOperators.js"></script> -->
-    <!-- <script type="text/javascript" src="spiralTraversal/spiralTraversal.js"></script> -->
-    <!-- <script type="text/javascript" src="commonAncestor/commonAncestor.js"></script> -->
-    <script type="text/javascript" src="romanNumeralTranslator/romanNumeralTranslator.js"></script>
-    <script type="text/javascript" src="hashTable/hashTable.js"></script>
-    <script type="text/javascript" src="linkedList/linkedList.js"></script>
-    <script type="text/javascript" src="queueStack/queueStack.js"></script>
-
-    <!-- spec files -->
-    <!-- <script type="text/javascript" src="evenOccurrence/evenOccurrenceSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="treeCountLeaves/treeCountLeavesSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="primeTester/primeTesterSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="insertionSort/insertionSortSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="characterFrequency/characterFrequencySpec.js"></script> -->
-    <!-- <script type="text/javascript" src="treeMap/treeMapSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="sumArray/sumArraySpec.js"></script> -->
-    <!-- <script type="text/javascript" src="numberToEnglish/numberToEnglishSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="telephoneWords/telephoneWordsSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="functionBind/functionBindSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="coinSums/coinSumsSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="jsonpFetcher/jsonpFetcherSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="eventingLibrary/eventingLibrarySpec.js"></script> -->
-    <!-- <script type="text/javascript" src="hashTableResizing/hashTableResizingSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="linkedListCycles/linkedListCyclesSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="allAnagrams/allAnagramsSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="longestPalindrome/longestPalindromeSpec.js"></script> -->
-    <script type="text/javascript" src="lruCache/lruCacheSpec.js"></script>
-    <!-- <script type="text/javascript" src="implementingOperators/implementingOperatorsSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="spiralTraversal/spiralTraversalSpec.js"></script> -->
-    <!-- <script type="text/javascript" src="commonAncestor/commonAncestorSpec.js"></script> -->
-    <script type="text/javascript" src="romanNumeralTranslator/romanNumeralTranslatorSpec.js"></script>
-    <script type="text/javascript" src="hashTable/hashTableSpec.js"></script>
-    <script type="text/javascript" src="linkedList/linkedListSpec.js"></script>
-    <script type="text/javascript" src="queueStack/queueStackSpec.js"></script>
-
+    </script> 
+    <script src="bundle.js"></script>
     <script>
-
       $(function() {
         window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
       });

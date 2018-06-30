@@ -7,11 +7,11 @@
 // to turn any string into an integer that is well-distributed between
 // 0 and max - 1
 const getIndexBelowMaxForKey = function getIndexBelowMaxForKey(str, max) {
-  var hash = 0;
+  let hash = 0;
 
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     hash = (hash << 5) + hash + str.charCodeAt(i);
-    hash = hash & hash; // Convert to 32bit integer
+    hash &= hash; // Convert to 32bit integer
     hash = Math.abs(hash);
   }
 
@@ -19,15 +19,15 @@ const getIndexBelowMaxForKey = function getIndexBelowMaxForKey(str, max) {
 };
 
 const makeKeyObject = function makeKeyObject(key, value) {
-  return { key: key, value: value };
+  return { key, value };
 };
 
 const makeHashTable = function makeHashTable() {
-  let result = {};
+  const result = {};
   const storage = [];
-  let storageLimit = 1000;
+  const storageLimit = 1000;
 
-  result.insert = function(key, value) {
+  result.insert = function insert(key, value) {
     const index = getIndexBelowMaxForKey(key, storageLimit);
     if (!storage[index]) {
       const keyValue = makeKeyObject(key, value);
@@ -38,7 +38,7 @@ const makeHashTable = function makeHashTable() {
     return (storage[index].push(makeKeyObject(key, value))).value;
   };
 
-  result.retrieve = function(key) {
+  result.retrieve = function retrieve(key) {
     const index = getIndexBelowMaxForKey(key, storageLimit);
     if (!storage[index]) {
       return undefined;
@@ -46,20 +46,20 @@ const makeHashTable = function makeHashTable() {
 
     let value;
 
-    storage[index].forEach(function getValue(keyValue) {
+    storage[index].forEach((keyValue) => {
       if (keyValue.key === key) {
-        value = keyValue.value;
+        ({ value } = keyValue);
       }
     });
 
     return value;
   };
 
-  result.remove = function(key) {
+  result.remove = function remove(key) {
     const index = getIndexBelowMaxForKey(key, storageLimit);
 
     if (storage[index]) {
-      storage[index].forEach(function removeValue(keyValue, keyIndex) {
+      storage[index].forEach((keyValue, keyIndex) => {
         if (keyValue.key === key) {
           storage[index].splice(keyIndex, 1);
         }
@@ -69,3 +69,5 @@ const makeHashTable = function makeHashTable() {
 
   return result;
 };
+
+export default makeHashTable;

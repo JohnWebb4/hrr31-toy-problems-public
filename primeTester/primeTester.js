@@ -4,7 +4,7 @@
  * a prime number, false if it's not.
  */
 
-var primeTester = function(n) {
+const primeTester = (n) => {
   if (typeof n !== 'number' || n <= 1 || n % 1 !== 0) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
@@ -14,9 +14,9 @@ var primeTester = function(n) {
     return true;
   }
 
-  var sqrtN = Math.ceil(Math.sqrt(n));
+  const sqrtN = Math.ceil(Math.sqrt(n));
 
-  for (var maybePrime = 2; maybePrime <= sqrtN; maybePrime++) {
+  for (let maybePrime = 2; maybePrime <= sqrtN; maybePrime += 1) {
     if (n % maybePrime === 0) {
       return false;
     }
@@ -32,28 +32,31 @@ var primeTester = function(n) {
  * saucy, check out the Sieve of Atkin.)
  */
 
-var primeSieveFrom2 = function(end) {
-  var isPrimeArray = Array(end + 2).fill(true);
+const primeSieveFrom2 = (end) => {
+  const isPrimeArray = Array(end + 2).fill(true);
   isPrimeArray[0] = false;
   isPrimeArray[1] = false;
 
-  var primeNumbers = [];
+  const primeNumbers = [];
 
-  for (var maybePrime = 2; maybePrime <= end; maybePrime++) {
+  for (let maybePrime = 2; maybePrime <= end; maybePrime += 1) {
     if (isPrimeArray[maybePrime]) {
       primeNumbers.push(maybePrime);
-      for (var primeSquareMultiple = maybePrime ** 2;
-           primeSquareMultiple <= end; primeSquareMultiple += maybePrime) {
+      for (let primeSquareMultiple = maybePrime ** 2;
+        primeSquareMultiple <= end; primeSquareMultiple += maybePrime) {
         isPrimeArray[primeSquareMultiple] = false;
       }
     }
   }
 
   return primeNumbers;
-}
+};
 
-var primeSieve = function (start, end) {
-  return primeSieveFrom2(end).filter(function(prime) {
-    return prime >= start;
-  });
+const primeSieve = (start, end) => (
+  primeSieveFrom2(end).filter(prime => prime >= start)
+);
+
+export {
+  primeTester,
+  primeSieve,
 };

@@ -48,7 +48,12 @@ LinkedList.prototype.removeHead = function removeHead() {
 
   const { value } = this.head;
 
-  this.head = this.head.next;
+  // If removing the only element in linked list
+  if (this.head === this.tail) {
+    this.tail = null;
+  }
+
+  this.head = this.head.next || null;
 
   return value;
 };
@@ -71,3 +76,5 @@ LinkedList.prototype.makeNode = function makeNode(value, next) {
     value, next,
   };
 };
+
+export default LinkedList;

@@ -1,35 +1,48 @@
-describe('linkedListCycles', function() {
-  var linearList;
-  var cyclicList;
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
 
-  beforeEach(function() {
+import { Node, hasCycle } from './linkedListCycles';
+
+describe('linkedListCycles', () => {
+  let linearList;
+  let cyclicList;
+
+  beforeEach(() => {
     linearList = Node('A');
-    var nodeB = linearList.next = Node('B');
-    var nodeC = nodeB.next = Node('C');
-    var nodeD = nodeC.next = Node('D');
-    var nodeE = nodeD.next = Node('E');
+    const nodeB = Node('B');
+    linearList.next = nodeB;
+    const nodeC = Node('C');
+    nodeB.next = nodeC;
+    const nodeD = Node('D');
+    nodeC.next = nodeD;
+    const nodeE = Node('E');
+    nodeD.next = nodeE;
 
     cyclicList = Node('A');
-    var cNodeB = cyclicList.next = Node('B');
-    var cNodeC = cNodeB.next = Node('C');
-    var cNodeD = cNodeC.next = Node('D');
-    var cNodeE = cNodeD.next = Node('E');
+    const cNodeB = Node('B');
+    cyclicList.next = cNodeB;
+    const cNodeC = Node('C');
+    cNodeB.next = cNodeC;
+    const cNodeD = Node('D');
+    cNodeC.next = cNodeD;
+    const cNodeE = Node('E');
+    cNodeD.next = cNodeE;
     cNodeE.next = cNodeB;
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(hasCycle).to.be.a('function');
   });
 
-  it('should return a Boolean', function() {
+  it('should return a Boolean', () => {
     expect(hasCycle(linearList)).to.be.a('boolean');
   });
 
-  it('should return false for linear linked list', function() {
-    expect(hasCycle(linearList)).to.be.false;
+  it('should return false for linear linked list', () => {
+    expect(hasCycle(linearList)).to.equal(false);
   });
 
-  it('should return true for cyclic lined list', function() {
-    expect(hasCycle(cyclicList)).to.be.true;
+  it('should return true for cyclic lined list', () => {
+    expect(hasCycle(cyclicList)).to.equal(true);
   });
 });

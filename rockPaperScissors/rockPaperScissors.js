@@ -23,47 +23,30 @@
 // Options: 'rock', 'paper', 'scissors'
 // Array of length 3^n of arrays of n length
 
+const rockPaperScissorsArray = ['rock', 'paper', 'scissors'];
 
-var rockPaperScissors = function (numRounds) {
-  numRounds = numRounds || 3;
-
-  var possibleChoices = ['rock', 'paper', 'scissors'];
-  var roundIndexChoices = Array(numRounds).fill(0);
-
-  var arrayRounds = [];
-
-  var numChoices = 3;
-  var numCombinations = numChoices ** numRounds;
-
-  for (var combinationIndex = 0; combinationIndex < numCombinations; combinationIndex++) {
-    var roundChoices = roundIndexChoices.map(function(choiceIndex) {
-      return possibleChoices[choiceIndex];
-    });
-
-    arrayRounds.push(roundChoices);
-
-    roundIndexChoices = incrementAbacusArray(roundIndexChoices, 1, numChoices);
+const rockPaperScissors = function rockPaperScissors(numRounds = 3) {
+  if (numRounds <= 0) {
+    return [];
   }
 
-  return arrayRounds;
+  if (numRounds === 1) {
+    return rockPaperScissorsArray.map(hand => [hand]);
+  }
+
+  const prevResults = rockPaperScissors(numRounds - 1);
+
+  const results = [];
+
+  rockPaperScissorsArray.forEach((hand) => {
+    prevResults.forEach((prevResult) => {
+      const result = prevResult.slice();
+      result.unshift(hand);
+      results.push(result);
+    });
+  });
+
+  return results;
 };
 
-// Abacus: Has max number of beads on each row
-//         Each subsequent row is multiple of previous row
-//           For abacus with 10 beads, each bead on the 2nd row reprents 10
-// Input:  Array, increment value, max value for each element
-// Output: Updated abacus array
-
-// Loop through array
-// Increment very last index by 1
-// Do what follow for every other index
-// Set increment for next row to lowest integer value that index divides max value
-// Set new abacus value to remainder of division
-
-var incrementAbacusArray = function(array, incrementBy, maxValue) {
-  return (array.reverse().map(function(value) {
-    value += incrementBy;
-    incrementBy = Math.floor(value / maxValue);
-    return value % maxValue;
-  })).reverse();
-};
+export default rockPaperScissors;

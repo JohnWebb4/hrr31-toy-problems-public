@@ -1,6 +1,11 @@
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import telephoneWords from './telephoneWords';
+
 describe('telephoneWords', () => {
-  var phoneNumber;
-  var numberPossibilities;
+  let phoneNumber;
+  let possiblePhoneWords;
 
   beforeEach(() => {
     phoneNumber = '0123';
@@ -13,7 +18,7 @@ describe('telephoneWords', () => {
       '01BF',
       '01CD',
       '01CE',
-      '01CF'
+      '01CF',
     ];
   });
 
@@ -22,7 +27,7 @@ describe('telephoneWords', () => {
   });
 
   it('should return an array', () => {
-    expect(Array.isArray(telephoneWords(phoneNumber))).to.be.true;
+    expect(Array.isArray(telephoneWords(phoneNumber))).to.equal(true);
   });
 
   it('should return all word combinations', () => {

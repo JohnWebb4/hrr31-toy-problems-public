@@ -70,3 +70,8 @@ const Queue = function Queue() {
     return outbox.size();
   };
 };
+
+export {
+  Stack,
+  Queue,
+};

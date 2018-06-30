@@ -18,8 +18,10 @@
   *        'CSIL']
   *
   * Tips:
-  *   - Phone numbers are strings! (A phone number can start with a zero.)
-  *   - The digits 0 and 1 do not have letters associated with them, so they should be left as numbers.
+  *   - Phone numbers are strings!
+  *   -- (A phone number can start with a zero.)
+  *   - The digits 0 and 1 do not have letters associated with them,
+  *   -- so they should be left as numbers.
   *   - Don't return every combination of those digits in any order, just the order given.
   *
   *  Extra credit: There's a list of English dictionary words at /usr/share/dict/words .
@@ -35,7 +37,7 @@
  * E: 0 and 1 should remain unchanged
 */
 
-var phoneDigitsToLetters = {
+const phoneDigitsToLetters = {
   0: '0',
   1: '1',
   2: 'ABC',
@@ -45,27 +47,29 @@ var phoneDigitsToLetters = {
   6: 'MNO',
   7: 'PQRS',
   8: 'TUV',
-  9: 'WXYZ'
+  9: 'WXYZ',
 };
 
 
-var telephoneWords = function(digitString) {
+const telephoneWords = (digitString) => {
   // Termination Case
   if (digitString.length === 0) {
     return [];
   // Base Case
   } else if (digitString.length === 1) {
     return phoneDigitsToLetters[digitString].split('');
-  } else {
-    var charCombinations = telephoneWords(digitString[0]);
-    var previousWordCombinations = telephoneWords(digitString.substr(1));
-
-    return charCombinations.reduce((wordCombinations, char) => {
-      previousWordCombinations.forEach((previousWordCombo) => {
-        wordCombinations.push(char + previousWordCombo);
-      });
-      return wordCombinations
-    }, []);
   }
+
+  const charCombinations = telephoneWords(digitString[0]);
+  const previousWordCombinations = telephoneWords(digitString.substr(1));
+
+  return charCombinations.reduce((wordCombinations, char) => {
+    previousWordCombinations.forEach((previousWordCombo) => {
+      wordCombinations.push(char + previousWordCombo);
+    });
+    return wordCombinations;
+  }, []);
   // TODO: return every combination that can be spelled on a phone with these digits
 };
+
+export default telephoneWords;

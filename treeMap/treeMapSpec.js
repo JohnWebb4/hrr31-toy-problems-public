@@ -1,7 +1,12 @@
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import Tree from './treeMap';
+
 describe('treeMap', () => {
-  var tree;
-  var multiplyByTwo;
-  var resultTree;
+  let tree;
+  let multiplyByTwo;
+  let resultTree;
 
   beforeEach(() => {
     tree = new Tree(1);
@@ -12,9 +17,7 @@ describe('treeMap', () => {
     tree.children[1].addChild(6);
     tree.children[1].addChild(7);
 
-    multiplyByTwo = function (value) {
-       return value * 2;
-    };
+    multiplyByTwo = value => value * 2;
 
     resultTree = new Tree(2);
     resultTree.addChild(4);
@@ -30,7 +33,7 @@ describe('treeMap', () => {
   });
 
   it('should not mutate input tree', () => {
-    var copyTree = Object.assign(new Tree(), tree);
+    const copyTree = Object.assign(new Tree(), tree);
 
     tree.map(multiplyByTwo);
 
@@ -43,8 +46,9 @@ describe('treeMap', () => {
 });
 
 describe('treeMapInPlace', () => {
-  var tree;
-  var multiplyByTwo;
+  let tree;
+  let multiplyByTwo;
+  let resultTree;
 
   beforeEach(() => {
     tree = new Tree(1);
@@ -55,9 +59,7 @@ describe('treeMapInPlace', () => {
     tree.children[1].addChild(6);
     tree.children[1].addChild(7);
 
-    multiplyByTwo = function (value) {
-       return value * 2;
-    };
+    multiplyByTwo = value => value * 2;
 
     resultTree = new Tree(2);
     resultTree.addChild(4);

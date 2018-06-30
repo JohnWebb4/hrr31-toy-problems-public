@@ -1,6 +1,10 @@
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import characterFrequency from './characterFrequency';
+
 describe('characterFrequency', () => {
-  var characterString;
-  var resultFrequency;
+  let characterString;
+  let resultFrequency;
 
   beforeEach(() => {
     characterString = 'because';
@@ -10,7 +14,7 @@ describe('characterFrequency', () => {
       ['b', 1],
       ['c', 1],
       ['s', 1],
-      ['u', 1]
+      ['u', 1],
     ];
   });
 
@@ -19,13 +23,12 @@ describe('characterFrequency', () => {
   });
 
   it('should return an array of tuples', () => {
-    var frequencyArray = characterFrequency(characterString);
-    expect(Array.isArray(frequencyArray)).to.be.true;
-    expect(Array.isArray(frequencyArray[0])).to.be.true;
+    const frequencyArray = characterFrequency(characterString);
+    expect(Array.isArray(frequencyArray)).to.equal(true);
+    expect(Array.isArray(frequencyArray[0])).to.equal(true);
   });
 
   it('should get character frequency', () => {
     expect(characterFrequency(characterString)).to.eql(resultFrequency);
   });
-
 });

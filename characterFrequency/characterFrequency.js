@@ -57,58 +57,56 @@
  *  Return result array
 */
 
-var characterFrequency = function(string) {
-  var frequencyObject = getFrequencyObject(string);
-  var frequencyArray = getArrayOfTuplesOfKeyAndValue(frequencyObject);
-  var result = sortArray(frequencyArray, (a, b) => {
+const getFrequencyObject = function getFrequencyObject(string) {
+  return string.split('').reduce((frequencyTotal, character) => {
+    const newTotal = frequencyTotal;
+    newTotal[character] = frequencyTotal[character] + 1 || 1;
+    return frequencyTotal;
+  }, {});
+};
+
+const getArrayOfTuplesOfKeyAndValue = function getArrayOfTuplesOfKeyAndValue(object) {
+  return Object.entries(object);
+};
+
+const sortArray = function sortArray(array, comparator) {
+  // Bubble sort
+  let changedArray;
+  const sortedArray = array.slice();
+
+  const sort = (element, index) => {
+    if (index + 1 < sortedArray.length) {
+      if (comparator(element, sortedArray[index + 1]) > 0) {
+        sortedArray[index] = sortedArray[index + 1];
+        sortedArray[index + 1] = element;
+        changedArray = true;
+      }
+    }
+  };
+
+  do {
+    changedArray = false;
+
+    sortedArray.forEach(sort);
+  } while (changedArray);
+
+  return sortedArray;
+};
+
+const characterFrequency = function characterFrequency(string) {
+  const frequencyObject = getFrequencyObject(string);
+  const frequencyArray = getArrayOfTuplesOfKeyAndValue(frequencyObject);
+  return sortArray(frequencyArray, (a, b) => {
     if (a[1] > b[1]) {
       return -1;
     } else if (a[1] === b[1]) {
       if (a[0] < b[0]) {
-        return -1
-      } else {
-        return 1;
+        return -1;
       }
-    } else {
       return 1;
     }
+    return 1;
   });
-  console.log(result);
-  return result
 };
 
-var getFrequencyObject = function(string) {
-  return string.split('').reduce((frequencyTotal, character) => {
-    frequencyTotal[character] = frequencyTotal[character] + 1 || 1;
-    return frequencyTotal;
-  }, {});
-}
-
-var getArrayOfTuplesOfKeyAndValue = function(object) {
-  var array = [];
-
-  for (var key in object) {
-    array.push([key, object[key]]);
-  }
-
-  return array;
-}
-
-var sortArray = function(array, comparator) {
-  // Bubble sort
-  var changedArray;
-  do {
-    changedArray = false;
-
-    array.forEach((element, index) => {
-      if (index + 1 < array.length && comparator(element, array[index + 1]) > 0) {
-        var temp = element;
-        array[index] = array[index + 1];
-        array[index + 1] = element;
-        changedArray = true;
-      }
-    });
-  } while (changedArray);
-
-  return array;
-}
+export default characterFrequency;

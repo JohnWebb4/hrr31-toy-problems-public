@@ -4,31 +4,33 @@
 * Examples:
 *   (7).toEnglish(); // > "seven"
 *   (575).toEnglish(); // > "five hundred seventy-five"
-*   (78193512).toEnglish(); // > "seventy-eight million one hundred ninety-three thousand five hundred twelve"
+*   (78193512).toEnglish();
+  // > "seventy-eight million one hundred ninety-three thousand five hundred twelve"
 *
 * Extra credit: Make your function support decimals.
 * Example:
-*   (150043.273).toEnglish() // > "one hundred fifty thousand forty-three and two hundred seventy three thousandths"
+*   (150043.273).toEnglish()
+  // > "one hundred fifty thousand forty-three and two hundred seventy three thousandths"
 *
  */
 
- /* Whiteboarding
-  * I: No arguments. Context this is Number object
-  * O: String english equivalent
-  * C: None
-  * E: Decimals, Numbers ending repeat every power of 1,000 (10,000 => ten + thousand), 11 - 19
-  *
-  * Break every power of thousand 100,555 => 100*10^3 + 555
-  * Call function to convert anything less than 1,000
-  ** Break apart on powers of ten
-  ** Convert 100 + 50 + 5 => One hundred fifty five
-  ** Loop through numbers and convert
-  ** If number is 10 then combine with next number and return result (10 + 1 => 11 => eleven)
-  ** return total result
-  * Take result of inner function and add appropriate place (100,000 => one hundred + thousand)
- */
+/* Whiteboarding
+ * I: No arguments. Context this is Number object
+ * O: String english equivalent
+ * C: None
+ * E: Decimals, Numbers ending repeat every power of 1,000 (10,000 => ten + thousand), 11 - 19
+ *
+ * Break every power of thousand 100,555 => 100*10^3 + 555
+ * Call function to convert anything less than 1,000
+ ** Break apart on powers of ten
+ ** Convert 100 + 50 + 5 => One hundred fifty five
+ ** Loop through numbers and convert
+ ** If number is 10 then combine with next number and return result (10 + 1 => 11 => eleven)
+ ** return total result
+ * Take result of inner function and add appropriate place (100,000 => one hundred + thousand)
+*/
 
-var numbersToWords = {
+const numbersToWords = {
   0: 'zero',
   1: 'one',
   2: 'two',
@@ -58,7 +60,7 @@ var numbersToWords = {
   80: 'eighty',
   90: 'ninety',
 };
-var numbersToPlace = {
+const numbersToPlace = {
   1: '',
   10: 'ten',
   100: 'hundred',
@@ -70,77 +72,71 @@ var numbersToPlace = {
   1000000000000000000: 'quintillion',
 };
 
-Number.prototype.toEnglish = function () {
+function toEnglish() {
   // Handle negative numbers
   if (this < 0) {
-    return 'negative ' + (-this).toEnglish();
+    return `negative ${(-this).toEnglish()}`;
   }
 
-  var reverseStringNumber = this .toString().split('').reverse().join('').match(/\d{1,3}/g);
-  var arrayNumber = reverseStringNumber.map(function(stringDigits) {
-    return stringDigits.split('').reverse();
-  });
+  const reverseStringNumber = this.toString().split('').reverse().join('')
+    .match(/\d{1,3}/g);
+  const arrayNumber = reverseStringNumber.map(stringDigits => stringDigits.split('').reverse());
 
-  var stringEnglish = '';
-  var place = 1;
+  let stringEnglish = '';
+  let place = 1;
 
 
-  var toEnglishIfNotZero = function(digit) {
+  const toEnglishIfNotZero = function toEnglishIfNotZero(digit) {
     if (digit.match(/^0*$/g)) {
       return '';
     }
 
     return numbersToWords[digit];
-  }
+  };
 
-  var lessThanAHundredToEnglish = function(arrayDigits) {
-    var stringEnglish = '';
-
+  const lessThanAHundredToEnglish = function lessThanAHundredToEnglish(arrayDigits) {
     // If double digits
     if (arrayDigits.length === 2) {
       if (arrayDigits[0] === '1') {
         return toEnglishIfNotZero(arrayDigits.join(''));
       }
 
-      var tensDigit = toEnglishIfNotZero(arrayDigits[0] + '0');
-      var onesDigit = toEnglishIfNotZero(arrayDigits[arrayDigits.length - 1]);
+      const tensDigit = toEnglishIfNotZero(`${arrayDigits[0]}0`);
+      const onesDigit = toEnglishIfNotZero(arrayDigits[arrayDigits.length - 1]);
 
       if (tensDigit && onesDigit) {
         return `${tensDigit}-${onesDigit}`;
       }
 
-      return tensDigit + onesDigit
-
-    } else {
-      return numbersToWords[arrayDigits[0]];
+      return tensDigit + onesDigit;
     }
-
+    return numbersToWords[arrayDigits[0]];
   };
 
-  var lessThanAThousandToEnglish = function(arrayDigits) {
-    var stringEnglish = '';
+  const lessThanAThousandToEnglish = function lessThanAThousandToEnglish(arrayDigits) {
+    let thousandsEnglish = '';
 
     if (arrayDigits.length === 3) {
-      var hundredsEnglish = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
-      if (hundredsEnglish !== numbersToWords[0]) {
-        stringEnglish += hundredsEnglish + ' ' + numbersToPlace[100];
+      const resultEnglishHundreds = lessThanAHundredToEnglish(arrayDigits.slice(0, 1));
+      if (resultEnglishHundreds !== numbersToWords[0]) {
+        thousandsEnglish += `${resultEnglishHundreds} ${numbersToPlace[100]}`;
       }
     }
 
-    stringEnglish += stringEnglish && lessThanAHundredToEnglish(arrayDigits.slice(-2)) ? ' ' : '';
-    stringEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
+    thousandsEnglish += thousandsEnglish && lessThanAHundredToEnglish(arrayDigits.slice(-2)) ? ' ' : '';
+    thousandsEnglish += lessThanAHundredToEnglish(arrayDigits.slice(-2));
 
-    return stringEnglish;
+    return thousandsEnglish;
   };
 
-  for (var threeDigits of arrayNumber) {
-    var thousandsEnglish = lessThanAThousandToEnglish(threeDigits)
+  arrayNumber.forEach((threeDigits) => {
+    const thousandsEnglish = lessThanAThousandToEnglish(threeDigits);
     if (thousandsEnglish) {
       if (numbersToPlace[place]) {
         if (stringEnglish) {
-          stringEnglish = ' ' + numbersToPlace[place] + ' ' + stringEnglish;
+          stringEnglish = ` ${numbersToPlace[place]} ${stringEnglish}`;
         } else {
-          stringEnglish = ' ' + numbersToPlace[place];
+          stringEnglish = ` ${numbersToPlace[place]}`;
         }
       }
       stringEnglish = thousandsEnglish + stringEnglish;
@@ -148,7 +144,11 @@ Number.prototype.toEnglish = function () {
 
     // Finally
     place *= 1000;
-  }
+  });
 
   return stringEnglish;
-};
+}
+
+Number.prototype.toEnglish = toEnglish;
+
+export default toEnglish;

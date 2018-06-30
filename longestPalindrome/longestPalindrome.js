@@ -31,7 +31,7 @@
  * Return longest palindrome
 */
 
-let longestPalindrome = (sentence) => {
+const longestPalindrome = (sentence) => {
   let theLongestPalindrome = '';
 
   sentence.split('').forEach((char, charIndex) => {
@@ -69,3 +69,5 @@ let longestPalindrome = (sentence) => {
 
   return theLongestPalindrome;
 };
+
+export default longestPalindrome;

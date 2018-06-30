@@ -37,7 +37,7 @@
 
 
 // Time Complexity:
-var allAnagrams = function(string) {
+const allAnagrams = (string) => {
   if (string === '') {
     return [];
   } else if (string.length === 1) {
@@ -45,19 +45,17 @@ var allAnagrams = function(string) {
   }
 
   // Recursion
-  var anagrams = [];
-  var prevCharacters = [];
+  let anagrams = [];
+  const prevCharacters = [];
 
-  for (var charIndex = 0; charIndex < string.length; charIndex++) {
-    var char = string[charIndex];
+  for (let charIndex = 0; charIndex < string.length; charIndex += 1) {
+    const char = string[charIndex];
 
     if (!prevCharacters.includes(char)) {
-      var stringLessChar = string.slice(0, charIndex) + string.slice(charIndex + 1);
+      const stringLessChar = string.slice(0, charIndex) + string.slice(charIndex + 1);
 
-      var someAnagramsLessChar = allAnagrams(stringLessChar);
-      var someAnagrams = someAnagramsLessChar.map(function(anagram) {
-        return char + anagram;
-      });
+      const someAnagramsLessChar = allAnagrams(stringLessChar);
+      const someAnagrams = someAnagramsLessChar.map(anagram => char + anagram);
 
       anagrams = anagrams.concat(someAnagrams);
       prevCharacters.push(char);
@@ -66,3 +64,5 @@ var allAnagrams = function(string) {
 
   return anagrams;
 };
+
+export default allAnagrams;

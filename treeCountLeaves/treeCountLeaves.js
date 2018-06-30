@@ -32,22 +32,22 @@
  * Basic tree that stores a value.
  */
 
-var Tree = function(value) {
+const Tree = function Tree(value) {
   this.value = value;
   this.children = [];
 };
 
-Tree.prototype.countLeaves = function () {
+Tree.prototype.countLeaves = function countLeaves() {
   // Base case
   if (this.children.length === 0) {
     return 1;
   }
 
   // Recursive case
-  return this.children.reduce(function(numLeaves, childTree) {
+  return this.children.reduce((numLeaves, childTree) => {
     if (childTree === Object(childTree)) {
-      if (childTree.hasOwnProperty('value') && childTree.hasOwnProperty('children')) {
-          numLeaves += childTree.countLeaves();
+      if (Object.prototype.hasOwnProperty.call(childTree, 'value') && Object.prototype.hasOwnProperty.call(childTree, 'children')) {
+        numLeaves += childTree.countLeaves();
       }
     }
 
@@ -63,7 +63,7 @@ Tree.prototype.countLeaves = function () {
   * add an immediate child
   * (wrap values in Tree nodes if they're not already)
   */
-Tree.prototype.addChild = function(child) {
+Tree.prototype.addChild = function addChild(child) {
   if (!child || !(child instanceof Tree)) {
     child = new Tree(child);
   }
@@ -81,26 +81,25 @@ Tree.prototype.addChild = function(child) {
   * check to see if the provided tree is already a child of this
   * tree __or any of its sub trees__
   */
-Tree.prototype.isDescendant = function(child) {
+Tree.prototype.isDescendant = function isDescendant(child) {
   if (this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].isDescendant(child)) {
-        // `child` is descendant of this tree
-        return true;
-      }
-    }
-    return false;
   }
+  for (let i = 0; i < this.children.length; i += 1) {
+    if (this.children[i].isDescendant(child)) {
+      // `child` is descendant of this tree
+      return true;
+    }
+  }
+  return false;
 };
 
 /**
   * remove an immediate child
   */
-Tree.prototype.removeChild = function(child) {
-  var index = this.children.indexOf(child);
+Tree.prototype.removeChild = function removeChild(child) {
+  const index = this.children.indexOf(child);
   if (index !== -1) {
     // remove the child
     this.children.splice(index, 1);
@@ -108,3 +107,5 @@ Tree.prototype.removeChild = function(child) {
     throw new Error('That node is not an immediate child of this tree');
   }
 };
+
+export default Tree;

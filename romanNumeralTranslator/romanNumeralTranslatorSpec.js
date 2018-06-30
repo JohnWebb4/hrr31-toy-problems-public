@@ -1,3 +1,8 @@
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import translateRomanNumeral from './romanNumeralTranslator';
+
 describe('romanNumeralTranslator', () => {
   it('should be a function', () => {
     expect(translateRomanNumeral).to.be.a('function');
@@ -21,5 +26,9 @@ describe('romanNumeralTranslator', () => {
   it('should handle subtractive numerals', () => {
     expect(translateRomanNumeral('IX')).to.equal(9);
     expect(translateRomanNumeral('CIV')).to.equal(104);
+  });
+
+  it('should return null if not passed a string', () => {
+    expect(translateRomanNumeral(50)).to.equal(null);
   });
 });

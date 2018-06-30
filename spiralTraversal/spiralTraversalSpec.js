@@ -1,3 +1,8 @@
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+
+import spiralTraversal from './spiralTraversal';
+
 describe('spiralTraversal', () => {
   let arrayToTraverse;
   let spiralArray;

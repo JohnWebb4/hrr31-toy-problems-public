@@ -1,6 +1,7 @@
 /*
 
-In England the currency is made up of pound, £, and pence, p, and there are eight coins in general circulation:
+In England the currency is made up of pound, £, and pence, p,
+and there are eight coins in general circulation:
 
 1p piece
 2p piece
@@ -36,26 +37,26 @@ makeChange(2) === 2
 // If total is 1 return 1
 // Declare number of combinations
 // Iterate over types of changes while less than total
-//// Subtract increment of change and call on self
-//// Increment number of combinations based on result
-////// If returned 0 evenly divides number increment by 1
+// // Subtract increment of change and call on self
+// // Increment number of combinations based on result
+// // // If returned 0 evenly divides number increment by 1
 // Return result
 
 const coinValueIncrements = [
-  1, 2, 5, 10, 20, 50, 100, 200
+  1, 2, 5, 10, 20, 50, 100, 200,
 ];
 
-var makeChange = function(total, maxChangeValue = 200) {
+const makeChange = (total, maxChangeValue = 200) => {
   if (total === 0) {
     return 1;
   } else if (total === 1) {
     return 1;
   }
 
-  var numChangeCombinations = 0;
+  let numChangeCombinations = 0;
 
-  for (var coinValueIndex = 0; coinValueIncrements[coinValueIndex] <= total; coinValueIndex++) {
-    var coinValue = coinValueIncrements[coinValueIndex];
+  for (let coinValueIndex = 0; coinValueIncrements[coinValueIndex] <= total; coinValueIndex += 1) {
+    const coinValue = coinValueIncrements[coinValueIndex];
     if (coinValue <= maxChangeValue) {
       numChangeCombinations += makeChange(total - coinValue, coinValue);
     }
@@ -63,3 +64,5 @@ var makeChange = function(total, maxChangeValue = 200) {
 
   return numChangeCombinations;
 };
+
+export default makeChange;

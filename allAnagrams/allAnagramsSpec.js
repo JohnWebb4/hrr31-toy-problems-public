@@ -1,28 +1,31 @@
-describe('allAnagrams', function() {
-  var string;
-  var resultAnagrams;
+import { beforeEach, describe, it } from 'mocha';
+import { expect } from 'chai';
+import allAnagrams from './allAnagrams';
 
-  beforeEach(function() {
+describe('allAnagrams', () => {
+  let string;
+  let resultAnagrams;
+
+  beforeEach(() => {
     string = 'abc';
-    resultAnagrams = [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ];
+    resultAnagrams = ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'];
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(allAnagrams).to.be.a('function');
   });
 
-  it('should return an array', function() {
+  it('should return an array', () => {
     expect(allAnagrams(string)).to.be.an('array');
   });
 
-  it('should return all anagrams', function() {
+  it('should return all anagrams', () => {
     expect(allAnagrams(string)).to.eql(resultAnagrams);
   });
 
-  it('should return unique anagrams', function() {
-    var expected = ['apps', 'apsp', 'aspp', 'paps', 'pasp', 'ppas', 'ppsa', 'psap', 'pspa', 'sapp', 'spap', 'sppa'];
-    var match = true;
-    var result = allAnagrams('apps');
+  it('should return unique anagrams', () => {
+    const expected = ['apps', 'apsp', 'aspp', 'paps', 'pasp', 'ppas', 'ppsa', 'psap', 'pspa', 'sapp', 'spap', 'sppa'];
+    const result = allAnagrams('apps');
     expect(result.length).to.equal(expected.length);
   });
 });
