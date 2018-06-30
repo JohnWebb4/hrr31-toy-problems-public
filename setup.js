@@ -25,3 +25,4 @@ import './linkedList/linkedListSpec';
 import './binaryHeap/binaryHeapSpec';
 import './robotPaths/robotPathsSpec';
 import './rockPaperScissors/rockPaperScissorsSpec';
+import './bubbleSort/bubbleSortSpec';
