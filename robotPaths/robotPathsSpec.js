@@ -43,4 +43,8 @@ describe('robotPaths', () => {
     n = 3;
     expect(robotPaths(n, makeBoard(n), i, j)).to.equal(12);
   });
+
+  it('should handle 5x5 board', () => {
+    expect(robotPaths(n, board, i, j)).to.equal(8512);
+  });
 });
