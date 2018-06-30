@@ -82,4 +82,6 @@ const mixEvents = (obj) => {
   return obj;
 };
 
-module.exports = mixEvents;
+if (module) {
+  module.exports = mixEvents;
+}

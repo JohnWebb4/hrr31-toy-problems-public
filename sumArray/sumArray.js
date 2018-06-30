@@ -77,4 +77,6 @@ const sumArray = (array) => {
   return Math.max(totalSum, firstHalfSum, lastHalfSum);
 };
 
-module.exports = sumArray;
+if (module) {
+  module.exports = sumArray;
+}

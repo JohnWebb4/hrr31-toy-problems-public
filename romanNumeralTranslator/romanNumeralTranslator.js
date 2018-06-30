@@ -56,4 +56,6 @@ const translateRomanNumeral = (romanNumeral) => {
   }, 0);
 };
 
-module.exports = translateRomanNumeral;
+if (module) {
+  module.exports = translateRomanNumeral;
+}

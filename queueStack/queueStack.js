@@ -71,7 +71,9 @@ const Queue = function Queue() {
   };
 };
 
-module.exports = {
-  Stack,
-  Queue,
-};
+if (module) {
+  module.exports = {
+    Stack,
+    Queue,
+  };
+}

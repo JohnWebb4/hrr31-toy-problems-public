@@ -109,4 +109,6 @@ const characterFrequency = function characterFrequency(string) {
   });
 };
 
-module.exports = characterFrequency;
+if (module) {
+  module.exports = characterFrequency;
+}

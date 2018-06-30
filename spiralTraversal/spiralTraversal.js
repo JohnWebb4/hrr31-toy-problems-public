@@ -81,4 +81,6 @@ const spiralTraversal = (matrix) => {
   return firstRow.concat(remainSpiral);
 };
 
-module.exports = spiralTraversal;
+if (module) {
+  module.exports = spiralTraversal;
+}
