@@ -82,4 +82,4 @@ const mixEvents = (obj) => {
   return obj;
 };
 
-export default mixEvents;
+module.exports = mixEvents;

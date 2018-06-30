@@ -14,4 +14,4 @@
 const deepEquals = function deepEquals(apple, orange) {
 };
 
-export default deepEquals;
+module.exports = deepEquals;
