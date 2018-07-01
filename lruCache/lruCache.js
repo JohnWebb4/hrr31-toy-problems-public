@@ -215,6 +215,6 @@ LRUCache.prototype.set = function set(key, val) {
   this.listSize += 1;
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = LRUCache;
 }

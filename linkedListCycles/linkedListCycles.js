@@ -67,6 +67,6 @@ const hasCycle = function hasCycle(linkedList) {
   return false;
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = { Node, hasCycle };
 }

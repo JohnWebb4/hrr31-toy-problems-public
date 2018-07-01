@@ -56,6 +56,6 @@ const translateRomanNumeral = (romanNumeral) => {
   }, 0);
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = translateRomanNumeral;
 }

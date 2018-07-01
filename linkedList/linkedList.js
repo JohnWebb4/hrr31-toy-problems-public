@@ -99,6 +99,6 @@ LinkedList.prototype.makeNode = function makeNode(value, next) {
   };
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = LinkedList;
 }

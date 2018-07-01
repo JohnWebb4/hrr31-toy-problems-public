@@ -63,4 +63,6 @@ const jsonpRequest = (url, callback) => {
   document.getElementsByTagName('html')[0].appendChild(script);
 };
 
-module.exports = jsonpRequest;
+if (process.env.DEBUG) {
+  module.exports = jsonpRequest;
+}

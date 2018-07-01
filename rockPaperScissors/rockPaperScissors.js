@@ -50,6 +50,6 @@ const rockPaperScissors = function rockPaperScissors(numRounds = 3) {
   return results;
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = rockPaperScissors;
 }

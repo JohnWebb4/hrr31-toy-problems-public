@@ -65,6 +65,6 @@ const makeChange = (total, maxChangeValue = 200) => {
   return numChangeCombinations;
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = makeChange;
 }

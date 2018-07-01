@@ -109,6 +109,6 @@ const characterFrequency = function characterFrequency(string) {
   });
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = characterFrequency;
 }
