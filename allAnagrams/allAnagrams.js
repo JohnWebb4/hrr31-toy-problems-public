@@ -65,6 +65,6 @@ const allAnagrams = (string) => {
   return anagrams;
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = allAnagrams;
 }
