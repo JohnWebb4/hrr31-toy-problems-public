@@ -24,6 +24,6 @@ const nthFibonacci = function nthFibonacci(n) {
   // TODO: implement me!
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = nthFibonacci;
 }

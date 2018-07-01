@@ -33,3 +33,6 @@ bundle.js
 
 # Ignore babel
 .babelrc
+
+# Environment variables
+.env

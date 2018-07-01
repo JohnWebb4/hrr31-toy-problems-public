@@ -1,10 +1,17 @@
 const path = require('path');
+const dotenv = require('dotenv').config({ path: `${__dirname}/.env` });
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './setup.js',
+  entry: './index.js',
   output: {
     path: path.resolve('./'),
     filename: 'bundle.js',
+  },
+  externals: {
+    mocha: 'Mocha',
+    chai: 'chai',
+    jquery: 'jquery',
   },
   module: {
     rules: [
@@ -17,9 +24,12 @@ module.exports = {
       },
     ],
   },
-  externals: {
-    mocha: 'Mocha',
-    chai: 'chai',
-    jquery: 'jquery',
+  node: {
+    fs: 'empty',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': dotenv.parsed,
+    }),
+  ],
 };

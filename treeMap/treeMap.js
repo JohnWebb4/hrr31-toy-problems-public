@@ -140,6 +140,6 @@ Tree.prototype.removeChild = function removeChild(child) {
   }
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = Tree;
 }

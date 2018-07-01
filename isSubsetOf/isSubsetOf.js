@@ -25,6 +25,6 @@ Array.prototype.isSubsetOf = function isSubsetOf(arr) {
   // your code here
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = Array.prototype.isSubsetOf;
 }

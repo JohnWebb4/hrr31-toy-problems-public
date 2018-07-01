@@ -87,7 +87,7 @@ const robotPaths = function robotPaths(n, board, i, j) {
   return pathCount;
 };
 
-if (module) {
+if (process.env.DEBUG) {
   module.exports = {
     makeBoard,
     robotPaths,
