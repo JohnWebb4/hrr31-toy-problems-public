@@ -1,3 +1,7 @@
+/**
+ * Randomly change color of words in every paragraph
+ * each second
+ */
 function colorWords() {
   // --------------STEP 1---------------
   // wrap every word in every `<p>` tag with a `<span>` tag.

@@ -14,6 +14,6 @@
 const deepEquals = function deepEquals(apple, orange) {
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = deepEquals;
 }

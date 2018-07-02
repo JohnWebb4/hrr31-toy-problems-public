@@ -82,6 +82,6 @@ const mixEvents = (obj) => {
   return obj;
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = mixEvents;
 }

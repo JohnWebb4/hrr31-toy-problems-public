@@ -89,6 +89,6 @@ Function.prototype.bind = function bindFunc(objThis, ...initArgs) {
   );
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = bind;
 }

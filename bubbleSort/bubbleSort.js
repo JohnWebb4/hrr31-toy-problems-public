@@ -37,6 +37,6 @@ const bubbleSort = function bubbleSort(array) {
   // Your code here.
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = bubbleSort;
 }

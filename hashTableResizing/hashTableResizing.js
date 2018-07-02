@@ -129,6 +129,6 @@ const makeHashTable = function makeHashTable() {
   return result;
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = makeHashTable;
 }

@@ -70,6 +70,6 @@ const longestPalindrome = (sentence) => {
   return theLongestPalindrome;
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = longestPalindrome;
 }

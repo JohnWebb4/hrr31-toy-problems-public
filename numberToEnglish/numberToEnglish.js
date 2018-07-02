@@ -151,6 +151,6 @@ function toEnglish() {
 
 Number.prototype.toEnglish = toEnglish;
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = toEnglish;
 }
