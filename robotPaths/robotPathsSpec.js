@@ -47,4 +47,8 @@ describe('robotPaths', () => {
   it('should handle 5x5 board', () => {
     expect(robotPaths(n, board, i, j)).to.equal(8512);
   });
+
+  it('should create board and start in top left if not defined', () => {
+    expect(robotPaths(n)).to.equal(8512);
+  });
 });
