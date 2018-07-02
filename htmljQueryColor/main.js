@@ -16,7 +16,7 @@ function colorWords() {
 
     function addSpan(word) {
       if (word) {
-        $p.append($('<span>').text(`${word} `));
+        $p.append($('<span>').text(word + ' '));
       }
     }
 
@@ -37,7 +37,7 @@ function colorWords() {
     const g = Math.floor(Math.random() * 255);
     const b = Math.floor(Math.random() * 255);
 
-    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    return '#' + r.toString(16) + g.toString(16) + b.toString(16);
   };
 
   function onTick() {
