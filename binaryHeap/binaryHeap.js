@@ -86,7 +86,7 @@ function BinaryHeap(compare) {
   this.size = 0;
   // this compare function will result in a minHeap,
   // use it to make comparisons between nodes in your solution
-  this.compare = compare || function _compare(i, j) { return i < j; };
+  this._compare = compare || function _compare(i, j) { return i < j; };
 }
 
 /**
@@ -118,7 +118,7 @@ BinaryHeap.prototype.getParentIndex = function getParentIndex(index) {
 BinaryHeap.prototype.sortNodeAtIndex = function sortNodeAtIndex(index) {
   const parentIndex = this.getParentIndex(index);
 
-  if (this.compare(this._heap[index], this._heap[parentIndex])) {
+  if (this._compare(this._heap[index], this._heap[parentIndex])) {
     const temp = this._heap[parentIndex];
     this._heap[parentIndex] = this._heap[index];
     this._heap[index] = temp;
@@ -166,7 +166,7 @@ BinaryHeap.prototype.removeRoot = function removeRoot() {
     let smallestValue = leftNode;
     let smallestValueIndex = leftIndex;
 
-    if (rightIndex < this.size && this.compare(rightNode, leftNode)) {
+    if (rightIndex < this.size && this._compare(rightNode, leftNode)) {
       smallestValue = rightNode;
       smallestValueIndex = rightIndex;
     }
