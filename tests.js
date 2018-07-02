@@ -11,7 +11,7 @@ import './insertionSort/insertionSortSpec';
 // import './coinSums/coinSumsSpec';
 import './eventingLibrary/eventingLibrarySpec';
 // import './hashTableResizing/hashTableResizingSpec';
-// import './linkedListCycles/linkedListCyclesSpec';
+import './linkedListCycles/linkedListCyclesSpec';
 // import './allAnagrams/allAnagramsSpec';
 // import './longestPalindrome/longestPalindromeSpec';
 // import './lruCache/lruCacheSpec';
