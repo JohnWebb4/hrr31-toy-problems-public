@@ -9,7 +9,7 @@
 // import './telephoneWords/telephoneWordsSpec';
 // import './functionBind/functionBindSpec';
 // import './coinSums/coinSumsSpec';
-import './eventingLibrary/eventingLibrarySpec';
+// import './eventingLibrary/eventingLibrarySpec';
 // import './hashTableResizing/hashTableResizingSpec';
 // import './linkedListCycles/linkedListCyclesSpec';
 // import './allAnagrams/allAnagramsSpec';
