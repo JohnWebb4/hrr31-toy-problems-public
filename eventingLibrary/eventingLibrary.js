@@ -56,7 +56,7 @@
 // // Get array at event name
 // // Iterate through array and call listener callback
 
-const mixEvents = (obj) => {
+const mixEvents = function mixEvents(obj) {
   obj.events = {};
 
   obj.on = function on(eventName, callback) {

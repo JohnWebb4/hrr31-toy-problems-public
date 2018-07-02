@@ -1,7 +1,7 @@
 // import './evenOccurrence/evenOccurrenceSpec';
 // import './treeCountLeaves/treeCountLeavesSpec';
 // import './primeTester/primeTesterSpec';
-// import './insertionSort/insertionSortSpec';
+import './insertionSort/insertionSortSpec';
 // import './characterFrequency/characterFrequencySpec';
 // import './treeMap/treeMapSpec';
 // import './sumArray/sumArraySpec';
@@ -9,9 +9,9 @@
 // import './telephoneWords/telephoneWordsSpec';
 // import './functionBind/functionBindSpec';
 // import './coinSums/coinSumsSpec';
-// import './eventingLibrary/eventingLibrarySpec';
+import './eventingLibrary/eventingLibrarySpec';
 // import './hashTableResizing/hashTableResizingSpec';
-// import './linkedListCycles/linkedListCyclesSpec';
+import './linkedListCycles/linkedListCyclesSpec';
 // import './allAnagrams/allAnagramsSpec';
 // import './longestPalindrome/longestPalindromeSpec';
 // import './lruCache/lruCacheSpec';

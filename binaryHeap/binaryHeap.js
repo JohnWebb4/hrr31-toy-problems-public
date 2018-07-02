@@ -82,7 +82,7 @@
  * @param {function} compare Optional comparator function
 */
 function BinaryHeap(compare) {
-  this.heap = [];
+  this._heap = [];
   this.size = 0;
   // this compare function will result in a minHeap,
   // use it to make comparisons between nodes in your solution
@@ -94,7 +94,7 @@ function BinaryHeap(compare) {
  * @returns { number } rootIndex Index of root
 */
 BinaryHeap.prototype.getRoot = function getRoot() {
-  return this.heap[0];
+  return this._heap[0];
 };
 
 /**
@@ -113,29 +113,29 @@ BinaryHeap.prototype.getParentIndex = function getParentIndex(index) {
 
 /**
  *  Sorts the node at the index
- * @param {number} index index in heap
+ * @param {number} index index in._heap
 */
 BinaryHeap.prototype.sortNodeAtIndex = function sortNodeAtIndex(index) {
   const parentIndex = this.getParentIndex(index);
 
-  if (this.compare(this.heap[index], this.heap[parentIndex])) {
-    const temp = this.heap[parentIndex];
-    this.heap[parentIndex] = this.heap[index];
-    this.heap[index] = temp;
+  if (this.compare(this._heap[index], this._heap[parentIndex])) {
+    const temp = this._heap[parentIndex];
+    this._heap[parentIndex] = this._heap[index];
+    this._heap[index] = temp;
 
     this.sortNodeAtIndex(parentIndex);
   }
 };
 
 /**
- *  Insert value to end of heap
+ *  Insert value to end of._heap
  * @param {*} value
  * @param {*} value inserted value
  */
 BinaryHeap.prototype.insert = function insert(value) {
-  this.heap.push(value);
+  this._heap.push(value);
   this.size += 1;
-  this.sortNodeAtIndex(this.heap.length - 1);
+  this.sortNodeAtIndex(this._heap.length - 1);
   return value;
 };
 
@@ -146,22 +146,22 @@ BinaryHeap.prototype.insert = function insert(value) {
 BinaryHeap.prototype.removeRoot = function removeRoot() {
   if (this.size === 1) {
     this.size -= 1;
-    return this.heap.shift();
+    return this._heap.shift();
   } else if (this.size === 2) {
     this.size -= 1;
-    return this.heap.shift();
+    return this._heap.shift();
   }
 
   let layer = 0;
   let index = 0;
   let leftIndex = 1;
-  const rootValue = this.heap[0];
+  const rootValue = this._heap[0];
 
   while (leftIndex < this.size) {
     const rightIndex = leftIndex + 1;
 
-    const leftNode = this.heap[leftIndex];
-    const rightNode = this.heap[rightIndex];
+    const leftNode = this._heap[leftIndex];
+    const rightNode = this._heap[rightIndex];
 
     let smallestValue = leftNode;
     let smallestValueIndex = leftIndex;
@@ -171,7 +171,7 @@ BinaryHeap.prototype.removeRoot = function removeRoot() {
       smallestValueIndex = rightIndex;
     }
 
-    this.heap[index] = smallestValue;
+    this._heap[index] = smallestValue;
     index = smallestValueIndex;
 
 
@@ -180,7 +180,7 @@ BinaryHeap.prototype.removeRoot = function removeRoot() {
   }
 
   // Last index is duplicate
-  this.heap.splice(index, 1);
+  this._heap.splice(index, 1);
 
   this.size -= 1;
   return rootValue;

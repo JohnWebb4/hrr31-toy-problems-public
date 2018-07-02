@@ -50,7 +50,7 @@ const hasCycle = function hasCycle(linkedList) {
   let slowNode = linkedList;
   let updateSlowNode = false;
 
-  do {
+  while (currentNode) {
     if (currentNode === slowNode) {
       return true;
     }
@@ -62,7 +62,7 @@ const hasCycle = function hasCycle(linkedList) {
     }
 
     updateSlowNode = !updateSlowNode;
-  } while (currentNode);
+  }
 
   return false;
 };

@@ -1,19 +1,9 @@
 import { beforeEach, describe, it } from 'mocha';
 import { expect } from 'chai';
 
-import insertionSort from './insertionSort';
+import { insertionSort, testingTransform } from './insertionSort';
 
 describe('insertionSort', () => {
-  const testingTransform = function testingTransform(array) {
-    const transform = [];
-
-    for (let i = 0; i < array.length; i += 1) {
-      transform.push({ value: array[i], i });
-    }
-
-    return transform;
-  };
-
   let array;
   let sortedArray;
 
