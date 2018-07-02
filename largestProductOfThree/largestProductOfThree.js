@@ -12,6 +12,6 @@ const largestProductOfThree = function largestProductOfThree(array) {
   // TODO: everything
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = largestProductOfThree;
 }

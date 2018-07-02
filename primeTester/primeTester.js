@@ -56,7 +56,7 @@ const primeSieve = (start, end) => (
   primeSieveFrom2(end).filter(prime => prime >= start)
 );
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = {
     primeTester,
     primeSieve,

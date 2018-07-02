@@ -58,6 +58,6 @@ const evenOccurrence = (arr) => {
   return valueFirstEvenOccurence;
 };
 
-if (process.env.DEBUG) {
+if (window.DEBUG) {
   module.exports = evenOccurrence;
 }
