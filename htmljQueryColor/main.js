@@ -9,17 +9,21 @@ function colorWords() {
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
 
-  Array.from($('p')).forEach((p) => {
+  function splitOnWord(p) {
     const words = $(p).text().split(' ');
     const $p = $(p);
     $p.text('');
-    words.forEach((word) => {
+
+    function addSpan(word) {
       if (word) {
         $p.append($('<span>').text(`${word} `));
       }
-    });
-  });
+    }
 
+    words.forEach(addSpan);
+  }
+
+  Array.from($('p')).forEach(splitOnWord);
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
@@ -28,7 +32,7 @@ function colorWords() {
    * Get a random hex color
    * @returns {string} Random hex color (RGB format)
    */
-  const getRandomHexColor = () => {
+  const getRandomHexColor = function getRandomHexColor() {
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
     const b = Math.floor(Math.random() * 255);
@@ -36,12 +40,16 @@ function colorWords() {
     return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
   };
 
-  // Once per second
-  setInterval(() => {
-    $.each($('span'), (index, value) => {
+  function onTick() {
+    function setRandomColor(index, value) {
       value.style.color = getRandomHexColor();
-    });
-  }, 1000);
+    }
+
+    $.each($('span'), setRandomColor);
+  }
+
+  // Once per second
+  setInterval(onTick, 1000);
 }
 
 $(colorWords);
