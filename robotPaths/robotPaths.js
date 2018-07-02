@@ -49,9 +49,9 @@ const makeBoard = function makeBoard(n) {
  * Determine if place on board has been visited
  * @function robotPaths
  * @param {number} n board size,
- * @param {Board} board a Board class object,
- * @param {number} i Robot starting column (from left),
- * @param {number} j Robot starting row (from top)
+ * @param {Board} [board=makeBoard(n)] a Board class object,
+ * @param {number} [i=0] Robot starting column (from left),
+ * @param {number} [j=0] Robot starting row (from top)
  * @return {number} Number of possibilities
  */
 const robotPaths = function robotPaths(n, board, i, j) {
@@ -59,6 +59,10 @@ const robotPaths = function robotPaths(n, board, i, j) {
   if (n <= 0) {
     return 0;
   }
+
+  board = board || makeBoard(n);
+  i = i || 0;
+  j = j || 0;
 
   // If at end of board
   if (i === n - 1 && j === n - 1) {
