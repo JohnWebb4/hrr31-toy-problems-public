@@ -1,7 +1,7 @@
 // import './evenOccurrence/evenOccurrenceSpec';
 // import './treeCountLeaves/treeCountLeavesSpec';
 // import './primeTester/primeTesterSpec';
-// import './insertionSort/insertionSortSpec';
+import './insertionSort/insertionSortSpec';
 // import './characterFrequency/characterFrequencySpec';
 // import './treeMap/treeMapSpec';
 // import './sumArray/sumArraySpec';

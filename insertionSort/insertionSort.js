@@ -33,6 +33,16 @@
  * If no comparator is given, just sort the elements using `<` or `>`.
 */
 
+const testingTransform = function testingTransform(array) {
+  const transform = [];
+
+  for (let i = 0; i < array.length; i += 1) {
+    transform.push({ value: array[i], i });
+  }
+
+  return transform;
+};
+
 // Example usage:
 // insertionSort([{value: 2}, {value: 1}, {value: 3}]);
 // yields [{value: 1}, {value: 2}, {value: 3}]
@@ -68,5 +78,5 @@ const insertionSort = function insertionSort(array, comparator = (a, b) => {
 };
 
 if (window.DEBUG) {
-  module.exports = insertionSort;
+  module.exports = { insertionSort, testingTransform };
 }
