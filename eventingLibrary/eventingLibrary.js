@@ -65,7 +65,9 @@ const mixEvents = function mixEvents(obj) {
     this.events[eventName].push(callback);
   };
 
-  obj.trigger = function trigger(eventName, ...restArgs) {
+  obj.trigger = function trigger(eventName) {
+    const restArgs = Array.from(arguments).slice(1);
+
     if (!this.events) {
       return;
     }

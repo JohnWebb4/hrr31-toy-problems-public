@@ -5,6 +5,7 @@ module.exports = {
         "no-extend-native": 0,
         "no-param-reassign": 0,
         "no-underscore-dangle": 0,
+        "prefer-rest-params": 0,
     },
     "env": {
       "browser": true,
