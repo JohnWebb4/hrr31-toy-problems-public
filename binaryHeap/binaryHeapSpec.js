@@ -10,7 +10,7 @@ describe('binaryHeap', () => {
     binaryHeap = new BinaryHeap();
   });
 
-  it('should get null root for empty heap', () => {
+  it('should get null root for empty._heap', () => {
     expect(binaryHeap.getRoot()).to.equal(undefined);
   });
 
@@ -24,9 +24,9 @@ describe('binaryHeap', () => {
     binaryHeap.insert(1);
     binaryHeap.insert(2);
 
-    expect(binaryHeap.heap[0]).to.equal(0);
-    expect(binaryHeap.heap[1]).to.equal(1);
-    expect(binaryHeap.heap[2]).to.equal(2);
+    expect(binaryHeap._heap[0]).to.equal(0);
+    expect(binaryHeap._heap[1]).to.equal(1);
+    expect(binaryHeap._heap[2]).to.equal(2);
   });
 
   it('should swap nodes with parent', () => {
@@ -36,14 +36,14 @@ describe('binaryHeap', () => {
     binaryHeap.insert(2);
     binaryHeap.insert(-2);
 
-    expect(binaryHeap.heap[0]).to.equal(-2);
-    expect(binaryHeap.heap[1]).to.equal(-1);
-    expect(binaryHeap.heap[2]).to.equal(1);
-    expect(binaryHeap.heap[3]).to.equal(2);
-    expect(binaryHeap.heap[4]).to.equal(0);
+    expect(binaryHeap._heap[0]).to.equal(-2);
+    expect(binaryHeap._heap[1]).to.equal(-1);
+    expect(binaryHeap._heap[2]).to.equal(1);
+    expect(binaryHeap._heap[3]).to.equal(2);
+    expect(binaryHeap._heap[4]).to.equal(0);
   });
 
-  it('should remove a single element heap', () => {
+  it('should remove a single element._heap', () => {
     binaryHeap.insert(0);
     binaryHeap.removeRoot();
     expect(binaryHeap.getRoot()).to.equal(undefined);
@@ -54,7 +54,7 @@ describe('binaryHeap', () => {
     expect(binaryHeap.removeRoot()).to.equal(0);
   });
 
-  it('should remove a mult-element heap', () => {
+  it('should remove a mult-element._heap', () => {
     binaryHeap.insert(0);
     binaryHeap.insert(1);
     binaryHeap.insert(2);
@@ -63,9 +63,9 @@ describe('binaryHeap', () => {
 
     binaryHeap.removeRoot();
 
-    expect(binaryHeap.heap[0]).to.equal(1);
-    expect(binaryHeap.heap[1]).to.equal(3);
-    expect(binaryHeap.heap[2]).to.equal(2);
-    expect(binaryHeap.heap[3]).to.equal(4);
+    expect(binaryHeap._heap[0]).to.equal(1);
+    expect(binaryHeap._heap[1]).to.equal(3);
+    expect(binaryHeap._heap[2]).to.equal(2);
+    expect(binaryHeap._heap[3]).to.equal(4);
   });
 });
