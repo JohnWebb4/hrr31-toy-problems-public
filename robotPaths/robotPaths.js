@@ -76,15 +76,16 @@ const robotPaths = function robotPaths(n, board, i, j) {
   // Calculate next paths
   const nextPath = [[i - 1, j], [i + 1, j], [i, j - 1], [i, j + 1]];
 
-  nextPath.forEach(([nextI, nextJ]) => {
+  for (let pathIndex = 0; pathIndex < nextPath.length; pathIndex += 1) {
     // If on board
-    if (nextI >= 0 && nextI < n && nextJ >= 0 && nextJ < n) {
+    if (nextPath[pathIndex][0] >= 0 && nextPath[pathIndex][0] < n &&
+       nextPath[pathIndex][1] >= 0 && nextPath[pathIndex][1] < n) {
       // Is has not been visited
-      if (!board.hasBeenVisited(nextI, nextJ)) {
-        pathCount += robotPaths(n, board, nextI, nextJ);
+      if (!board.hasBeenVisited(nextPath[pathIndex][0], nextPath[pathIndex][1])) {
+        pathCount += robotPaths(n, board, nextPath[pathIndex][0], nextPath[pathIndex][1]);
       }
     }
-  });
+  }
 
   board.togglePiece(i, j);
 

@@ -51,4 +51,11 @@ describe('robotPaths', () => {
   it('should create board and start in top left if not defined', () => {
     expect(robotPaths(n)).to.equal(8512);
   });
+
+  function test6By6() {
+    this.timeout(2500);
+    expect(robotPaths(6)).to.equal(1262816);
+  }
+
+  it('should handle 6x6 board', test6By6);
 });
