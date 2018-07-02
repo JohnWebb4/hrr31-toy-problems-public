@@ -45,4 +45,9 @@ describe('linkedListCycles', () => {
   it('should return true for cyclic lined list', () => {
     expect(hasCycle(cyclicList)).to.equal(true);
   });
+
+  it('should handle a one node list', () => {
+    const oneNodeList = Node('A');
+    expect(hasCycle(oneNodeList)).to.equal(false);
+  });
 });
