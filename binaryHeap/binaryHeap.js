@@ -166,7 +166,7 @@ BinaryHeap.prototype.removeRoot = function removeRoot() {
     let smallestValue = leftNode;
     let smallestValueIndex = leftIndex;
 
-    if (rightIndex < this.size && rightNode < leftNode) {
+    if (rightIndex < this.size && this.compare(rightNode, leftNode)) {
       smallestValue = rightNode;
       smallestValueIndex = rightIndex;
     }

@@ -76,9 +76,11 @@ const mixEvents = function mixEvents(obj) {
       return;
     }
 
-    this.events[eventName].forEach((callback) => {
+    function applyCallback(callback) {
       callback.apply(this, restArgs);
-    });
+    }
+
+    this.events[eventName].forEach(applyCallback);
   };
 
   return obj;
