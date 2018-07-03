@@ -17,4 +17,8 @@ describe('bubble sort', () => {
   it('should sort integers', () => {
     expect(bubbleSort([1, -1, -2, -3])).to.eql([-3, -2, -1, 1]);
   });
+
+  it('should sort numbers with decimals', () => {
+    expect(bubbleSort([1.2, -1.5, -2.1, -3.999, -3.998])).to.eql([-3.999, -3.998, -2.1, -1.5, 1.2]);
+  });
 });
