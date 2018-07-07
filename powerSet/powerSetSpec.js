@@ -28,4 +28,16 @@ describe('powerSet', () => {
 
     expected.forEach(set => expect(actual).to.include(set));
   });
+
+  it('should remove duplicates', () => {
+    // Get power set results
+    const string = 'aaaa';
+    const expected = ['', 'a'];
+    const actual = powerSet(string);
+
+    // Compare
+    expected.forEach(set => expect(actual).to.include(set));
+
+    expect(actual).to.not.includes('aa');
+  });
 });
