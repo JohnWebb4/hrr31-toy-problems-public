@@ -35,3 +35,4 @@ import './largestProductOfThree/largestProductOfThreeSpec';
 import './deepEquality/deepEqualitySpec';
 import './powerSet/powerSetSpec';
 import './treeBFSelect/treeBFSelectSpec';
+import './composePipe/composePipeSpec';
