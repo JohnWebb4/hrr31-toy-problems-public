@@ -19,3 +19,7 @@ var rotatedArraySearch = function (rotated, target) {
   // Your code here:
 };
 
+if (window.DEBUG) {
+  module.exports = rotatedArraySearch;
+}
+

@@ -36,3 +36,4 @@ import './deepEquality/deepEqualitySpec';
 import './powerSet/powerSetSpec';
 import './treeBFSelect/treeBFSelectSpec';
 import './composePipe/composePipeSpec';
+import './rotatedArraySearch/rotatedArraySearchSpec';
