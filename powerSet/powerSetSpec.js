@@ -14,8 +14,18 @@ describe('powerSet', () => {
 
   it('should get power set of "abc"', () => {
     const string = 'abc';
-    const result = ['', 'a', 'b', 'c', 'ab', 'ac', 'bc', 'abc'];
+    const expected = ['', 'a', 'b', 'c', 'ab', 'ac', 'bc', 'abc'];
+    const actual = powerSet(string);
 
-    expect(powerSet(string)).to.eql(result);
+    expected.forEach(set => expect(actual).to.include(set));
+  });
+
+  it('should get power set for "jump"', () => {
+    const string = 'jump';
+    const expected = ['', 'j', 'ju', 'jm', 'jp', 'jmu', 'jmp', 'jpu',
+      'jmpu', 'u', 'm', 'p', 'mu', 'mp', 'pu', 'mpu'];
+    const actual = powerSet(string);
+
+    expected.forEach(set => expect(actual).to.include(set));
   });
 });
