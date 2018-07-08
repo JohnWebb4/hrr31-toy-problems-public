@@ -11,4 +11,9 @@ describe('firstNonRepeatedCharacter', () => {
   it('should return a string', () => {
     expect(firstNonRepeatedCharacter('test')).to.be.a('string');
   });
+
+  it('should return first non-repeated character', () => {
+    expect(firstNonRepeatedCharacter('ABA')).to.equal('B');
+    expect(firstNonRepeatedCharacter('ABABC')).to.equal('C');
+  });
 });
