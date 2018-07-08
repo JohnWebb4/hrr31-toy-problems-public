@@ -9,17 +9,24 @@ describe('isSubsetOf', () => {
   });
 
   it('should return boolean', () => {
-    const a = [];
-    expect(a.isSubsetOf([])).to.be.a('boolean');
+    const subset = [];
+    expect(subset.isSubsetOf([])).to.be.a('boolean');
   });
 
   it('should return true if array is subset', () => {
-    const a = ['test', 1];
-    expect(a.isSubsetOf(['test', 'something', 1, 2])).to.equal(true);
+    const subset = ['test', 1];
+    expect(subset.isSubsetOf(['test', 'something', 1, 2])).to.equal(true);
   });
 
   it('should return false for non subsets', () => {
-    const a = ['test', 'hi'];
-    expect(a.isSubsetOf(['tests', 'something'])).to.equal(false);
+    const nonSubset = ['test', 'hi'];
+    expect(nonSubset.isSubsetOf(['tests', 'something'])).to.equal(false);
+  });
+
+  it('should handle objects and array elements', () => {
+    const subset = [['test'], { test: 'something' }];
+    const parent = [['test'], { test: 'something' }, ['Another', 'array']];
+
+    expect(subset.isSubsetOf(parent)).to.equal(true);
   });
 });
