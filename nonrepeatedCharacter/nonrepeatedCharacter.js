@@ -13,6 +13,7 @@
  */
 const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
   // hold all non-repeated characters
+  const unique = [];
   const set = [];
 
   // Go through each character
@@ -20,17 +21,20 @@ const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
     // If not in set
     if (set.indexOf(char) === -1) {
       set.push(char);
+      unique.push(char);
       return;
     }
 
-    // Is repeated character, remove
-    // Get index and remove
-    const charIndex = set.indexOf(char);
-    set.splice(charIndex, charIndex + 1);
+    if (unique.indexOf(char) !== -1) {
+      // Is repeated character, remove
+      // Get index and remove
+      const charIndex = unique.indexOf(char);
+      unique.splice(charIndex, charIndex + 1);
+    }
   });
 
   // Return first character or empty string
-  return set[0] || null;
+  return unique[0] || null;
 };
 
 if (window.DEBUG) {
