@@ -45,4 +45,11 @@ describe('nthFibonacci', () => {
     ];
     valuesToTest.forEach(([index, value]) => expect(nthFibonacci(index)).to.equal(value));
   });
+
+  it('should use iterative algorithm for speed', () => (
+    new Promise((resolve) => {
+      nthFibonacci(200000000);
+      resolve();
+    })
+  )).timeout(1000);
 });
