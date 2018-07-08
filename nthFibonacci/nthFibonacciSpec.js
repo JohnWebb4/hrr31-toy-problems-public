@@ -7,4 +7,8 @@ describe('nthFibonacci', () => {
   it('should be a function', () => {
     expect(nthFibonacci).to.be.a('function');
   });
+
+  it('should return a number', () => {
+    expect(nthFibonacci(0)).to.be.a('number');
+  });
 });
