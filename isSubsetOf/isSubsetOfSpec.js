@@ -29,4 +29,8 @@ describe('isSubsetOf', () => {
 
     expect(subset.isSubsetOf(parent)).to.equal(true);
   });
+
+  it('should return false for empty array', () => {
+    expect([].isSubsetOf([])).to.equal(false);
+  });
 });
