@@ -6,6 +6,11 @@
  *   firstNonRepeatedCharacter('AACBDB'); // => 'C'
  */
 
+/**
+ * Return first non repeated character in string
+ * @param {string} string String to find first non repeated character
+ * @returns {string} First non-repeated character
+ */
 const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
   // TODO: your solution here
 };
