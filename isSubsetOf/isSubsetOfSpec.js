@@ -12,4 +12,9 @@ describe('isSubsetOf', () => {
     const a = [];
     expect(a.isSubsetOf([])).to.be.a('boolean');
   });
+
+  it('should return true if array is subset', () => {
+    const a = ['test'];
+    expect(a.isSubsetOf(['test', 'something'])).to.equal(true);
+  });
 });
