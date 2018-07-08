@@ -37,13 +37,31 @@ const nthFibonacci = function nthFibonacci(n) {
     return 0;
   }
 
-  if (n === 1 || n === 2) {
+  if (n === 1) {
     return 1;
   }
 
   // Recursive case
+  // Define previous fibonacci
+  let prev2Fibonacci = 0;
+  let prevFibonacci = 1;
+  let fibonaccci = 1;
+  let nIndex = 2;
+
+  while (nIndex < n) {
+    // Update previous
+    prev2Fibonacci = prevFibonacci;
+    prevFibonacci = fibonaccci;
+
+    // Update fibonacci
+    fibonaccci = prevFibonacci + prev2Fibonacci;
+
+    // Update counter
+    nIndex += 1;
+  }
+
   // Fibonacci is sum of two previous
-  return nthFibonacci(n - 1) + nthFibonacci(n - 2);
+  return fibonaccci;
 };
 
 if (window.DEBUG) {
