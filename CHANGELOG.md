@@ -1,4 +1,9 @@
 # Change log
+## Nth Fibonacci
+### New
+- @JohnWebb4 Test and Complete Nth Fibonacci [#3](https://github.com/JohnWebb4/hrr31-toy-problems/pull/3)
+### Fixes
+- @JohnWebb4 First non-repeated character handles different repeated lengths [#3](https://github.com/JohnWebb4/hrr31-toy-problems/pull/3)
 ## Is subset of
 ### New
 - @JohnWebb4 Test and Complete Is Subset of Array [#2](https://github.com/JohnWebb4/hrr31-toy-problems/pull/2)
