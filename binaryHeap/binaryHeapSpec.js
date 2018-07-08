@@ -68,4 +68,42 @@ describe('binaryHeap', () => {
     expect(binaryHeap._heap[2]).to.equal(2);
     expect(binaryHeap._heap[3]).to.equal(4);
   });
+
+  it('should maintain inserting based off _compare', () => {
+    binaryHeap.insert(4);
+    binaryHeap.insert(5);
+    binaryHeap.insert(9);
+    binaryHeap.insert(8);
+    binaryHeap.insert(1);
+
+    const compare = binaryHeap._compare;
+    const heap = binaryHeap._heap;
+
+    // heap[0] is the parent of heap[1] and heap[2]
+    // heap[1] is the parent of heap[3] and heap[4]
+    expect(compare(heap[0], heap[1])).to.equal(true);
+    expect(compare(heap[0], heap[2])).to.equal(true);
+    expect(compare(heap[1], heap[3])).to.equal(true);
+    expect(compare(heap[1], heap[4])).to.equal(true);
+  });
+
+  it('should maintain removing based off _compare', () => {
+    binaryHeap.insert(4);
+    binaryHeap.insert(5);
+    binaryHeap.insert(9);
+    binaryHeap.insert(8);
+    binaryHeap.insert(1);
+    binaryHeap.insert(0);
+    binaryHeap.removeRoot();
+
+    const compare = binaryHeap._compare;
+    const heap = binaryHeap._heap;
+
+    // heap[0] is the parent of heap[1] and heap[2]
+    // heap[1] is the parent of heap[3] and heap[4]
+    expect(compare(heap[0], heap[1])).to.equal(true);
+    expect(compare(heap[0], heap[2])).to.equal(true);
+    expect(compare(heap[1], heap[3])).to.equal(true);
+    expect(compare(heap[1], heap[4])).to.equal(true);
+  });
 });

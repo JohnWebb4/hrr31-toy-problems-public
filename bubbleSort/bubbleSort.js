@@ -33,8 +33,29 @@
 // Feel free to add helper functions if needed.
 
 
+/**
+ * Sort numbers in array using boolean less than comparison
+ * @param {number[]} array Array to sort
+ */
 const bubbleSort = function bubbleSort(array) {
-  // Your code here.
+  let wasChanged = false;
+  const sortedArray = array.slice();
+
+  const compareAndSetChanged = (elem1, elem2) => {
+    if (elem1 > elem2) {
+      wasChanged = true;
+    }
+
+    return elem1 > elem2 ? 1 : -1;
+  };
+
+
+  do {
+    wasChanged = false;
+    sortedArray.sort(compareAndSetChanged);
+  } while (wasChanged);
+
+  return sortedArray;
 };
 
 if (window.DEBUG) {
