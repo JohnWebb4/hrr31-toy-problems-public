@@ -11,4 +11,9 @@ describe('nthFibonacci', () => {
   it('should return a number', () => {
     expect(nthFibonacci(0)).to.be.a('number');
   });
+
+  it('should return undefined for negative numbers', () => {
+    expect(nthFibonacci(-1)).to.equal(undefined);
+    expect(nthFibonacci(-2)).to.equal(undefined);
+  });
 });
