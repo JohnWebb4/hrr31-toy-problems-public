@@ -24,7 +24,7 @@
 // import './linkedList/linkedListSpec';
 // import './queueStack/queueStackSpec';
 import './binaryHeap/binaryHeapSpec';
-// import './robotPaths/robotPathsSpec';
+import './robotPaths/robotPathsSpec';
 import './nonrepeatedCharacter/nonrepeatedCharacterSpec';
 import './isSubsetOf/isSubsetOfSpec';
 import './nthFibonacci/nthFibonacciSpec';
