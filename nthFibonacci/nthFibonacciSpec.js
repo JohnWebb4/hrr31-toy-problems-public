@@ -5,15 +5,31 @@ import nthFibonacci from './nthFibonacci';
 
 describe('nthFibonacci', () => {
   it('should be a function', () => {
+    // Test is defined
     expect(nthFibonacci).to.be.a('function');
   });
 
   it('should return a number', () => {
+    // Test a valid number
     expect(nthFibonacci(0)).to.be.a('number');
   });
 
   it('should return undefined for negative numbers', () => {
+    // Test negative numbers
     expect(nthFibonacci(-1)).to.equal(undefined);
     expect(nthFibonacci(-2)).to.equal(undefined);
+  });
+
+  it('should return undefined for not a number', () => {
+    // Items to test
+    const itemsToTestUndefined = [
+      undefined,
+      null,
+      [],
+      {},
+    ];
+
+    // Test all items
+    itemsToTestUndefined.forEach(item => expect(nthFibonacci(item)).to.equal(undefined));
   });
 });
