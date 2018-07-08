@@ -20,8 +20,30 @@
  *
  */
 
+/**
+ * Returns the nth Fibonacci number
+ * @param {number} n The index of the Fibonacci sequence
+ * @returns {number} nth Fibonacci number
+ */
 const nthFibonacci = function nthFibonacci(n) {
-  // TODO: implement me!
+  // Handle termination vase
+  if (typeof n !== 'number' || n < 0) {
+    // Not a number of less than zero
+    return undefined;
+  }
+
+  // Handle base cases
+  if (n === 0) {
+    return 0;
+  }
+
+  if (n === 1 || n === 2) {
+    return 1;
+  }
+
+  // Recursive case
+  // Fibonacci is sum of two previous
+  return nthFibonacci(n - 1) + nthFibonacci(n - 2);
 };
 
 if (window.DEBUG) {
