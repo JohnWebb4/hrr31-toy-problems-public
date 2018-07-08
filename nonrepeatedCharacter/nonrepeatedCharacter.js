@@ -30,7 +30,7 @@ const firstNonRepeatedCharacter = function firstNonRepeatedCharacter(string) {
   });
 
   // Return first character or empty string
-  return set[0] || '';
+  return set[0] || null;
 };
 
 if (window.DEBUG) {
