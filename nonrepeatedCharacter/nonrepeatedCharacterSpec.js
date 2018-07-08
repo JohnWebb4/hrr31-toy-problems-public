@@ -16,4 +16,8 @@ describe('firstNonRepeatedCharacter', () => {
     expect(firstNonRepeatedCharacter('ABA')).to.equal('B');
     expect(firstNonRepeatedCharacter('ABABC')).to.equal('C');
   });
+
+  it('should return empty string for all repeated characters', () => {
+    expect(firstNonRepeatedCharacter('AAAA')).to.equal('');
+  });
 });
