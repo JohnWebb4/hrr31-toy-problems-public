@@ -17,7 +17,7 @@ describe('firstNonRepeatedCharacter', () => {
     expect(firstNonRepeatedCharacter('ABABC')).to.equal('C');
   });
 
-  it('should return empty string for all repeated characters', () => {
-    expect(firstNonRepeatedCharacter('AAAA')).to.equal('');
+  it('should return null for all repeated characters', () => {
+    expect(firstNonRepeatedCharacter('AAAA')).to.equal(null);
   });
 });
