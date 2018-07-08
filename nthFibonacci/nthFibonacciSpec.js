@@ -32,4 +32,17 @@ describe('nthFibonacci', () => {
     // Test all items
     itemsToTestUndefined.forEach(item => expect(nthFibonacci(item)).to.equal(undefined));
   });
+
+  it('should return the nth Fibonacci', () => {
+    const valuesToTest = [
+      [0, 0],
+      [1, 1],
+      [2, 1],
+      [3, 2],
+      [4, 3],
+      [5, 5],
+      [6, 8],
+    ];
+    valuesToTest.forEach(([index, value]) => expect(nthFibonacci(index)).to.equal(value));
+  });
 });
