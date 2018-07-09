@@ -30,7 +30,7 @@
 // import './nthFibonacci/nthFibonacciSpec';
 // import './bubbleSort/bubbleSortSpec';
 // import './commonCharacters/commonCharactersSpec';
-import './treeDFSelect/treeDFSelectSpec';
+// import './treeDFSelect/treeDFSelectSpec';
 import './largestProductOfThree/largestProductOfThreeSpec';
 import './deepEquality/deepEqualitySpec';
 // import './powerSet/powerSetSpec';
