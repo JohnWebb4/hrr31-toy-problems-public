@@ -7,4 +7,31 @@ describe('commonCharacters', () => {
   it('should be a function', () => {
     expect(commonCharacters).to.be.a('function');
   });
+
+  it('should return a string', () => {
+    expect(commonCharacters('hi', 'hi')).to.be.a('string');
+  });
+
+  it('should return common characters', () => {
+    expect(commonCharacters('hi', 'hello')).to.equal('h');
+    expect(commonCharacters('test', 'test')).to.equal('tes');
+  });
+
+  it('should handle empty strings', () => {
+    expect(commonCharacters('', '')).to.equal('');
+    expect(commonCharacters('test', '')).to.equal('');
+    expect(commonCharacters('', 'test')).to.equal('');
+  });
+
+  it('should have no common characters', () => {
+    expect(commonCharacters('hi', 'test')).to.equal('');
+    expect(commonCharacters('something', 'xyz')).to.equal('');
+  });
+
+  it('should any number of string arguments', () => {
+    expect(commonCharacters()).to.equal('');
+    expect(commonCharacters('hi')).to.equal('hi');
+    expect(commonCharacters('test', 'tuesday')).to.equal('tes');
+    expect(commonCharacters('han', 'an', 'anthem')).to.equal('an');
+  });
 });
