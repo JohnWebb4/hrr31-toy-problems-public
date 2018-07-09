@@ -29,7 +29,7 @@
 // import './isSubsetOf/isSubsetOfSpec';
 // import './nthFibonacci/nthFibonacciSpec';
 // import './bubbleSort/bubbleSortSpec';
-import './commonCharacters/commonCharactersSpec';
+// import './commonCharacters/commonCharactersSpec';
 import './treeDFSelect/treeDFSelectSpec';
 import './largestProductOfThree/largestProductOfThreeSpec';
 import './deepEquality/deepEqualitySpec';

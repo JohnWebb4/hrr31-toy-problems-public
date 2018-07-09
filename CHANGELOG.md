@@ -1,4 +1,7 @@
 # Change log
+## Tree Depth First Select
+### New
+- @JohnWebb4 Test and Complete Tree Depth First Filter [#6](https://github.com/JohnWebb4/hrr31-toy-problems/pull/6)
 ## Common Characters
 ### New
 - @JohnWebb4 Test and Complete Common Characters [#5](https://github.com/JohnWebb4/hrr31-toy-problems/pull/5)
