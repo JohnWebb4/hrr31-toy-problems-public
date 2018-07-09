@@ -41,20 +41,26 @@ const bubbleSort = function bubbleSort(array) {
   let wasChanged = false;
   const sortedArray = array.slice();
 
-  const compareAndSetChanged = (elem1, elem2) => {
-    if (elem1 > elem2) {
-      wasChanged = true;
-    }
-
-    return elem1 > elem2 ? 1 : -1;
-  };
-
-
   do {
+    // Loop till no element is changed
     wasChanged = false;
-    sortedArray.sort(compareAndSetChanged);
+    for (let elemIndex = 0; elemIndex < sortedArray.length - 1; elemIndex += 1) {
+      // Go through every element in array
+      if (sortedArray[elemIndex] > sortedArray[elemIndex + 1]) {
+        // If needs to be sorted
+        // Set was changed
+        wasChanged = true;
+
+        // Swap elements
+        const temp = sortedArray[elemIndex];
+        sortedArray[elemIndex] = sortedArray[elemIndex + 1];
+        sortedArray[elemIndex + 1] = temp;
+      }
+    }
+  // While an element was sorted
   } while (wasChanged);
 
+  // Return sorted
   return sortedArray;
 };
 
