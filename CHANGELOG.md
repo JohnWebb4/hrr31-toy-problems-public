@@ -1,4 +1,7 @@
 # Change log
+## Common Characters
+### New
+- @JohnWebb4 Test and Complete Common Characters [#5](https://github.com/JohnWebb4/hrr31-toy-problems/pull/5)
 ## Bubble Sort
 ### New
 - @JohnWebb4 Test and Complete Bubble Sort [#4](https://github.com/JohnWebb4/hrr31-toy-problems/pull/4)
