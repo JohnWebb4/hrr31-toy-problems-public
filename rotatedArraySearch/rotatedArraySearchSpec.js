@@ -21,4 +21,8 @@ describe('rotatedArraySearch', () => {
     expect(rotatedArraySearch([-4, 1, 2, 3], -4)).to.equal(0);
     expect(rotatedArraySearch([1, 2, 3, 4, 5], 4)).to.equal(3);
   });
+
+  it('shoulr return null for empty array', () => {
+    expect(rotatedArraySearch([], 1)).to.equal(null);
+  });
 });
