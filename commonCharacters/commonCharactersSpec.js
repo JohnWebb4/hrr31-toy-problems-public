@@ -27,4 +27,11 @@ describe('commonCharacters', () => {
     expect(commonCharacters('hi', 'test')).to.equal('');
     expect(commonCharacters('something', 'xyz')).to.equal('');
   });
+
+  it('should any number of string arguments', () => {
+    expect(commonCharacters()).to.equal('');
+    expect(commonCharacters('hi')).to.equal('hi');
+    expect(commonCharacters('test', 'tuesday')).to.equal('tes');
+    expect(commonCharacters('han', 'an', 'anthem')).to.equal('an');
+  });
 });
