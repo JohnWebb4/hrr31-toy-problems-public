@@ -7,4 +7,8 @@ describe('rotatedArraySearch', () => {
   it('should be a function', () => {
     expect(rotatedArraySearch).to.be.a('function');
   });
+
+  it('should return a number', () => {
+    expect(rotatedArraySearch([1, 2], 2)).to.equal(1);
+  });
 });
