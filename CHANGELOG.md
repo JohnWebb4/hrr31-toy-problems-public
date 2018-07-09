@@ -1,4 +1,7 @@
 # Change log
+## Rotated Array Search
+### New
+- @JohnWebb4 Test and Complete Rotated Array Search [#7](https://github.com/JohnWebb4/hrr31-toy-problems/pull/7)
 ## Tree Depth First Select
 ### New
 - @JohnWebb4 Test and Complete Tree Depth First Filter [#6](https://github.com/JohnWebb4/hrr31-toy-problems/pull/6)
