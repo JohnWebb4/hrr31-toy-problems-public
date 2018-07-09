@@ -1,4 +1,7 @@
 # Change log
+## Bubble Sort
+### New
+- @JohnWebb4 Test and Complete Bubble Sort [#4](https://github.com/JohnWebb4/hrr31-toy-problems/pull/4)
 ## Nth Fibonacci
 ### New
 - @JohnWebb4 Test and Complete Nth Fibonacci [#3](https://github.com/JohnWebb4/hrr31-toy-problems/pull/3)

@@ -25,9 +25,9 @@
 // import './queueStack/queueStackSpec';
 // import './binaryHeap/binaryHeapSpec';
 // import './robotPaths/robotPathsSpec';
-import './nonrepeatedCharacter/nonrepeatedCharacterSpec';
-import './isSubsetOf/isSubsetOfSpec';
-import './nthFibonacci/nthFibonacciSpec';
+// import './nonrepeatedCharacter/nonrepeatedCharacterSpec';
+// import './isSubsetOf/isSubsetOfSpec';
+// import './nthFibonacci/nthFibonacciSpec';
 import './bubbleSort/bubbleSortSpec';
 import './commonCharacters/commonCharactersSpec';
 import './treeDFSelect/treeDFSelectSpec';
