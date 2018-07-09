@@ -22,4 +22,9 @@ describe('commonCharacters', () => {
     expect(commonCharacters('test', '')).to.equal('');
     expect(commonCharacters('', 'test')).to.equal('');
   });
+
+  it('should have no common characters', () => {
+    expect(commonCharacters('hi', 'test')).to.equal('');
+    expect(commonCharacters('something', 'xyz')).to.equal('');
+  });
 });
