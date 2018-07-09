@@ -11,4 +11,9 @@ describe('commonCharacters', () => {
   it('should return a string', () => {
     expect(commonCharacters('hi', 'hi')).to.be.a('string');
   });
+
+  it('should return common characters', () => {
+    expect(commonCharacters('hi', 'hello')).to.equal('h');
+    expect(commonCharacters('test', 'test')).to.equal('tes');
+  });
 });
