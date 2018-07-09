@@ -22,7 +22,7 @@ describe('rotatedArraySearch', () => {
     expect(rotatedArraySearch([1, 2, 3, 4, 5], 4)).to.equal(3);
   });
 
-  it('shoulr return null for empty array', () => {
+  it('should return null for empty array', () => {
     expect(rotatedArraySearch([], 1)).to.equal(null);
   });
 });
