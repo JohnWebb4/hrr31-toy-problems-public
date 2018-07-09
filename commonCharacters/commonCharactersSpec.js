@@ -16,4 +16,10 @@ describe('commonCharacters', () => {
     expect(commonCharacters('hi', 'hello')).to.equal('h');
     expect(commonCharacters('test', 'test')).to.equal('tes');
   });
+
+  it('should handle empty strings', () => {
+    expect(commonCharacters('', '')).to.equal('');
+    expect(commonCharacters('test', '')).to.equal('');
+    expect(commonCharacters('', 'test')).to.equal('');
+  });
 });
