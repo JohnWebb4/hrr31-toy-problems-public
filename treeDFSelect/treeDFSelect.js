@@ -35,7 +35,29 @@ const Tree = function Tree(value) {
   this.children = [];
 };
 
-Tree.prototype.DFSelect = function DFSelect(filter) {
+/**
+ * Filter using depth first selection
+ * @param {(value: *, depth: number) => 0 | 1} filter Filter function
+ * @param {number} [depth=0] The current depth
+ * @returns {[*]} Filtered values
+ */
+Tree.prototype.DFSelect = function DFSelect(filter, depth = 0) {
+  // Store filtered values
+  let filtered = [];
+
+  // Filter current node
+  if (filter(this.value, depth)) {
+    filtered.push(this.value);
+  }
+
+  // Go through all children
+  this.children.forEach((child) => {
+    // Filter children
+    filtered = filtered.concat(child.DFSelect(filter, depth + 1));
+  });
+
+  // Return all filtered values
+  return filtered;
 };
 
 
