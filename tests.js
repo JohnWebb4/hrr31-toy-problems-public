@@ -28,7 +28,7 @@
 // import './nonrepeatedCharacter/nonrepeatedCharacterSpec';
 // import './isSubsetOf/isSubsetOfSpec';
 // import './nthFibonacci/nthFibonacciSpec';
-import './bubbleSort/bubbleSortSpec';
+// import './bubbleSort/bubbleSortSpec';
 import './commonCharacters/commonCharactersSpec';
 import './treeDFSelect/treeDFSelectSpec';
 import './largestProductOfThree/largestProductOfThreeSpec';
