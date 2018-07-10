@@ -1,5 +1,5 @@
 /* eslint for-direction: 0 */
-/**
+/*
  * Build a class to represent a range of numbers that takes:
  *   - a beginning index,
  *   - an end index (optional)
