@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import Range from './rangeClass';
 
-describe('Range', () => {
+describe('range', () => {
   it('should be defined', () => {
     expect(Range).to.be.a('function');
     expect(Range.prototype.each).to.be.a('function');
@@ -23,5 +23,14 @@ describe('Range', () => {
     expect(range.start).to.equal(2);
     expect(range.end).to.equal(6);
     expect(range.step).to.equal(2);
+  });
+
+  it('should return size', () => {
+    const range = new Range(2, 6, 2);
+    expect(range.size()).to.equal(3);
+
+    // Test range with overstepping range
+    const range1 = new Range(1, 4, 2);
+    expect(range1.size()).to.equal(2);
   });
 });
