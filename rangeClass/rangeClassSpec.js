@@ -33,4 +33,14 @@ describe('range', () => {
     const range1 = new Range(1, 4, 2);
     expect(range1.size()).to.equal(2);
   });
+
+  it('should check if includes value', () => {
+    const range = new Range(1, 3);
+
+    expect(range.includes(1)).to.equal(true);
+    expect(range.includes(2)).to.equal(true);
+    expect(range.includes(3)).to.equal(true);
+
+    expect(range.includes(4)).to.equal(false);
+  });
 });
