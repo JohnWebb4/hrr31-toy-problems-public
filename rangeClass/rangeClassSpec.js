@@ -43,4 +43,18 @@ describe('range', () => {
 
     expect(range.includes(4)).to.equal(false);
   });
+
+  it('should loop through each value', () => {
+    const range = new Range(2, 8, 2);
+    const valuesInRange = [];
+    const expectedValuesInRange = [2, 4, 6, 8];
+
+    range.each((val) => {
+      // Add value to values in range
+      valuesInRange.push(val);
+    });
+
+    // Compare with expected
+    expect(valuesInRange).to.eql(expectedValuesInRange);
+  });
 });
