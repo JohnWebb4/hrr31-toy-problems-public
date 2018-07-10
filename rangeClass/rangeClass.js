@@ -129,7 +129,7 @@ Range.prototype.includes = function includes(val) {
   return doesInclude;
 };
 
-/**
+/*
  * Create range
  */
 const range = new Range(1);
