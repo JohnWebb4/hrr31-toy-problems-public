@@ -25,4 +25,9 @@ describe('balanced parenthesis', () => {
     expect(balancedParens('()[}{]')).to.equal(false);
     expect(balancedParens('({[}])()')).to.equal(false);
   });
+
+  it('should handle other characters', () => {
+    expect(balancedParens(' var wow  = { yo: thisIsAwesome() }')).to.equal(true);
+    expect(balancedParens(' var hubble = function() { telescopes.awesome();')).to.equal(false);
+  });
 });
