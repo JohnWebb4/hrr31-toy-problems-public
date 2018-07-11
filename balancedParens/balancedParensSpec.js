@@ -19,4 +19,10 @@ describe('balanced parenthesis', () => {
     expect(balancedParens('((()))')).to.equal(true);
     expect(balancedParens('({}[])()')).to.equal(true);
   });
+
+  it('should return false for invalid parenthesis', () => {
+    expect(balancedParens('(]')).to.equal(false);
+    expect(balancedParens('()[}{]')).to.equal(false);
+    expect(balancedParens('({[}])()')).to.equal(false);
+  });
 });
