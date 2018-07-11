@@ -23,7 +23,48 @@
  *
  *
  */
-var balancedParens = function(input) {
+
+/**
+ * Determine is parenthesis are balanced
+ * @param {string} input String to check
+ * @returns {boolean} String is valid
+ */
+const balancedParens = function balancedParens(input) {
+  // Holds all closing parenthesis we are looking for (in order)
+  // This is a stack
+  const lookingForCharArray = [];
+
+  // Holds corresponding closing parenthesis
+  const lookupClosingParens = {
+    '(': ')',
+    '[': ']',
+    '{': '}',
+  };
+
+  // Check char is valid and all parenthesis are
+  // closed
+  return input.split('').every((char) => {
+    // Check char is valid
+    // Check closing parenthesis
+    if (lookingForCharArray[0] === char) {
+      // Is corresponding closing parenthesis
+      // Remove from lookup
+      lookingForCharArray.shift();
+      return true;
+    }
+
+    // Else check opening parenthesis
+    if (lookupClosingParens[char]) {
+      lookingForCharArray.unshift(lookupClosingParens[char]);
+      return true;
+    }
+
+    // Else check is other character, and not a closing bracket
+    return char !== ')' && char !== ']' && char !== '}';
+  }) && lookingForCharArray.length === 0;
 };
 
-
+if (window.DEBUG) {
+  // If debugging, export balanced parenthesis
+  module.exports = balancedParens;
+}
