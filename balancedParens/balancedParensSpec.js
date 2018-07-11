@@ -11,4 +11,12 @@ describe('balanced parenthesis', () => {
   it('should return a boolean', () => {
     expect(balancedParens('')).to.be.a('boolean');
   });
+
+  it('should return true for valid parenthesis', () => {
+    expect(balancedParens('()')).to.equal(true);
+    expect(balancedParens('(){}[]()')).to.equal(true);
+    expect(balancedParens('({[()]})')).to.equal(true);
+    expect(balancedParens('((()))')).to.equal(true);
+    expect(balancedParens('({}[])()')).to.equal(true);
+  });
 });
