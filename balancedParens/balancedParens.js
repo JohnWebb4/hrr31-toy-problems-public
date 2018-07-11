@@ -68,4 +68,3 @@ if (window.DEBUG) {
   // If debugging, export balanced parenthesis
   module.exports = balancedParens;
 }
-
