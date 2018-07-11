@@ -57,4 +57,14 @@ describe('range', () => {
     // Compare with expected
     expect(valuesInRange).to.eql(expectedValuesInRange);
   });
+
+  it('should return null if no start value', () => {
+    const range = new Range();
+
+    expect(range.start).to.equal(undefined);
+    expect(range.end).to.equal(undefined);
+    expect(range.step).to.equal(undefined);
+
+    expect(range.prototype).to.equal(undefined);
+  });
 });
