@@ -26,7 +26,8 @@
  * so find a way to represent the range without actually storing each element.
  *
  * USAGE EXAMPLES:
- * var myRange = new Range(0,10); // a new range representing the numbers between 0 and 10 (inclusively)
+ * var myRange = new Range(0,10);
+ * // a new range representing the numbers between 0 and 10 (inclusively)
  *
  * var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
  * evenNumbers.each(function(val){
@@ -39,17 +40,94 @@
  */
 
 
-var Range = function(start, end, step) {
+/**
+ * Create a range class
+ * @param {number} start index
+ * @param {number} [end=start] End index
+ * @param {number} [step=1] Step between range values
+ */
+const Range = function Range(start, end, step) {
+  if (!start) {
+    // Returning null is impossible in construction mode,
+    // but returning null stops construction
+    return null;
+  }
+
+  // Default step and end
+  if (start > end) {
+    this.start = end;
+    this.end = start || end;
+    this.step = -this.step || -1;
+    return this;
+  }
+
+  this.start = start;
+  this.end = end || start;
+  this.step = step || 1;
 };
 
-Range.prototype.size = function () {
+/**
+ * Get size of range
+ * @returns {number} Size of range
+ */
+Range.prototype.size = function size() {
+  let counter = 0;
+
+  // loop through range
+  this.each(() => {
+    // Increment counter on each value in range
+    counter += 1;
+  });
+
+  return counter;
 };
 
-Range.prototype.each = function (callback) {
+/**
+ * Iterate through each element in range
+ * @param {(val: *) => undefined} callback Callback function accepting value
+ */
+Range.prototype.each = function each(callback) {
+  if (this.step === 0) {
+    // Cannot loop. Throw error
+    throw new Error('Step cannot be zero');
+  }
+
+  if (this.step < 0) {
+    // Negative step. Count backwards
+    for (let value = this.end; value <= this.start; value += this.step) {
+      // Call on value
+      callback(value);
+    }
+    return;
+  }
+
+  for (let value = this.step; value <= this.end; value += this.step) {
+    // Call on value
+    callback(value);
+  }
 };
 
-Range.prototype.includes = function (val) {
+/**
+ * Check if range includes value
+ * @param {*} val Value to check
+ */
+Range.prototype.includes = function includes(val) {
+  let doesInclude = false;
+
+  this.each((rangeValue) => {
+    // Iterate through range values, and check if matches
+    doesInclude = doesInclude || val === rangeValue;
+  });
+
+  return doesInclude;
 };
 
-var range = new Range(1);
+/**
+ * Create range
+ */
+const range = new Range(1);
 
+if (window.DEBUG) {
+  // If debugging, export Range class
+  module.exports = Range;
+}
