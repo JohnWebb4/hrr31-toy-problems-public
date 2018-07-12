@@ -71,8 +71,18 @@ describe('range', () => {
   it('should count backwards if start is greater than end', () => {
     const range = new Range(5, 1);
 
-    expect(range.start).to.equal(1);
-    expect(range.end).to.equal(5);
+    expect(range.start).to.equal(5);
+    expect(range.end).to.equal(1);
     expect(range.step).to.equal(-1);
+  });
+
+  it('should count backwards', () => {
+    const countdown = new Range(10, 0, -1);
+    const elements = [];
+    countdown.each((val) => {
+      elements.push(val);
+    });
+
+    expect(elements).to.eql([10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
   });
 });
