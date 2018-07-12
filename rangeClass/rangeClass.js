@@ -1,3 +1,4 @@
+/* eslint for-direction: 0 */
 /**
  * Build a class to represent a range of numbers that takes:
  *   - a beginning index,
@@ -52,17 +53,23 @@ const Range = function Range(start, end, step) {
     return null;
   }
 
-  // Default step and end
-  if (start > end) {
-    this.start = end;
-    this.end = start || end;
-    this.step = -this.step || -1;
-    return this;
+  if (this.step === 0) {
+    throw new Error('Range step cannot be zero');
   }
 
   this.start = start;
-  this.end = end || start;
-  this.step = step || 1;
+
+  // Must use ternary to allow end to be zero
+  this.end = end !== undefined ? end : start;
+
+
+  if (this.start <= this.end) {
+    // Default step
+    this.step = step || 1;
+  } else {
+    // Make negative and default to -1
+    this.step = -Math.abs(step) || -1;
+  }
 };
 
 /**
@@ -93,14 +100,14 @@ Range.prototype.each = function each(callback) {
 
   if (this.step < 0) {
     // Negative step. Count backwards
-    for (let value = this.end; value <= this.start; value += this.step) {
+    for (let value = this.start; value >= this.end; value += this.step) {
       // Call on value
       callback(value);
     }
     return;
   }
 
-  for (let value = this.step; value <= this.end; value += this.step) {
+  for (let value = this.start; value <= this.end; value += this.step) {
     // Call on value
     callback(value);
   }
