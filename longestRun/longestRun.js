@@ -13,19 +13,23 @@
  * inputs well.
  */
 
-var longestRun = function (string) {
+const longestRun = function longestRun(string) {
   // TODO: Your code here!
 };
 
 // If you need a random string generator, use this!
 // (you wont need this function for your solution but it may help with testing)
-var randomString = function (len) {
-  var text = '';
-  var possible = 'abcdefghijklmnopqrstuvwxyz';
+const randomString = function randomString(len) {
+  let text = '';
+  let possible = 'abcdefghijklmnopqrstuvwxyz';
 
-  for (var i = 0; i < len; i++) {
+  for (let i = 0; i < len; i += 1) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
 
   return text;
 };
+
+if (window.DEBUG) {
+  module.exports = longestRun;
+}
