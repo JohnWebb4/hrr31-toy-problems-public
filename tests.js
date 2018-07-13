@@ -37,4 +37,7 @@ import './deepEquality/deepEqualitySpec';
 import './treeBFSelect/treeBFSelectSpec';
 import './composePipe/composePipeSpec';
 import './rotatedArraySearch/rotatedArraySearchSpec';
-import './rangeClass/rangeClassSpec';
+// import './rangeClass/rangeClassSpec';
+// import './balancedParens/balancedParensSpec';
+import './asyncMap/asyncMapSpec';
+import './longestRun/longestRunSpec';
