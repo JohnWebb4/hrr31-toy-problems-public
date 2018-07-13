@@ -15,4 +15,8 @@ describe('longestRun', () => {
     expect(runIndexies[0]).to.be.a('number');
     expect(runIndexies[1]).to.be.a('number');
   });
+
+  it('should return null on an empty string', () => {
+    expect(longestRun('')).to.equal(null);
+  });
 });
