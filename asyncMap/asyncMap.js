@@ -39,5 +39,9 @@
  */
 
 
-var asyncMap = function(tasks, callback) {
+const asyncMap = function asyncMap(tasks, callback) {
 };
+
+if (window.DEBUG) {
+  module.exports = asyncMap;
+}
