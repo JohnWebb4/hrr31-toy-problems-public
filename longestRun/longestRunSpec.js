@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 
-import longestRun from './longestRun';
+import { longestRun } from './longestRun';
 
 describe('longestRun', () => {
   it('should be a function', () => {
@@ -18,5 +18,12 @@ describe('longestRun', () => {
 
   it('should return null on an empty string', () => {
     expect(longestRun('')).to.equal(null);
+  });
+
+  it('should return correct indices', () => {
+    expect(longestRun('aaabcd')).to.deep.equal([0, 2]);
+    expect(longestRun('aabcc')).to.deep.equal([0, 1]);
+    expect(longestRun('aabbbcccc')).to.deep.equal([5, 8]);
+    expect(longestRun('aabbbbccc')).to.deep.equal([2, 5]);
   });
 });
