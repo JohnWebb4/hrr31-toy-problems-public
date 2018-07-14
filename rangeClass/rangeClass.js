@@ -1,5 +1,5 @@
 /* eslint for-direction: 0 */
-/**
+/*
  * Build a class to represent a range of numbers that takes:
  *   - a beginning index,
  *   - an end index (optional)
@@ -39,6 +39,7 @@
  * evenNumbers.size() should be 4
  * evenNumbers.includes(2) should be true, evenNumbers.includes(3) should be false
  */
+
 
 /**
  * Create a range class
@@ -128,7 +129,7 @@ Range.prototype.includes = function includes(val) {
   return doesInclude;
 };
 
-/**
+/*
  * Create range
  */
 const range = new Range(1);

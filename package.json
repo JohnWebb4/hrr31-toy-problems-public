@@ -10,7 +10,8 @@
     "lint:fix": "eslint ./**/*.js --fix",
     "start": "node server.js",
     "start:dev": "nodemon --inspect server.js",
-    "test": "find ./ -name '*Spec.js' | xargs mocha -b --require babel-core/register --require setupNode"
+    "test": "find ./ -name '*Spec.js' | xargs mocha -b --require babel-core/register --require setupNode",
+    "test:new": "mocha -b --require babel-core/register --require setupNode tests.js"
   },
   "repository": {
     "type": "git",
