@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 
-import { longestRun } from './longestRun';
+import { longestRun, randomString } from './longestRun';
 
 describe('longestRun', () => {
   it('should be a function', () => {
@@ -30,4 +30,9 @@ describe('longestRun', () => {
   it('should handle no runs', () => {
     expect(longestRun('abcdef')).to.deep.equal([0, 0]);
   });
+
+  it('should hande long random strings', () => {
+    const aRandomString = randomString(4000000);
+    expect(longestRun(aRandomString)).to.be.an('array');
+  }).timeout(1000);
 });
