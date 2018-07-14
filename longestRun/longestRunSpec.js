@@ -26,4 +26,8 @@ describe('longestRun', () => {
     expect(longestRun('aabbbcccc')).to.deep.equal([5, 8]);
     expect(longestRun('aabbbbccc')).to.deep.equal([2, 5]);
   });
+
+  it('should handle no runs', () => {
+    expect(longestRun('abcdef')).to.deep.equal([0, 0]);
+  });
 });
