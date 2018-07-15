@@ -1,4 +1,9 @@
 # Change log
+## Largest Product of Three
+### New
+- @JohnWebb4 Test and Complete Largest Product of Three Numbers [#11](https://github.com/JohnWebb4/hrr31-toy-problems/pull/11)
+### Fixes
+- @JohnWebb4 Implement and Test Natural Merge Sort [#11](https://github.com/JohnWebb4/hrr31-toy-problems/pull/11)
 ## Merge Sort
 ### New
 - @JohnWebb4 Test and Complete Merge Sort numbers [#10](https://github.com/JohnWebb4/hrr31-toy-problems/pull/10)
