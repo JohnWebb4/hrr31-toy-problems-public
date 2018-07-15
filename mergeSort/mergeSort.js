@@ -123,6 +123,24 @@ const mergeSort = function mergeSort(array) {
     return array[1] > array[0] ? array : array.reverse();
   }
 
+  // Check if already sorted
+  // Assume sorted and proove otherwise
+  let isSorted = true;
+  for (let arrayIndex = 0; arrayIndex < array.length - 1; arrayIndex += 1) {
+    // Check every value is less than next
+    // Skip last value in array
+    if (array[arrayIndex] > array[arrayIndex + 1]) {
+      // Is not sorted
+      isSorted = false;
+      break;
+    }
+  }
+
+  if (isSorted) {
+    // Already sorted, just return sliced array
+    return array.slice();
+  }
+
   // Recursive case
   // Half length
   const halfLength = Math.floor(array.length / 2);
