@@ -1,4 +1,13 @@
 # Change log
+## Merge Sort
+### New
+- @JohnWebb4 Test and Complete Merge Sort numbers [#10](https://github.com/JohnWebb4/hrr31-toy-problems/pull/10)
+## Longest Run
+### New
+- @JohnWebb4 Test and Complete Longest run of characters [#9](https://github.com/JohnWebb4/hrr31-toy-problems/pull/9)
+## Range
+### New
+- @JohnWebb4 Test and Complete Range of numbers [#8](https://github.com/JohnWebb4/hrr31-toy-problems/pull/8)
 ## Rotated Array Search
 ### New
 - @JohnWebb4 Test and Complete Rotated Array Search [#7](https://github.com/JohnWebb4/hrr31-toy-problems/pull/7)
