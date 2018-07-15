@@ -35,4 +35,17 @@ describe('deepEquals', () => {
     // Test object with different primative values
     expect(deepEquals(a, a3)).to.equal(false);
   });
+
+  it('should handle nested objects and arrays', () => {
+    // Test same values
+    const a = { b: { c: [{ text: 'something' }] } };
+
+    const aSame = { b: { c: [{ text: 'something' }] } };
+    expect(deepEquals(a, aSame)).to.equal(true);
+
+    // Test different values
+    const aDifferent = { b: { c: [{ text: 'else' }] } };
+
+    expect(deepEquals(a, aDifferent)).to.equal(false);
+  });
 });
