@@ -25,4 +25,10 @@ describe('largestProductOfThree', () => {
     // Made smaller to keep tests fast
     expect(largestProductOfThree([...Array(500).keys()].map(value => -value))).to.equal(0);
   });
+
+  it('should handle decimals', () => {
+    // Floating point error occurs with decimals.
+    // Round to approximate correct value
+    expect(Number(largestProductOfThree([0.1, 0.2, 0.3, 1.5, 3.5]).toFixed(3))).to.equal(1.575);
+  });
 });
