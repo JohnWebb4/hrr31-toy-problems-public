@@ -17,4 +17,12 @@ describe('largestProductOfThree', () => {
     expect(largestProductOfThree([0, 1, 2, 3, 0])).to.equal(6);
     expect(largestProductOfThree([-15, -1, 3, 4])).to.equal(60);
   });
+
+  it('should handle large numbers', () => {
+    expect(largestProductOfThree([...Array(1000).keys()])).to.equal(994010994);
+
+    // Test large negative numbers
+    // Made smaller to keep tests fast
+    expect(largestProductOfThree([...Array(500).keys()].map(value => -value))).to.equal(0);
+  });
 });
