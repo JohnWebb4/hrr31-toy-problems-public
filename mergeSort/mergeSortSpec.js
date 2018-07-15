@@ -18,4 +18,12 @@ describe('mergeSort', () => {
     expect(mergeSort([2, 1])).to.deep.equal([1, 2]);
     expect(mergeSort([3, 2, 1])).to.deep.equal([1, 2, 3]);
   });
+
+  it('should handle large arrays', () => {
+    const sortedArray = [...Array(100000).keys()];
+    const array = sortedArray.slice().reverse();
+
+    // Expect sorts large array
+    expect(mergeSort(array)).to.deep.equal(sortedArray);
+  });
 });
