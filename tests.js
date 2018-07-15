@@ -40,4 +40,5 @@ import './rotatedArraySearch/rotatedArraySearchSpec';
 // import './rangeClass/rangeClassSpec';
 // import './balancedParens/balancedParensSpec';
 import './asyncMap/asyncMapSpec';
-import './longestRun/longestRunSpec';
+// import './longestRun/longestRunSpec';
+import './mergeSort/mergeSortSpec';
