@@ -1,4 +1,4 @@
-/**
+/*
  * Implement a function that sorts an array of numbers using the "mergesort" algorithm.
  *
  * Mergesort is an optimized sorting algorithm which is a common choice to implement `sort`
@@ -7,12 +7,16 @@
  * Safari uses quicksort for numeric arrays, and mergesort for arrays of strings.)
  *
  * Mergesort uses a divide-and-conquer strategy. It begins by treating the input list of length N
- * as a set of N "sublists" of length 1, which are considered to be sorted. Adjacent sublists are then
- * "merged" into sorted sublists of length 2, which are merged into sorted sublists of length 4, and so
- * on, until only a single sorted list remains. (Note, if N is odd, an extra sublist of length 1 will be left
+ * as a set of N "sublists" of length 1,
+ * which are considered to be sorted. Adjacent sublists are then
+ * "merged" into sorted sublists of length 2,
+ * which are merged into sorted sublists of length 4, and so
+ * on, until only a single sorted list remains.
+ * (Note, if N is odd, an extra sublist of length 1 will be left
  * after the first merge, and so on.)
  *
- * This can be implemented using either a recursive ("top-down") or an iterative ("bottom-up") approach.
+ * This can be implemented using either a recursive ("top-down")
+ * or an iterative ("bottom-up") approach.
  *
  * Illustration of an iterative approach:
  *
@@ -77,26 +81,76 @@
  *
  * Complexity:
  *   What is the complexity of your algorithm in time and space?
- *   The merge step can be implemented using what is conceptually an insertion sort, and yet its time
+ *   The merge step can be implemented using what is conceptually an insertion sort,
+ *   and yet its time
  *   complexity is (spoiler alert!) much lower. Why is that?
  *
  *
  * Extra credit:
  *   One of the benefits of mergesort over e.g. quicksort is that it is "stable"; assuming the merge
- *   step is properly implemented, list items with the same value will remain in the same order they were
- *   in in the input. (This is academic in the case of sorting integers, but it is an important consideration
+ *   step is properly implemented,
+ *   list items with the same value will remain in the same order they were
+ *   in in the input. (This is academic in the case of sorting integers,
+ *   but it is an important consideration
  *   when sorting more complex objects.) Is your implementation a stable sort?
  *
  * Extra credit:
- *   The naive mergesort assumes that the input array is completely unsorted, but in practice even random
- *   data will have "runs" of sorted integers. The "natural mergesort" takes advantage of this by splitting
- *   the input not into sublists of length 1, but into whatever sublists are already sorted in the input.
- *   Implement natural splitting into your mergesort. How much does it improve your average-case runtime?
+ *   The naive mergesort assumes that the input array is completely unsorted,
+ *   but in practice even random data will have "runs" of sorted integers.
+ *   The "natural mergesort" takes advantage of this by splitting
+ *   the input not into sublists of length 1,
+ *   but into whatever sublists are already sorted in the input.
+ *   Implement natural splitting into your mergesort.
+ *   How much does it improve your average-case runtime?
  *
  */
 
 
+/**
+ * Sort array using merge sort
+ * @param {number[]} array Array to sort
+ * @returns {number[]} sorted array
+ */
+const mergeSort = function mergeSort(array) {
+  // Base case
+  if (array.length <= 1) {
+    // Array is one element or empty
+    // already sorted
+    return array;
+  }
 
-var mergeSort = function(array) {
-  // Your code here.
+  if (array.length === 2) {
+    return array[1] > array[0] ? array : array.reverse();
+  }
+
+  // Recursive case
+  // Half length
+  const halfLength = Math.floor(array.length / 2);
+
+  const leftMerge = mergeSort(array.slice(0, halfLength));
+  const rightMerge = mergeSort(array.slice(halfLength));
+
+  // Sort values
+  const sortedArray = [];
+  while (leftMerge.length > 0 || rightMerge.length > 0) {
+    if (leftMerge[0] !== undefined && rightMerge[0] !== undefined) {
+      // If both have elements
+      // Add smallest
+      sortedArray.push(leftMerge[0] <= rightMerge[0] ? leftMerge.shift() : rightMerge.shift());
+    } else if (leftMerge[0] === undefined) {
+      // Left merge is empty add right merge
+      sortedArray.push(rightMerge.shift());
+    } else {
+      // Right merge is empty, add left merge
+      sortedArray.push(leftMerge.shift());
+    }
+  }
+
+  // Return sorted array
+  return sortedArray;
 };
+
+if (window.DEBUG) {
+  // If debugging, export merge sort
+  module.exports = mergeSort;
+}
