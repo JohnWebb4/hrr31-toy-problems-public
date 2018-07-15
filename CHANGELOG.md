@@ -1,4 +1,10 @@
 # Change log
+## Deep Equality
+### New
+- @JohnWebb4 Test and Complete Deep Equality [#12](https://github.com/JohnWebb4/hrr31-toy-problems/pull/12)
+- @JohnWebb4 Add new tests page for running new tests [#12](https://github.com/JohnWebb4/hrr31-toy-problems/pull/12)
+### Changes
+- @JohnWebb4 Uses tests page for running all tests [#12](https://github.com/JohnWebb4/hrr31-toy-problems/pull/12)
 ## Largest Product of Three
 ### New
 - @JohnWebb4 Test and Complete Largest Product of Three Numbers [#11](https://github.com/JohnWebb4/hrr31-toy-problems/pull/11)
