@@ -7,4 +7,8 @@ describe('deepEquals', () => {
   it('should be a function', () => {
     expect(deepEquals).to.be.a('function');
   });
+
+  it('should return a boolean', () => {
+    expect(deepEquals({}, {})).to.be.a('boolean');
+  });
 });
