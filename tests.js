@@ -42,3 +42,4 @@ import './balancedParens/balancedParensSpec';
 import './asyncMap/asyncMapSpec';
 import './longestRun/longestRunSpec';
 import './mergeSort/mergeSortSpec';
+import './fractionConverter/fractionConverterSpec';
