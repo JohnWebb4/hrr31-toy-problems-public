@@ -26,19 +26,49 @@
   *
   */
 
-/*
+/**
  * Basic tree that stores a value.
  */
-
-var Tree = function(value) {
+const Tree = function Tree(value) {
   this.value = value;
   this.children = [];
 };
 
+/**
+ * Filter items in tree using Breath-First selection
+ * @param {(value: *, depth: number) => boolean} filter Filter to apply
+ * @param {number} initialDepth Initial depth of node
+ * @param {boolean} checkRoot Should check root node
+ * @returns {*[]} All selected children
+ */
+Tree.prototype.BFSelect = function BFSelect(filter) {
+  // Declare all selected values
+  const selected = [];
 
+  // Declare array of nodes to check
+  let treesToCheck = [{ node: this, depth: 0 }];
 
-Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  while (treesToCheck.length > 0) {
+    // Get next node
+    const tree = treesToCheck.shift(0);
+    if (filter(tree.node.value, tree.depth)) {
+      // Value should be selected
+      selected.push(tree.node.value);
+    }
+
+    if (tree.node.children) {
+      // If children add to end of queue
+      treesToCheck = treesToCheck.concat(tree.node.children.map(node => (
+        {
+          node,
+          depth: tree.depth + 1,
+        }
+      )));
+    }
+  }
+
+  // Return selected elements
+  return selected;
 };
 
 /**
@@ -48,8 +78,10 @@ Tree.prototype.BFSelect = function(filter) {
 /**
   * add an immediate child
   * (wrap values in Tree nodes if they're not already)
+  * @param {*} child Child to add to tree
+  * @returns {*} The added child
   */
-Tree.prototype.addChild = function(child) {
+Tree.prototype.addChild = function addChild(child) {
   if (!child || !(child instanceof Tree)) {
     child = new Tree(child);
   }
@@ -66,27 +98,31 @@ Tree.prototype.addChild = function(child) {
 /**
   * check to see if the provided tree is already a child of this
   * tree __or any of its sub trees__
+  * @param {*} child Child to check
+  * @returns {boolean} If child is descendent
   */
-Tree.prototype.isDescendant = function(child) {
+Tree.prototype.isDescendant = function isDescendant(child) {
   if (this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].isDescendant(child)) {
-        // `child` is descendant of this tree
-        return true;
-      }
-    }
-    return false;
   }
+
+  for (let i = 0; i < this.children.length; i += 1) {
+    if (this.children[i].isDescendant(child)) {
+      // `child` is descendant of this tree
+      return true;
+    }
+  }
+  return false;
 };
 
 /**
   * remove an immediate child
+  * @param {*} child Child to remove
   */
-Tree.prototype.removeChild = function(child) {
-  var index = this.children.indexOf(child);
+Tree.prototype.removeChild = function removeChild(child) {
+  const index = this.children.indexOf(child);
+
   if (index !== -1) {
     // remove the child
     this.children.splice(index, 1);
