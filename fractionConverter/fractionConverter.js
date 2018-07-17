@@ -18,7 +18,31 @@
  * @returns {string} Fraction equivalent
  */
 const toFraction = function toFraction(number) {
-  // Your code here
+  // Get smallest multiple of 10 that is whole number
+  // Store smallest multiple of 10
+  let dividend = number;
+  // Store multipler to get to smallest Multiple
+  let divisor = 1;
+
+  while (Math.floor(dividend) !== dividend) {
+    divisor *= 10;
+    dividend *= 10;
+  }
+
+  // Get smallest number between dividend divisor
+  const smallest = Math.min(dividend, divisor);
+
+  for (let factor = smallest; factor > 1; factor -= 1) {
+    // Test each number for being a factor of dividend and divisor
+    if (dividend % factor === 0 && divisor % factor === 0) {
+      // Divide dividend and divisor by factor
+      dividend /= factor;
+      divisor /= factor;
+    }
+  }
+
+  // Return fraction
+  return `${dividend}/${divisor}`;
 };
 
 if (window.DEBUG) {
