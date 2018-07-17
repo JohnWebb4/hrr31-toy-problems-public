@@ -1,4 +1,7 @@
 # Change log
+## Tree Breadth First Selection
+### New
+- @JohnWebb4 Test and Complete Tree Breadth First Selection [#13](https://github.com/JohnWebb4/hrr31-toy-problems/pull/13)
 ## Deep Equality
 ### New
 - @JohnWebb4 Test and Complete Deep Equality [#12](https://github.com/JohnWebb4/hrr31-toy-problems/pull/12)
