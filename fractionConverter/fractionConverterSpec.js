@@ -17,4 +17,14 @@ describe('fractionConverter', () => {
     expect(toFraction(0.25)).to.equal('1/4');
     expect(toFraction(0.2)).to.equal('1/5');
   });
+
+  it('should handle mixed fractions and whole numbers', () => {
+    // Whole numbers
+    expect(toFraction(3.0)).to.equal('3/1');
+    expect(toFraction(5.0)).to.equal('5/1');
+
+    // Mixed fractions
+    expect(toFraction(1.5)).to.equal('3/2');
+    expect(toFraction(2.5)).to.equal('5/2');
+  });
 });
