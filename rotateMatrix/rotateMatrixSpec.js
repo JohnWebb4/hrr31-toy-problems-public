@@ -14,7 +14,7 @@ describe('rotateMatrix', () => {
     expect(outMatrix[0]).to.be.an('array');
   });
 
-  it('should rotate n-n matrix', () => {
+  it('should rotate a n-n matrix', () => {
     expect(rotateMatrix([
       [1, 2, 3, 4],
       [5, 6, 7, 8],
@@ -25,6 +25,19 @@ describe('rotateMatrix', () => {
       ['E', 'A', 6, 2],
       ['F', 'B', 7, 3],
       ['G', 'C', 8, 4],
+    ]);
+  });
+
+  it('should handle a m-n matrix', () => {
+    expect(rotateMatrix([
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [9, 'A', 'B', 'C'],
+    ])).to.deep.equal([
+      [9, 5, 1],
+      ['A', 6, 2],
+      ['B', 7, 3],
+      ['C', 8, 4],
     ]);
   });
 });
