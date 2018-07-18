@@ -40,4 +40,32 @@ describe('rotateMatrix', () => {
       ['C', 8, 4],
     ]);
   });
+
+  it('should rotate clockwise and counter-clockwise', () => {
+    // Rotate clockwise
+    expect(rotateMatrix([
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [9, 'A', 'B', 'C'],
+      ['D', 'E', 'F', 'G'],
+    ], 1)).to.deep.equal([
+      ['D', 9, 5, 1],
+      ['E', 'A', 6, 2],
+      ['F', 'B', 7, 3],
+      ['G', 'C', 8, 4],
+    ]);
+
+    // Rotate counterclockwise
+    expect(rotateMatrix([
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [9, 'A', 'B', 'C'],
+      ['D', 'E', 'F', 'G'],
+    ], -1)).to.deep.equal([
+      [4, 8, 'C', 'G'],
+      [3, 7, 'B', 'F'],
+      [2, 6, 'A', 'E'],
+      [1, 5, 9, 'D'],
+    ]);
+  });
 });
