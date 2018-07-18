@@ -1,4 +1,4 @@
-/**
+/*
  * Write a function that rotates a NxN matrix 90 degrees.
  *
  * A matrix, also called a 2-D array, is simply an array of arrays of values.
@@ -44,8 +44,35 @@
  *    (1 = clockwise, -1 = counterclockwise)
  */
 
-const rotateMatrix = function rotatedMatrix(matrix) {
-  // Your code here.
+/**
+ * Rotate a matrix 90 degrees clockwise
+ * @param {[[*]]} matrix Matrix to rotate
+ * @param {1 | -1} direction Direction of rotation (1=clockwise and -1=counterclockwise)
+ */
+const rotateMatrix = function rotateMatrix(matrix, direction) {
+  // Default direction to clockwise
+  direction = direction || 1;
+
+  // Assume rectangular matrix
+  // Get width and height
+  const width = matrix[0].length;
+
+  // Create rotated matrix
+  // Height and width are flipped
+  return matrix.reduce((rotatedMatrix, row) => {
+    // Rotate clockwise
+    row.forEach((element, index) => {
+      if (direction === 1) {
+        // Rotate clockwise
+        rotatedMatrix[index].unshift(element);
+      } else {
+        // Rotate counterclockwise
+        rotatedMatrix[width - index - 1].push(element);
+      }
+    });
+
+    return rotatedMatrix;
+  }, Array(width).fill('').map(() => []));
 };
 
 if (window.DEBUG) {
