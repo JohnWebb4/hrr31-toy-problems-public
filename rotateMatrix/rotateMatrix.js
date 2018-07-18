@@ -40,10 +40,15 @@
  *
  * Extra credit:
  *  - Make your function operate on rectangular matrices (MxN rather than NxN).
- *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
+ *  - Make your function accept a parameter for the direction of rotation
+ *    (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
+const rotateMatrix = function rotatedMatrix(matrix) {
   // Your code here.
 };
+
+if (window.DEBUG) {
+  // If debugging export
+  module.exports = rotateMatrix;
+}
