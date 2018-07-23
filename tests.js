@@ -43,3 +43,4 @@ import './asyncMap/asyncMapSpec';
 import './longestRun/longestRunSpec';
 import './mergeSort/mergeSortSpec';
 import './fractionConverter/fractionConverterSpec';
+import './rotateMatrix/rotateMatrixSpec';
