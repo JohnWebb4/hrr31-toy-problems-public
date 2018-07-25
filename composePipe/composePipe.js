@@ -30,6 +30,7 @@
  *  pipe(add2, multiplyBy3)(5) // 21
  *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
+'use strict'
 
 
 /**
