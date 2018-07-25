@@ -1,4 +1,15 @@
 # Change log
+## Compose Pipe
+### New
+- @JohnWebb4 Test and Complete Compose Pipe [#16](https://github.com/JohnWebb4/hrr31-toy-problems/pull/16)
+## Rotated Matrix
+### New
+- @JohnWebb4 Test and Complete Rotate Matrix [#15](https://github.com/JohnWebb4/hrr31-toy-problems/pull/15)
+### Fixes
+- @JohnWebb4 Fraction Converter handles large fractions [#15](https://github.com/JohnWebb4/hrr31-toy-problems/pull/15)
+## Fraction Converter
+### New
+- @JohnWebb4 Test and Complete Fraction Converter [#14](https://github.com/JohnWebb4/hrr31-toy-problems/pull/14)
 ## Tree Breadth First Selection
 ### New
 - @JohnWebb4 Test and Complete Tree Breadth First Selection [#13](https://github.com/JohnWebb4/hrr31-toy-problems/pull/13)
