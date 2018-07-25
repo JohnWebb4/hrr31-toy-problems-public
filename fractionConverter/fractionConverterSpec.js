@@ -41,7 +41,7 @@ describe('fractionConverter', () => {
   });
 
   it('should return the correct faction for 0.88', () => {
-    expect(toFraction(.88)).to.equal('22/25');
+    expect(toFraction(0.88)).to.equal('22/25');
   });
 
   it('should return the correct faction for 0.253213', () => {
