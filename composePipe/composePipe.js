@@ -33,10 +33,46 @@
 
 'use strict';
 
-var compose = function() {
+
+/**
+ * Compose multiple functions into chain of function that follows
+ * @param {...function} functions Functions to compose
+ * @returns {function} Composed function
+ */
+const pipe = function pipe() {
+  // Termination cases
+  if (arguments.length === 0) {
+    // If no function to pipe
+    // Return undefined
+    return undefined;
+  }
+
+  // Get all functions
+  const functions = Array.from(arguments);
+
+  // Return piped function
+  return functions.reduce((piped, aFunction) => (
+    // Iterate through functions
+    // Pipe into previous
+    function anotherPipe() {
+      // Get all arguments
+      const args = Array.from(arguments);
+
+      return aFunction(piped(...args));
+    }
+  ));
 };
 
-var pipe = function() {
+/**
+ * Compose multiple functions into chain of function that follows
+ * @param {...function} functions Functions to compose
+ * @returns {function} Composed function
+ */
+const compose = function compose() {
+  const functions = Array.from(arguments);
+
+  // Return reverse of pipe
+  return pipe(...(functions.reverse()));
 };
 
 if (window.DEBUG) {
