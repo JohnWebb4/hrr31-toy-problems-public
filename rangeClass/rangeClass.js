@@ -132,7 +132,7 @@ Range.prototype.includes = function includes(val) {
 /*
  * Create range
  */
-const range = new Range(1);
+// const range = new Range(1);
 
 if (window.DEBUG) {
   // If debugging, export Range class
