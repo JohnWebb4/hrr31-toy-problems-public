@@ -8,4 +8,11 @@ describe('composePipe', () => {
     expect(compose).to.be.a('function');
     expect(pipe).to.be.a('function');
   });
+
+  it('should return a function', () => {
+    const testFunc = () => {};
+
+    expect(compose(testFunc)).to.be.a('function');
+    expect(pipe(testFunc)).to.be.a('function');
+  });
 });
