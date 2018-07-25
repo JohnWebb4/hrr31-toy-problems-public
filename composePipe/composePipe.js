@@ -30,7 +30,8 @@
  *  pipe(add2, multiplyBy3)(5) // 21
  *  pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
  */
-'use strict'
+
+'use strict';
 
 
 /**
@@ -50,17 +51,16 @@ const pipe = function pipe() {
   const functions = Array.from(arguments);
 
   // Return piped function
-  return functions.reduce((piped, aFunction) => {
+  return functions.reduce((piped, aFunction) => (
     // Iterate through functions
-
     // Pipe into previous
-    return function anotherPipe() {
+    function anotherPipe() {
       // Get all arguments
       const args = Array.from(arguments);
 
       return aFunction(piped(...args));
-    };
-  });
+    }
+  ));
 };
 
 /**

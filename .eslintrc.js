@@ -7,6 +7,7 @@ module.exports = {
         "no-underscore-dangle": 0,
         "prefer-rest-params": 0,
         "prefer-template": 0,
+        "strict": 0,
     },
     "env": {
       "browser": true,
