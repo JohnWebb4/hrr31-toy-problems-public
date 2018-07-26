@@ -1,4 +1,7 @@
 # Change log
+## Asynchronous Map
+### New
+- @JohnWebb4 Test and Complete Asynchronous map [#17](https://github.com/JohnWebb4/hrr31-toy-problems/pull/17)
 ## Compose Pipe
 ### New
 - @JohnWebb4 Test and Complete Compose Pipe [#16](https://github.com/JohnWebb4/hrr31-toy-problems/pull/16)

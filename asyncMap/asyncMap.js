@@ -39,7 +39,35 @@
  */
 
 
+/**
+ * Map asynchronous function to array of results
+ * @param {[(cb: (result) => undefined)]} tasks asynchronous tasks
+ * @param {(results: [*]) => undefined} callback Callback passed array of results
+ */
 const asyncMap = function asyncMap(tasks, callback) {
+  // Create results
+  const results = [];
+
+  // Count number of tasks completed
+  let countTaskCompleted = 0;
+
+  tasks.forEach((task, index) => {
+    // Iterate through tasks
+    // Call task
+    task((result) => {
+      // Add task to results
+      results[index] = result;
+
+      // Complete task
+      countTaskCompleted += 1;
+
+      if (countTaskCompleted === tasks.length) {
+        // If all completed
+        // Return results
+        callback(results);
+      }
+    });
+  });
 };
 
 if (window.DEBUG) {
