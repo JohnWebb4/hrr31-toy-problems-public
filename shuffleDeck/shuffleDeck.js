@@ -31,22 +31,29 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
+const shuffleDeck = (deck) => {
   // Your code here
 };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
-var orderedDeck = function() {
-  var suits = [ '♥', '♣', '♠', '♦' ];
-  var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
-  var deck = [];
+const orderedDeck = () => {
+  const suits = ['♥', '♣', '♠', '♦'];
+  const values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+  const deck = [];
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
+  suits.forEach((suit) => {
+    values.forEach((value) => {
       deck.push(value + suit);
     });
   });
 
   return deck;
 };
+
+if (window.DEBUG) {
+  module.exports = {
+    orderedDeck,
+    shuffleDeck,
+  };
+}
