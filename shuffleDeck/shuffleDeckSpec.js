@@ -21,4 +21,9 @@ describe('shuffleDeck', () => {
     shuffleDeck(deck);
     expect(deck).to.deep.equal(orderedDeck());
   });
+
+  it('should shuffle deck', () => {
+    const deck = orderedDeck();
+    expect(shuffleDeck(deck)).to.not.deep.equal(deck);
+  });
 });
