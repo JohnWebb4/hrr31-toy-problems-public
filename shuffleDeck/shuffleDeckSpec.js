@@ -9,4 +9,10 @@ describe('shuffleDeck', () => {
     expect(shuffleDeck).to.be.a('function');
     expect(orderedDeck).to.be.a('function');
   });
+
+  it('should return a deck array', () => {
+    const deck = orderedDeck();
+    expect(deck).to.be.an('array');
+    expect(shuffleDeck(deck)).to.be.an('array');
+  });
 });
