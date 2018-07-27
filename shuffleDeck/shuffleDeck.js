@@ -1,4 +1,4 @@
-/**
+/*
  * Given an array containing a deck of cards, implement a function that shuffles
  * the deck.
  *
@@ -31,8 +31,35 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+/**
+ * Randomly shuffle deck
+ * @param {[string]} deck Deck to shuffle
+ * @returns {[string]} New randomly shuffled deck
+ */
 const shuffleDeck = (deck) => {
-  // Your code here
+  // Copy deck
+  const shuffDeck = deck.slice();
+
+  // For n size deck perform n shuffles
+  // Loop through shuffles
+  let shuffleCount = 0;
+  while (shuffleCount < shuffDeck.length) {
+    // For each shuffle
+    // Get two random card indecies
+    const index1 = Math.floor(Math.random() * shuffDeck.length);
+    const index2 = Math.floor(Math.random() * shuffDeck.length);
+
+    // Swap cards
+    const temp = shuffDeck[index1];
+    shuffDeck[index1] = shuffDeck[index2];
+    shuffDeck[index2] = temp;
+
+    // Increment shuffle cound
+    shuffleCount += 1;
+  }
+
+  // Return shuffled deck
+  return shuffDeck;
 };
 
 // Ordered deck generator provided for your testing convenience
