@@ -15,4 +15,10 @@ describe('shuffleDeck', () => {
     expect(deck).to.be.an('array');
     expect(shuffleDeck(deck)).to.be.an('array');
   });
+
+  it('should not mutate input deck', () => {
+    const deck = orderedDeck();
+    shuffleDeck(deck);
+    expect(deck).to.deep.equal(orderedDeck());
+  });
 });
