@@ -1,4 +1,4 @@
-/**
+/*
  * Given an array containing a deck of cards, implement a function that shuffles
  * the deck.
  *
@@ -31,22 +31,56 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  // Your code here
+/**
+ * Randomly shuffle deck
+ * @param {[string]} deck Deck to shuffle
+ * @returns {[string]} New randomly shuffled deck
+ */
+const shuffleDeck = (deck) => {
+  // Copy deck
+  const shuffDeck = deck.slice();
+
+  // For n size deck perform n shuffles
+  // Loop through shuffles
+  let shuffleCount = 0;
+  while (shuffleCount < shuffDeck.length) {
+    // For each shuffle
+    // Get two random card indecies
+    const index1 = Math.floor(Math.random() * shuffDeck.length);
+    const index2 = Math.floor(Math.random() * shuffDeck.length);
+
+    // Swap cards
+    const temp = shuffDeck[index1];
+    shuffDeck[index1] = shuffDeck[index2];
+    shuffDeck[index2] = temp;
+
+    // Increment shuffle cound
+    shuffleCount += 1;
+  }
+
+  // Return shuffled deck
+  return shuffDeck;
 };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
-var orderedDeck = function() {
-  var suits = [ '♥', '♣', '♠', '♦' ];
-  var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
-  var deck = [];
+const orderedDeck = () => {
+  const suits = ['♥', '♣', '♠', '♦'];
+  const values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+  const deck = [];
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
+  suits.forEach((suit) => {
+    values.forEach((value) => {
       deck.push(value + suit);
     });
   });
 
   return deck;
 };
+
+if (window.DEBUG) {
+  module.exports = {
+    orderedDeck,
+    shuffleDeck,
+  };
+}
