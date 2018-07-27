@@ -26,4 +26,9 @@ describe('shuffleDeck', () => {
     const deck = orderedDeck();
     expect(shuffleDeck(deck)).to.not.deep.equal(deck);
   });
+
+  it('should randomly shuffle deck', () => {
+    const deck = orderedDeck();
+    expect(shuffleDeck(deck)).to.not.deep.equal(shuffleDeck(deck));
+  });
 });
